@@ -7,8 +7,8 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains" });
 
 export const metadata: Metadata = {
-  title: 'Energy Insights & Optimization Report | ecoplanet',
-  description: 'Industrial Energy Performance & Optimization Roadmap - KI-gest\u00fctzte Einsparidentifikation',
+  title: 'Aalberts Surface Technologies \u2014 Energieanalyse-Report | ecoplanet',
+  description: 'Statistische Insights und Ma\u00dfnahmenempfehlungen f\u00fcr Aalberts Surface Technologies GmbH \u2014 5 Standorte, 13 Insights, 27 Ma\u00dfnahmen.',
 }
 
 export const viewport: Viewport = {
