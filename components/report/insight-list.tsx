@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import {
   Lightbulb,
@@ -12,9 +12,12 @@ import {
   Target,
   Shield,
   Info,
+  Wrench,
+  ArrowRight,
+  Euro,
 } from "lucide-react"
 import { insights } from "@/data/company-data"
-import type { Insight } from "@/data/types"
+import type { Insight, Measure } from "@/data/types"
 
 function confidenceColor(c: number) {
   if (c >= 0.9) return { bg: "rgba(5,150,105,0.1)", text: "#059669", label: "Sehr hoch" }
@@ -29,19 +32,46 @@ function categoryBadge(cat: string) {
     : { bg: "rgba(220,38,38,0.08)", text: "#dc2626", label: "Anomalie" }
 }
 
-function InsightCard({ insight, index }: { insight: Insight; index: number }) {
+function formatEurShort(val: number) {
+  return val.toLocaleString("de-DE") + " \u20ac"
+}
+
+function InsightCard({
+  insight,
+  index,
+  linkedMeasures,
+  isHighlighted,
+  onNavigateToMeasures,
+  onOpenMeasure,
+}: {
+  insight: Insight
+  index: number
+  linkedMeasures: Measure[]
+  isHighlighted: boolean
+  onNavigateToMeasures: (insightId: string) => void
+  onOpenMeasure: (insightId: string) => void
+}) {
   const [expanded, setExpanded] = useState(false)
   const conf = confidenceColor(insight.confidence)
   const cat = categoryBadge(insight.category)
 
+  useEffect(() => {
+    if (isHighlighted) setExpanded(true)
+  }, [isHighlighted])
+
   return (
     <motion.div
+      id={`insight-${insight.id}`}
       initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.3, delay: index * 0.05 }}
-      className="rounded-xl border overflow-hidden"
-      style={{ backgroundColor: "#FFFFFF", borderColor: "#E5E5E5" }}
+      className="rounded-xl border overflow-hidden transition-shadow"
+      style={{
+        backgroundColor: "#FFFFFF",
+        borderColor: isHighlighted ? "#1A2FEE" : "#E5E5E5",
+        boxShadow: isHighlighted ? "0 0 0 2px rgba(26,47,238,0.2), 0 4px 12px rgba(26,47,238,0.08)" : "none",
+      }}
     >
       <button
         onClick={() => setExpanded(!expanded)}
@@ -86,6 +116,15 @@ function InsightCard({ insight, index }: { insight: Insight; index: number }) {
                 style={{ backgroundColor: "rgba(220,38,38,0.1)", color: "#dc2626" }}
               >
                 Dringlichkeit: Maximum
+              </span>
+            )}
+            {linkedMeasures.length > 0 && (
+              <span
+                className="flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold"
+                style={{ backgroundColor: "rgba(26,47,238,0.06)", color: "#1A2FEE" }}
+              >
+                <Wrench className="size-2.5" />
+                {linkedMeasures.length} {linkedMeasures.length === 1 ? "Ma\u00dfnahme" : "Ma\u00dfnahmen"}
               </span>
             )}
           </div>
@@ -146,6 +185,66 @@ function InsightCard({ insight, index }: { insight: Insight; index: number }) {
                   </p>
                 </div>
               </div>
+
+              {/* Linked measures */}
+              {linkedMeasures.length > 0 && (
+                <div className="mt-4 border-t pt-4" style={{ borderColor: "#F0F0F0" }}>
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-1.5">
+                      <Wrench className="size-3.5" style={{ color: "#1A2FEE" }} />
+                      <span className="text-xs font-bold uppercase tracking-wider" style={{ color: "#1A2FEE" }}>
+                        {"Verkn\u00fcpfte Ma\u00dfnahmen"}
+                      </span>
+                    </div>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        onNavigateToMeasures(insight.id)
+                      }}
+                      className="flex items-center gap-1 text-[11px] font-semibold transition-opacity hover:opacity-70"
+                      style={{ color: "#1A2FEE" }}
+                    >
+                      {"Alle anzeigen"}
+                      <ArrowRight className="size-3" />
+                    </button>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    {linkedMeasures.map((m, mi) => (
+                      <button
+                        key={mi}
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          onOpenMeasure(insight.id)
+                        }}
+                        className="group flex items-center gap-3 rounded-lg border px-3 py-2.5 text-left transition-all hover:shadow-sm"
+                        style={{ backgroundColor: "#FAFAFA", borderColor: "#F0F0F0" }}
+                      >
+                        <div
+                          className="flex size-6 shrink-0 items-center justify-center rounded-md"
+                          style={{ backgroundColor: "rgba(26,47,238,0.06)" }}
+                        >
+                          <Wrench className="size-3" style={{ color: "#1A2FEE" }} />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-xs font-semibold leading-snug truncate" style={{ color: "#00095B" }}>
+                            {m.title}
+                          </p>
+                          <div className="flex items-center gap-2 mt-0.5">
+                            <span className="flex items-center gap-0.5 text-[10px] font-mono font-semibold" style={{ color: "#059669" }}>
+                              <Euro className="size-2.5" />
+                              {formatEurShort(m.yearlySavingsRangeFrom)} {"\u2013"} {formatEurShort(m.yearlySavingsRangeTo)}/a
+                            </span>
+                          </div>
+                        </div>
+                        <ArrowRight
+                          className="size-3.5 shrink-0 transition-transform group-hover:translate-x-0.5"
+                          style={{ color: "#AEAEAE" }}
+                        />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </motion.div>
         )}
@@ -154,7 +253,19 @@ function InsightCard({ insight, index }: { insight: Insight; index: number }) {
   )
 }
 
-export function InsightList({ locationId }: { locationId: number }) {
+export function InsightList({
+  locationId,
+  measures,
+  highlightId,
+  onNavigateToMeasures,
+  onOpenMeasure,
+}: {
+  locationId: number
+  measures: Measure[]
+  highlightId: string | null
+  onNavigateToMeasures: (insightId: string) => void
+  onOpenMeasure: (insightId: string) => void
+}) {
   const locationInsights = insights.filter((ins) => ins.locationId === locationId)
 
   if (locationInsights.length === 0) {
@@ -170,9 +281,20 @@ export function InsightList({ locationId }: { locationId: number }) {
 
   return (
     <div className="flex flex-col gap-3">
-      {locationInsights.map((insight, i) => (
-        <InsightCard key={insight.id} insight={insight} index={i} />
-      ))}
+      {locationInsights.map((insight, i) => {
+        const linkedMeasures = measures.filter((m) => m.insightId === insight.id)
+        return (
+          <InsightCard
+            key={insight.id}
+            insight={insight}
+            index={i}
+            linkedMeasures={linkedMeasures}
+            isHighlighted={highlightId === insight.id}
+            onNavigateToMeasures={onNavigateToMeasures}
+            onOpenMeasure={onOpenMeasure}
+          />
+        )
+      })}
     </div>
   )
 }

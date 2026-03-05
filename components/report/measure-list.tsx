@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useMemo } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import {
   Wrench,
@@ -11,10 +11,12 @@ import {
   X,
   CheckCircle2,
   BarChart3,
-  MessageSquare,
   FileText,
   ArrowUpDown,
+  Lightbulb,
+  ArrowRight,
 } from "lucide-react"
+import { insights } from "@/data/company-data"
 import type { Measure } from "@/data/types"
 
 function effortLabel(level: string) {
@@ -23,15 +25,6 @@ function effortLabel(level: string) {
     case "MEDIUM": return { label: "Mittel", color: "#b45309", bg: "rgba(234,179,8,0.08)" }
     case "HIGH": return { label: "Hoch", color: "#dc2626", bg: "rgba(220,38,38,0.08)" }
     default: return { label: level, color: "#737373", bg: "rgba(0,0,0,0.04)" }
-  }
-}
-
-function investmentLabel(type: string) {
-  switch (type) {
-    case "NO_INTENSITY": return { label: "Keine Investition", color: "#059669" }
-    case "MEDIUM_INTENSITY": return { label: "Mittlere Investition", color: "#b45309" }
-    case "HIGH_INTENSITY": return { label: "Hohe Investition", color: "#dc2626" }
-    default: return { label: type, color: "#737373" }
   }
 }
 
@@ -53,9 +46,17 @@ function formatKwh(val: number) {
   return val.toLocaleString("de-DE") + " kWh"
 }
 
-function MeasureDetailModal({ measure, onClose }: { measure: Measure; onClose: () => void }) {
+function MeasureDetailModal({
+  measure,
+  onClose,
+  onNavigateToInsight,
+}: {
+  measure: Measure
+  onClose: () => void
+  onNavigateToInsight: (insightId: string) => void
+}) {
   const effort = effortLabel(measure.effortLevel)
-  const investment = investmentLabel(measure.investmentType)
+  const linkedInsight = insights.find((ins) => ins.id === measure.insightId)
 
   return (
     <motion.div
@@ -105,6 +106,37 @@ function MeasureDetailModal({ measure, onClose }: { measure: Measure; onClose: (
         </div>
 
         <div className="px-6 py-5">
+          {/* Linked Insight Banner */}
+          {linkedInsight && (
+            <button
+              onClick={() => {
+                onClose()
+                setTimeout(() => onNavigateToInsight(linkedInsight.id), 150)
+              }}
+              className="group mb-5 flex w-full items-center gap-3 rounded-lg border px-4 py-3 text-left transition-all hover:shadow-sm"
+              style={{ backgroundColor: "rgba(26,47,238,0.03)", borderColor: "rgba(26,47,238,0.12)" }}
+            >
+              <div
+                className="flex size-7 shrink-0 items-center justify-center rounded-md"
+                style={{ backgroundColor: "rgba(26,47,238,0.08)" }}
+              >
+                <Lightbulb className="size-3.5" style={{ color: "#1A2FEE" }} />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-[10px] font-semibold uppercase tracking-wider mb-0.5" style={{ color: "#1A2FEE" }}>
+                  {"Basierend auf Insight"}
+                </p>
+                <p className="text-xs font-medium leading-snug truncate" style={{ color: "#00095B" }}>
+                  {linkedInsight.title}
+                </p>
+              </div>
+              <ArrowRight
+                className="size-3.5 shrink-0 transition-transform group-hover:translate-x-0.5"
+                style={{ color: "#1A2FEE" }}
+              />
+            </button>
+          )}
+
           {/* KPI Grid */}
           <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
             <div className="rounded-lg border px-3 py-3" style={{ borderColor: "#F0F0F0" }}>
@@ -200,45 +232,6 @@ function MeasureDetailModal({ measure, onClose }: { measure: Measure; onClose: (
               </ul>
             </div>
           </div>
-
-          {/* Questions */}
-          {measure.questions.length > 0 && (
-            <div className="mt-5">
-              <div className="flex items-center gap-1.5 mb-3">
-                <MessageSquare className="size-3.5" style={{ color: "#b45309" }} />
-                <span className="text-xs font-bold uppercase tracking-wider" style={{ color: "#b45309" }}>
-                  {"Ma\u00dfnahme pr\u00e4zisieren"}
-                </span>
-              </div>
-              <p className="text-xs mb-3" style={{ color: "#737373" }}>
-                {"Ihre Antworten helfen uns, die Empfehlung auf Ihre spezifische Situation zuzuschneiden."}
-              </p>
-              <div className="flex flex-col gap-3">
-                {measure.questions.map((q, qi) => (
-                  <div
-                    key={qi}
-                    className="rounded-lg border px-4 py-3"
-                    style={{ borderColor: "#F0F0F0" }}
-                  >
-                    <p className="text-[12px] font-semibold mb-2" style={{ color: "#00095B" }}>
-                      Frage {qi + 1} von {measure.questions.length}: {q.question}
-                    </p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {q.suggestedAnswers.map((a, ai) => (
-                        <span
-                          key={ai}
-                          className="inline-block rounded-full border px-2.5 py-1 text-[11px]"
-                          style={{ borderColor: "#E5E5E5", color: "#444444" }}
-                        >
-                          {a.answer}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
       </motion.div>
     </motion.div>
@@ -249,78 +242,154 @@ function MeasureCard({
   measure,
   index,
   onOpen,
+  onNavigateToInsight,
 }: {
   measure: Measure
   index: number
   onOpen: () => void
+  onNavigateToInsight: (insightId: string) => void
 }) {
   const effort = effortLabel(measure.effortLevel)
+  const linkedInsight = insights.find((ins) => ins.id === measure.insightId)
 
   return (
-    <motion.button
+    <motion.div
       initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.3, delay: index * 0.04 }}
-      onClick={onOpen}
-      className="group flex w-full items-start gap-3 rounded-xl border px-4 py-4 text-left transition-all hover:shadow-md"
+      className="rounded-xl border overflow-hidden"
       style={{ backgroundColor: "#FFFFFF", borderColor: "#E5E5E5" }}
     >
-      <div
-        className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-lg"
-        style={{ backgroundColor: "rgba(26,47,238,0.06)" }}
+      <button
+        onClick={onOpen}
+        className="group flex w-full items-start gap-3 px-4 py-4 text-left transition-all hover:bg-gray-50/40"
       >
-        <Wrench className="size-4" style={{ color: "#1A2FEE" }} />
-      </div>
-
-      <div className="flex-1 min-w-0">
-        <div className="flex flex-wrap items-center gap-1.5 mb-1">
-          <span
-            className="rounded-full px-2 py-0.5 text-[10px] font-semibold"
-            style={{ backgroundColor: "rgba(0,0,0,0.04)", color: "#737373" }}
-          >
-            {categoryLabel(measure.category)}
-          </span>
-          <span
-            className="rounded-full px-2 py-0.5 text-[10px] font-semibold"
-            style={{ backgroundColor: effort.bg, color: effort.color }}
-          >
-            {"Aufwand: " + effort.label}
-          </span>
+        <div
+          className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-lg"
+          style={{ backgroundColor: "rgba(26,47,238,0.06)" }}
+        >
+          <Wrench className="size-4" style={{ color: "#1A2FEE" }} />
         </div>
-        <h3 className="text-sm font-bold leading-snug" style={{ color: "#00095B" }}>
-          {measure.title}
-        </h3>
-        <p className="mt-1 text-xs leading-relaxed line-clamp-2" style={{ color: "#737373" }}>
-          {measure.shortDescription}
-        </p>
-        <div className="mt-2 flex flex-wrap items-center gap-3">
-          <div className="flex items-center gap-1">
-            <Euro className="size-3" style={{ color: "#059669" }} />
-            <span className="text-xs font-semibold font-mono" style={{ color: "#059669" }}>
-              {formatEur(measure.yearlySavingsRangeFrom)} {"\u2013"} {formatEur(measure.yearlySavingsRangeTo)}/a
+
+        <div className="flex-1 min-w-0">
+          <div className="flex flex-wrap items-center gap-1.5 mb-1">
+            <span
+              className="rounded-full px-2 py-0.5 text-[10px] font-semibold"
+              style={{ backgroundColor: "rgba(0,0,0,0.04)", color: "#737373" }}
+            >
+              {categoryLabel(measure.category)}
+            </span>
+            <span
+              className="rounded-full px-2 py-0.5 text-[10px] font-semibold"
+              style={{ backgroundColor: effort.bg, color: effort.color }}
+            >
+              {"Aufwand: " + effort.label}
             </span>
           </div>
-          <div className="flex items-center gap-1">
-            <Clock className="size-3" style={{ color: "#737373" }} />
-            <span className="text-xs font-medium" style={{ color: "#737373" }}>
-              {measure.amortisationPeriodInMonths} Mon. Amortisation
-            </span>
+          <h3 className="text-sm font-bold leading-snug" style={{ color: "#00095B" }}>
+            {measure.title}
+          </h3>
+          <p className="mt-1 text-xs leading-relaxed line-clamp-2" style={{ color: "#737373" }}>
+            {measure.shortDescription}
+          </p>
+          <div className="mt-2 flex flex-wrap items-center gap-3">
+            <div className="flex items-center gap-1">
+              <Euro className="size-3" style={{ color: "#059669" }} />
+              <span className="text-xs font-semibold font-mono" style={{ color: "#059669" }}>
+                {formatEur(measure.yearlySavingsRangeFrom)} {"\u2013"} {formatEur(measure.yearlySavingsRangeTo)}/a
+              </span>
+            </div>
+            <div className="flex items-center gap-1">
+              <Clock className="size-3" style={{ color: "#737373" }} />
+              <span className="text-xs font-medium" style={{ color: "#737373" }}>
+                {measure.amortisationPeriodInMonths} Mon. Amortisation
+              </span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <ChevronRight
-        className="mt-1 size-4 shrink-0 transition-transform group-hover:translate-x-0.5"
-        style={{ color: "#AEAEAE" }}
-      />
-    </motion.button>
+        <ChevronRight
+          className="mt-1 size-4 shrink-0 transition-transform group-hover:translate-x-0.5"
+          style={{ color: "#AEAEAE" }}
+        />
+      </button>
+
+      {/* Linked Insight Footer */}
+      {linkedInsight && (
+        <div className="border-t px-4 py-2.5" style={{ borderColor: "#F0F0F0", backgroundColor: "#FAFAFA" }}>
+          <button
+            onClick={(e) => {
+              e.stopPropagation()
+              onNavigateToInsight(linkedInsight.id)
+            }}
+            className="group flex items-center gap-2 text-left w-full"
+          >
+            <Lightbulb className="size-3 shrink-0" style={{ color: "#1A2FEE" }} />
+            <span className="text-[10px] font-semibold uppercase tracking-wider shrink-0" style={{ color: "#1A2FEE" }}>
+              Insight:
+            </span>
+            <span className="text-[11px] truncate transition-opacity group-hover:opacity-70" style={{ color: "#444444" }}>
+              {linkedInsight.title}
+            </span>
+            <ArrowRight
+              className="size-3 shrink-0 ml-auto transition-transform group-hover:translate-x-0.5"
+              style={{ color: "#1A2FEE" }}
+            />
+          </button>
+        </div>
+      )}
+    </motion.div>
   )
 }
 
-export function MeasureList({ locationId, measures }: { locationId: number; measures: Measure[] }) {
+export function MeasureList({
+  locationId,
+  measures,
+  highlightInsightId,
+  autoOpenInsightId,
+  onAutoOpenConsumed,
+  onNavigateToInsight,
+}: {
+  locationId: number
+  measures: Measure[]
+  highlightInsightId: string | null
+  autoOpenInsightId: string | null
+  onAutoOpenConsumed: () => void
+  onNavigateToInsight: (insightId: string) => void
+}) {
   const [selectedMeasure, setSelectedMeasure] = useState<Measure | null>(null)
   const locationMeasures = measures.filter((m) => m.locationId === locationId)
+
+  // Group measures by insightId
+  const groupedMeasures = useMemo(() => {
+    const groups: { insightId: string; insightTitle: string; measures: Measure[] }[] = []
+    const seen = new Set<string>()
+
+    for (const m of locationMeasures) {
+      if (!seen.has(m.insightId)) {
+        seen.add(m.insightId)
+        const insight = insights.find((ins) => ins.id === m.insightId)
+        groups.push({
+          insightId: m.insightId,
+          insightTitle: insight?.title || m.insightId,
+          measures: locationMeasures.filter((lm) => lm.insightId === m.insightId),
+        })
+      }
+    }
+    return groups
+  }, [locationMeasures])
+
+  // Handle auto-open when navigating from an insight
+  useEffect(() => {
+    if (autoOpenInsightId) {
+      const firstMeasure = locationMeasures.find((m) => m.insightId === autoOpenInsightId)
+      if (firstMeasure) {
+        setSelectedMeasure(firstMeasure)
+      }
+      onAutoOpenConsumed()
+    }
+  }, [autoOpenInsightId, locationMeasures, onAutoOpenConsumed])
 
   if (locationMeasures.length === 0) {
     return (
@@ -333,17 +402,60 @@ export function MeasureList({ locationId, measures }: { locationId: number; meas
     )
   }
 
+  let globalIdx = 0
+
   return (
     <>
-      <div className="flex flex-col gap-3">
-        {locationMeasures.map((measure, i) => (
-          <MeasureCard
-            key={`${measure.title}-${i}`}
-            measure={measure}
-            index={i}
-            onOpen={() => setSelectedMeasure(measure)}
-          />
-        ))}
+      <div className="flex flex-col gap-6">
+        {groupedMeasures.map((group) => {
+          const isHighlighted = highlightInsightId === group.insightId
+          return (
+            <div
+              key={group.insightId}
+              id={`measure-group-${group.insightId}`}
+              className="rounded-2xl border p-4 transition-shadow"
+              style={{
+                backgroundColor: isHighlighted ? "rgba(26,47,238,0.02)" : "rgba(0,0,0,0.01)",
+                borderColor: isHighlighted ? "rgba(26,47,238,0.25)" : "#E5E5E5",
+                boxShadow: isHighlighted ? "0 0 0 2px rgba(26,47,238,0.12)" : "none",
+              }}
+            >
+              <button
+                onClick={() => onNavigateToInsight(group.insightId)}
+                className="group flex items-center gap-2 mb-3 text-left"
+              >
+                <div
+                  className="flex size-5 items-center justify-center rounded-md"
+                  style={{ backgroundColor: "rgba(26,47,238,0.08)" }}
+                >
+                  <Lightbulb className="size-3" style={{ color: "#1A2FEE" }} />
+                </div>
+                <span className="text-xs font-bold truncate transition-opacity group-hover:opacity-70" style={{ color: "#1A2FEE" }}>
+                  {group.insightTitle}
+                </span>
+                <ArrowRight
+                  className="size-3 shrink-0 transition-transform group-hover:translate-x-0.5"
+                  style={{ color: "#1A2FEE" }}
+                />
+              </button>
+
+              <div className="flex flex-col gap-3">
+                {group.measures.map((measure) => {
+                  const idx = globalIdx++
+                  return (
+                    <MeasureCard
+                      key={`${measure.title}-${idx}`}
+                      measure={measure}
+                      index={idx}
+                      onOpen={() => setSelectedMeasure(measure)}
+                      onNavigateToInsight={onNavigateToInsight}
+                    />
+                  )
+                })}
+              </div>
+            </div>
+          )
+        })}
       </div>
 
       <AnimatePresence>
@@ -351,6 +463,7 @@ export function MeasureList({ locationId, measures }: { locationId: number; meas
           <MeasureDetailModal
             measure={selectedMeasure}
             onClose={() => setSelectedMeasure(null)}
+            onNavigateToInsight={onNavigateToInsight}
           />
         )}
       </AnimatePresence>

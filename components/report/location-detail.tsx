@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useCallback, useRef } from "react"
 import { motion } from "framer-motion"
 import {
   ArrowLeft,
@@ -29,12 +29,45 @@ export function LocationDetail({
   onBack: () => void
 }) {
   const [activeTab, setActiveTab] = useState<Tab>("insights")
+  const [highlightInsightId, setHighlightInsightId] = useState<string | null>(null)
+  const [highlightMeasureInsightId, setHighlightMeasureInsightId] = useState<string | null>(null)
+  const [openMeasureForInsightId, setOpenMeasureForInsightId] = useState<string | null>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
   const location = locations.find((l) => l.id === locationId)
 
   if (!location) return null
 
   const locationInsights = insights.filter((ins) => ins.locationId === locationId)
   const locationMeasures = measures.filter((m) => m.locationId === locationId)
+
+  const navigateToInsight = useCallback((insightId: string) => {
+    setActiveTab("insights")
+    setHighlightInsightId(insightId)
+    setTimeout(() => {
+      const el = document.getElementById(`insight-${insightId}`)
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "center" })
+      setTimeout(() => setHighlightInsightId(null), 2000)
+    }, 100)
+  }, [])
+
+  const navigateToMeasures = useCallback((insightId: string) => {
+    setActiveTab("measures")
+    setHighlightMeasureInsightId(insightId)
+    setTimeout(() => {
+      const el = document.getElementById(`measure-group-${insightId}`)
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "center" })
+      setTimeout(() => setHighlightMeasureInsightId(null), 2000)
+    }, 100)
+  }, [])
+
+  const openMeasureDetail = useCallback((insightId: string) => {
+    setActiveTab("measures")
+    setOpenMeasureForInsightId(insightId)
+    setTimeout(() => {
+      const el = document.getElementById(`measure-group-${insightId}`)
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "center" })
+    }, 100)
+  }, [])
 
   const tabs: { id: Tab; label: string; icon: typeof Lightbulb; count: number }[] = [
     { id: "insights", label: "Insights", icon: Lightbulb, count: locationInsights.length },
@@ -143,7 +176,7 @@ export function LocationDetail({
       </div>
 
       {/* Tabs + content */}
-      <div className="mx-auto max-w-screen-xl px-6 py-8 md:px-12">
+      <div ref={contentRef} className="mx-auto max-w-screen-xl px-6 py-8 md:px-12">
         <div className="mb-6 flex gap-2">
           {tabs.map((tab) => {
             const Icon = tab.icon
@@ -182,9 +215,22 @@ export function LocationDetail({
           transition={{ duration: 0.2 }}
         >
           {activeTab === "insights" ? (
-            <InsightList locationId={locationId} />
+            <InsightList
+              locationId={locationId}
+              measures={measures}
+              highlightId={highlightInsightId}
+              onNavigateToMeasures={navigateToMeasures}
+              onOpenMeasure={openMeasureDetail}
+            />
           ) : (
-            <MeasureList locationId={locationId} measures={measures} />
+            <MeasureList
+              locationId={locationId}
+              measures={measures}
+              highlightInsightId={highlightMeasureInsightId}
+              autoOpenInsightId={openMeasureForInsightId}
+              onAutoOpenConsumed={() => setOpenMeasureForInsightId(null)}
+              onNavigateToInsight={navigateToInsight}
+            />
           )}
         </motion.div>
       </div>
