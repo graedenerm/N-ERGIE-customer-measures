@@ -1,51 +1,69 @@
-import { HeroSection } from "@/components/report/hero-section"
-import { ExecutiveSummary } from "@/components/report/executive-summary"
-import { DataVisualization } from "@/components/report/data-visualization"
-import { CockpitShowcase } from "@/components/report/cockpit-showcase"
-import { CtaBanner } from "@/components/report/cta-banner"
-import { Footer } from "@/components/report/footer"
+"use client"
+
+import { useState, useEffect } from "react"
+import { AnimatePresence, motion } from "framer-motion"
+import { Header } from "@/components/report/header"
+import { SummaryHero } from "@/components/report/summary-hero"
+import { LocationCards } from "@/components/report/location-cards"
+import { LocationDetail } from "@/components/report/location-detail"
+import { ReportFooter } from "@/components/report/report-footer"
+import type { Measure } from "@/data/types"
 
 export default function Page() {
+  const [selectedLocation, setSelectedLocation] = useState<number | null>(null)
+  const [measures, setMeasures] = useState<Measure[]>([])
+
+  useEffect(() => {
+    fetch("/api/measures")
+      .then((res) => res.json())
+      .then(setMeasures)
+      .catch(() => {})
+  }, [])
+
+  const handleSelectLocation = (id: number) => {
+    setSelectedLocation(id)
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  }
+
+  const handleBack = () => {
+    setSelectedLocation(null)
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  }
+
   return (
-    <main className="min-h-screen" style={{ backgroundColor: "#FFFFFF" }}>
-      {/* Navigation */}
-      <nav
-        className="sticky top-0 z-50 shadow-sm"
-        style={{ backgroundColor: "#00095B", borderBottom: "1px solid rgba(26,47,238,0.1)" }}
-      >
-        <div className="mx-auto flex max-w-screen-xl items-center justify-between px-6 py-3 md:px-16">
-          <div className="flex items-center gap-4">
-            <img
-              src="/images/ecoplanet-logo-white.png"
-              alt="ecoplanet"
-              className="h-5 w-auto"
+    <main className="min-h-screen" style={{ backgroundColor: "#F5F5F7" }}>
+      <Header />
+
+      <AnimatePresence mode="wait">
+        {selectedLocation === null ? (
+          <motion.div
+            key="overview"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <SummaryHero />
+            <LocationCards onSelectLocation={handleSelectLocation} />
+          </motion.div>
+        ) : (
+          <motion.div
+            key={`location-${selectedLocation}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <LocationDetail
+              locationId={selectedLocation}
+              measures={measures}
+              onBack={handleBack}
             />
-            <span className="text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>{"\u00D7"}</span>
-            <img
-              src="/images/n-ergie-logo.png"
-              alt="N-ERGIE"
-              className="h-5 w-auto"
-            />
-          </div>
-          <div className="text-xs" style={{ color: "#AEAEAE" }}>
-            {`Exklusivangebot M\u00E4rz 2026`}
-          </div>
-        </div>
-      </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      <HeroSection />
-
-      <div id="summary">
-        <ExecutiveSummary />
-      </div>
-
-      <div id="analysis">
-        <DataVisualization />
-      </div>
-
-      <CockpitShowcase />
-      <CtaBanner />
-      <Footer />
+      <ReportFooter />
     </main>
   )
 }
