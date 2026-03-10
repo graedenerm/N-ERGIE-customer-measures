@@ -64,7 +64,7 @@ export const insights: Insight[] = [
     savingsKwh: "222.705 kWh/a",
     confidence: 0.9685,
     summary: "Während des Wochenend-Hochverbrauchsfensters (Samstag 12:00–24:00 und Sonntag 00:00–06:00 + 15:00–16:00) operiert Werk Nord mit einem Median von 6.180 kW — jedoch hat der Standort selbst gezeigt, dass er innerhalb desselben Fensters an seinen besten beobachteten Wochenenden bei 5.160 kW laufen kann. Diese Lücke von 1.020 kW (≈20% über dem besten beobachteten Wert) entspricht ca. 222.705 kWh und €39.196 an vermeidbaren Kosten pro Jahr.",
-    whyNonObvious: "Die Anlage scheint über das Wochenende bei weitgehend ähnlichen Lasten zu laufen, was die Tatsache verschleiert, dass ein bedeutender Anteil des Verbrauchs strukturell vermeidbar ist: Das Zonenverteilungsdiagramm zeigt, dass die Mehrheit der Wochenendmesswerte in den „Verbesserung" (gelb) und „kritisch" (rot) Bändern fallen, wobei Best-Practice-Leistung nur sporadisch erreicht wird — und dieser Anteil ist seit Anfang 2025 gesunken.",
+    whyNonObvious: "Die Anlage scheint über das Wochenende bei weitgehend ähnlichen Lasten zu laufen, was die Tatsache verschleiert, dass ein bedeutender Anteil des Verbrauchs strukturell vermeidbar ist: Das Zonenverteilungsdiagramm zeigt, dass die Mehrheit der Wochenendmesswerte in den 'Verbesserung' (gelb) und 'kritisch' (rot) Bändern fallen, wobei Best-Practice-Leistung nur sporadisch erreicht wird — und dieser Anteil ist seit Anfang 2025 gesunken.",
     supportingContext: "In einer 3-Schicht-Betriebsanlage für kontinuierliche Stahlwalz- und Glühprozesse ist es ungewöhnlich, dass die Wochenend-Grundlast von Woche zu Woche so erheblich variiert, ohne eine klare Erklärung durch das Produktionsvolumen.",
   },
   {
