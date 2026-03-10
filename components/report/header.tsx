@@ -19,7 +19,7 @@ export function Header() {
           <div className="flex items-center gap-2">
             <Building2 className="size-3.5" style={{ color: "#AEAEAE" }} />
             <span className="text-xs font-medium" style={{ color: "#AEAEAE" }}>
-              Aalberts Surface Technologies GmbH
+              Wälzholz
             </span>
           </div>
         </div>

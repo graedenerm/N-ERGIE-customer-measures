@@ -14,7 +14,7 @@ export const companyInfo = {
 export const locations: Location[] = [
   {
     id: 1,
-    name: "Werk Nord",
+    name: "Werk Nord — Buschmühlenstr. 24",
     city: "Hagen",
     annualConsumption: "~105 GWh/a",
     meanLoad: "11.882 kW",
@@ -27,7 +27,7 @@ export const locations: Location[] = [
   },
   {
     id: 2,
-    name: "Werk Süd",
+    name: "Werk Süd — Feldmühlenstr. 55",
     city: "Hagen",
     annualConsumption: "~70 GWh/a",
     meanLoad: "8.000 kW",
@@ -40,7 +40,7 @@ export const locations: Location[] = [
   },
   {
     id: 3,
-    name: "Werk West",
+    name: "Werk West — Voerder Str. 10",
     city: "Hagen",
     annualConsumption: "~45 GWh/a",
     meanLoad: "5.100 kW",
