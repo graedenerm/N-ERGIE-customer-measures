@@ -308,9 +308,6 @@ function MeasureCard({
               </span>
             </div>
           </div>
-          <div className="mt-2" onClick={(e) => e.stopPropagation()}>
-            <FeedbackButtons itemType="measure" itemId={`${measure.insightId}-${measure.title.slice(0, 30)}`} />
-          </div>
         </div>
 
         <ChevronRight
@@ -318,6 +315,11 @@ function MeasureCard({
           style={{ color: "#AEAEAE" }}
         />
       </button>
+      
+      {/* Feedback buttons outside button to avoid nesting */}
+      <div className="px-4 pb-3 flex justify-end">
+        <FeedbackButtons itemType="measure" itemId={`${measure.insightId}-${measure.title.slice(0, 30)}`} />
+      </div>
 
       {/* Linked Insight Footer */}
       {linkedInsight && (
