@@ -138,12 +138,6 @@ function InsightCard({
         </div>
 
         <div className="shrink-0 flex flex-col items-end gap-1.5">
-          <p className="text-base font-bold font-mono" style={{ color: "#059669" }}>
-            {insight.savingsEur}
-          </p>
-          <p className="text-[10px] font-medium" style={{ color: "#AEAEAE" }}>
-            {insight.savingsKwh}
-          </p>
           {expanded ? (
             <ChevronUp className="size-4 mt-1" style={{ color: "#AEAEAE" }} />
           ) : (

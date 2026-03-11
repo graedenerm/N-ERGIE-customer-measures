@@ -22,7 +22,7 @@ const stats = [
   },
   {
     label: "Gesamteinsparpotenzial",
-    value: companyInfo.totalSavings + "/a",
+    value: companyInfo.totalSavingsMin + " - " + companyInfo.totalSavingsMax + "/a",
     icon: TrendingDown,
   },
 ]
