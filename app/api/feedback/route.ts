@@ -1,4 +1,4 @@
-import { put, list } from '@vercel/blob'
+import { put, list, get } from '@vercel/blob'
 import { type NextRequest, NextResponse } from 'next/server'
 
 interface FeedbackEntry {
@@ -21,10 +21,16 @@ export async function GET() {
       return NextResponse.json({ feedback: [] })
     }
 
-    // Get the latest feedback file
+    // Get the latest feedback file using private access
     const latestBlob = blobs[0]
-    const response = await fetch(latestBlob.url)
-    const feedback = await response.json()
+    const result = await get(latestBlob.pathname, { access: 'private' })
+    
+    if (!result) {
+      return NextResponse.json({ feedback: [] })
+    }
+    
+    const text = await new Response(result.stream).text()
+    const feedback = JSON.parse(text)
     
     return NextResponse.json({ feedback })
   } catch (error) {
@@ -47,8 +53,11 @@ export async function POST(request: NextRequest) {
     try {
       const { blobs } = await list({ prefix: FEEDBACK_FILE })
       if (blobs.length > 0) {
-        const response = await fetch(blobs[0].url)
-        existingFeedback = await response.json()
+        const result = await get(blobs[0].pathname, { access: 'private' })
+        if (result) {
+          const text = await new Response(result.stream).text()
+          existingFeedback = JSON.parse(text)
+        }
       }
     } catch {
       // No existing feedback, start fresh
@@ -60,7 +69,7 @@ export async function POST(request: NextRequest) {
 
     // Save updated feedback
     await put(FEEDBACK_FILE, JSON.stringify(existingFeedback, null, 2), {
-      access: 'public',
+      access: 'private',
       addRandomSuffix: false,
     })
 
