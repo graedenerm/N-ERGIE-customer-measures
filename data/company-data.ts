@@ -24,7 +24,7 @@ export const locations: Location[] = [
     totalSavingsKwh: "566.356 kWh/a",
     seasonal: "Nein (ganzjährig)",
     insightCount: 3,
-    measureCount: 6,
+    measureCount: 8,
   },
   {
     id: 1,
@@ -37,7 +37,7 @@ export const locations: Location[] = [
     totalSavingsKwh: "372.915 kWh/a",
     seasonal: "Nein (ganzjährig)",
     insightCount: 3,
-    measureCount: 8,
+    measureCount: 6,
   },
   {
     id: 2,
