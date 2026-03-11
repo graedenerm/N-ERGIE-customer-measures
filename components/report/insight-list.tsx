@@ -16,7 +16,7 @@ import {
   ArrowRight,
   Euro,
 } from "lucide-react"
-import { insights } from "@/data/company-data"
+import { insights, locations } from "@/data/company-data"
 import type { Insight, Measure } from "@/data/types"
 import { FeedbackButtons } from "./feedback-buttons"
 
@@ -154,7 +154,12 @@ function InsightCard({
       
       {/* Feedback buttons outside the main button to avoid nesting */}
       <div className="px-5 pb-3 flex justify-end">
-        <FeedbackButtons itemType="insight" itemId={insight.id} />
+        <FeedbackButtons 
+          itemType="insight" 
+          itemId={insight.id} 
+          itemName={insight.title}
+          locationName={locations.find(l => l.id === insight.locationId)?.name || "Unbekannt"}
+        />
       </div>
 
       <AnimatePresence>

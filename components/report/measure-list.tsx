@@ -16,7 +16,7 @@ import {
   Lightbulb,
   ArrowRight,
 } from "lucide-react"
-import { insights } from "@/data/company-data"
+import { insights, locations } from "@/data/company-data"
 import type { Measure } from "@/data/types"
 import { FeedbackButtons } from "./feedback-buttons"
 
@@ -318,7 +318,12 @@ function MeasureCard({
       
       {/* Feedback buttons outside button to avoid nesting */}
       <div className="px-4 pb-3 flex justify-end">
-        <FeedbackButtons itemType="measure" itemId={`${measure.insightId}-${measure.title.slice(0, 30)}`} />
+        <FeedbackButtons 
+          itemType="measure" 
+          itemId={`${measure.insightId}-${measure.title.slice(0, 30)}`}
+          itemName={measure.title}
+          locationName={locations.find(l => l.id === measure.locationId)?.name || "Unbekannt"}
+        />
       </div>
 
       {/* Linked Insight Footer */}

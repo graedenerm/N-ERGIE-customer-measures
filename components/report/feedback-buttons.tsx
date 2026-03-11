@@ -7,9 +7,11 @@ import { saveFeedback, getFeedbackForItem, type ItemType, type FeedbackType } fr
 interface FeedbackButtonsProps {
   itemType: ItemType
   itemId: string
+  itemName: string
+  locationName: string
 }
 
-export function FeedbackButtons({ itemType, itemId }: FeedbackButtonsProps) {
+export function FeedbackButtons({ itemType, itemId, itemName, locationName }: FeedbackButtonsProps) {
   const [vote, setVote] = useState<FeedbackType | null>(null)
   const [comment, setComment] = useState("")
   const [showComment, setShowComment] = useState(false)
@@ -31,6 +33,8 @@ export function FeedbackButtons({ itemType, itemId }: FeedbackButtonsProps) {
     await saveFeedback({
       itemType,
       itemId,
+      itemName,
+      locationName,
       vote: newVote,
       comment: comment || undefined,
       timestamp: new Date().toISOString(),
@@ -42,6 +46,8 @@ export function FeedbackButtons({ itemType, itemId }: FeedbackButtonsProps) {
       await saveFeedback({
         itemType,
         itemId,
+        itemName,
+        locationName,
         vote,
         comment: comment || undefined,
         timestamp: new Date().toISOString(),
