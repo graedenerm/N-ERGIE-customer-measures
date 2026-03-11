@@ -10,6 +10,7 @@ interface FeedbackEntry {
   userAgent?: string
 }
 
+// Feedback file stored in Vercel Blob (private store)
 const FEEDBACK_FILE = 'waelzholz-feedback.json'
 
 // GET - retrieve all feedback

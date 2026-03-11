@@ -316,8 +316,8 @@ function MeasureCard({
         />
       </button>
       
-      {/* Feedback buttons outside button to avoid nesting */}
-      <div className="px-4 pb-3 flex justify-end">
+      {/* Feedback buttons - positioned outside main button to avoid HTML nesting error */}
+      <div className="px-4 pb-3 flex justify-end border-t mt-0 pt-2" style={{ borderColor: "#F0F0F0" }}>
         <FeedbackButtons 
           itemType="measure" 
           itemId={`${measure.insightId}-${measure.title.slice(0, 30)}`}
