@@ -126,20 +126,7 @@ export function LocationDetail({
                 </div>
               </div>
 
-              <div
-                className="rounded-lg border px-4 py-2.5"
-                style={{ backgroundColor: "rgba(5,150,105,0.1)", borderColor: "rgba(5,150,105,0.2)" }}
-              >
-                <p className="text-[10px] font-medium uppercase tracking-wider" style={{ color: "#059669" }}>
-                  Gesamteinsparpotenzial
-                </p>
-                <p className="text-xl font-bold font-mono" style={{ color: "#FFFFFF" }}>
-                  {location.totalSavings}
-                </p>
-                <p className="text-xs" style={{ color: "#AEAEAE" }}>
-                  {location.totalSavingsKwh}
-                </p>
-              </div>
+
             </div>
 
             {/* Stats row */}
