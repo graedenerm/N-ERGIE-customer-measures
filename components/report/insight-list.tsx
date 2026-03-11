@@ -144,9 +144,6 @@ function InsightCard({
           <p className="text-[10px] font-medium" style={{ color: "#AEAEAE" }}>
             {insight.savingsKwh}
           </p>
-          <div className="mt-1">
-            <FeedbackButtons itemType="insight" itemId={insight.id} />
-          </div>
           {expanded ? (
             <ChevronUp className="size-4 mt-1" style={{ color: "#AEAEAE" }} />
           ) : (
@@ -154,6 +151,11 @@ function InsightCard({
           )}
         </div>
       </button>
+      
+      {/* Feedback buttons outside the main button to avoid nesting */}
+      <div className="px-5 pb-3 flex justify-end">
+        <FeedbackButtons itemType="insight" itemId={insight.id} />
+      </div>
 
       <AnimatePresence>
         {expanded && (
