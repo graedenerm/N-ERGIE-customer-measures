@@ -29,6 +29,11 @@ export interface Insight {
   supportingContext: string
 }
 
+export interface MeasureQuestion {
+  question: string
+  suggestedAnswers: { answer: string }[]
+}
+
 export interface Measure {
   locationId: number
   insightId: string
@@ -45,6 +50,7 @@ export interface Measure {
   evidences: string[]
   amortisationPeriodInMonths: number
   reasoning: string
+  questions?: MeasureQuestion[]
   confidence: number
   category: string
   investmentType: string

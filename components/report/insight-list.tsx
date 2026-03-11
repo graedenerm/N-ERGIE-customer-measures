@@ -18,6 +18,7 @@ import {
 } from "lucide-react"
 import { insights } from "@/data/company-data"
 import type { Insight, Measure } from "@/data/types"
+import { FeedbackButtons } from "./feedback-buttons"
 
 function confidenceColor(c: number) {
   if (c >= 0.9) return { bg: "rgba(5,150,105,0.1)", text: "#059669", label: "Sehr hoch" }
@@ -143,6 +144,9 @@ function InsightCard({
           <p className="text-[10px] font-medium" style={{ color: "#AEAEAE" }}>
             {insight.savingsKwh}
           </p>
+          <div className="mt-1">
+            <FeedbackButtons itemType="insight" itemId={insight.id} />
+          </div>
           {expanded ? (
             <ChevronUp className="size-4 mt-1" style={{ color: "#AEAEAE" }} />
           ) : (

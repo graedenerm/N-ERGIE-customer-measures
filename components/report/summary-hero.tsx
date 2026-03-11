@@ -16,13 +16,13 @@ const stats = [
     icon: Lightbulb,
   },
   {
-    label: "Abgeleitete Ma\u00dfnahmen",
-    value: "27",
+    label: "Abgeleitete Maßnahmen",
+    value: `${companyInfo.totalMeasures}`,
     icon: Wrench,
   },
   {
     label: "Gesamteinsparpotenzial",
-    value: "~\u20ac68.000/a",
+    value: companyInfo.totalSavings + "/a",
     icon: TrendingDown,
   },
 ]

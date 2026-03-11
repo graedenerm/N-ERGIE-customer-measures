@@ -18,6 +18,7 @@ import {
 } from "lucide-react"
 import { insights } from "@/data/company-data"
 import type { Measure } from "@/data/types"
+import { FeedbackButtons } from "./feedback-buttons"
 
 function effortLabel(level: string) {
   switch (level) {
@@ -306,6 +307,9 @@ function MeasureCard({
                 {measure.amortisationPeriodInMonths} Mon. Amortisation
               </span>
             </div>
+          </div>
+          <div className="mt-2" onClick={(e) => e.stopPropagation()}>
+            <FeedbackButtons itemType="measure" itemId={`${measure.insightId}-${measure.title.slice(0, 30)}`} />
           </div>
         </div>
 

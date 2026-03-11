@@ -1,296 +1,1352 @@
 [
   {
-    "locationId": 1,
-    "insightId": "ins_3a7f1c2e",
-    "title": "Wochenend-Absenkbetrieb für Glüh- und Beizanlagen einführen",
-    "shortDescription": "Glühöfen und Beizlinien-Hilfssysteme laufen am Wochenende auf Produktions-Sollwerten, obwohl keine aktive Bandverarbeitung stattfindet.",
-    "description": "Die statistische Analyse zeigt, dass Werk Nord im Wochenendfenster (Samstag 12:00-24:00 Uhr und Sonntag 00:00-06:00 Uhr sowie 15:00-16:00 Uhr) eine mediane Leistung von 6.180 kW aufweist, obwohl an denselben Wochenenden bereits 5.160 kW erreicht wurden - eine Differenz von 1.020 kW (~20%). Ein wesentlicher Anteil dieser Mehrlast ist auf Glühöfen und Beizlinien-Hilfssysteme (Pumpen, Ventilatoren, Säurebad-Dampfheizung) zurückzuführen, die im Wochenend-Stillstand auf betrieblichen Produktions-Sollwerten verbleiben, anstatt in einen definierten Wartehaltebetrieb zu wechseln. Durch das systematische Absenken dieser Anlagen auf Maintenance-Hold-Setpoints während der wochenendbedingten Walzpausen können erhebliche elektrische Einsparungen realisiert werden, ohne die Anfahrbereitschaft für den Montag-Schichtstart zu gefährden.",
-    "yearlySavingsRangeFrom": 14080,
-    "yearlySavingsRangeTo": 19360,
+    "locationId": 0,
+    "insightId": "ins_4a9f2e3c",
+    "title": "Druckluftversorgung an Wochenenden automatisiert absenken",
+    "shortDescription": "Druckluftkompressoren am Kaltwalzwerk Bandstahlstraße laufen während 17 produktionsfreier Wochenstunden auf vollem Betriebsdruck und verursachen strukturellen Mehrverbrauch von 1.864 kW über dem erreichbaren Minimum",
+    "description": "Die statistische Analyse des Standorts Bandstahlstraße weist eine strukturelle Grundlasterhöhung von 1.864 kW (98 % über dem erreichbaren Minimum von 1.896 kW) während insgesamt 17 Stunden pro Woche an Wochenenden aus (Samstag 12–13 Uhr und 22–24 Uhr; Sonntag 00–06 Uhr und 14–22 Uhr). In Kaltwalzwerken entfallen erfahrungsgemäß 20–30 % des gesamten Hilfsenergiebedarfs auf die Druckluftversorgung – bei einem Gesamt-Delta von 1.864 kW entspricht das einem geschätzten Druckluft-Einsparpotenzial von 370–560 kW. Besonders auffällig ist, dass Sonntagnachmittag (14–22 Uhr) und Sonntagsnacht (00–06 Uhr) in denselben Hochlast-Subcluster SC1 fallen, was auf das vollständige Fehlen einer automatisierten Druckabsenkung nach Produktionsende hindeutet. Durch eine automatisierte Lastfolge-Steuerung mit Wochenend-Druckprofil (z. B. Absenkung auf 70–80 % Nenndruck kombiniert mit Abschaltung von Basiskompressoren) kann dieser Anteil gezielt reduziert werden. Als ISO-50001-zertifizierter Betrieb bietet der Standort bereits die regulatorische Grundlage für die unmittelbare Integration in das Energiemanagementsystem.",
+    "yearlySavingsRangeFrom": 12300,
+    "yearlySavingsRangeTo": 17600,
+    "investmentRangeFrom": 15000,
+    "investmentRangeTo": 35000,
+    "unit": "kWh",
+    "yearlySavingsEnergyRangeFrom": 70000,
+    "yearlySavingsEnergyRangeTo": 100000,
+    "evidences": [
+      "Strukturelle Grundlast median 3.760 kW vs. erreichbares Minimum 1.896 kW – Delta 1.864 kW über 17 h/Woche, alle 52 Kalenderwochen ohne saisonale Variation (Konfidenz 96,4 %)",
+      "Druckluftanteil in Kaltwalzwerken typischerweise 20–30 % des Hilfsenergiebedarfs → geschätztes Druckluft-Delta: 370–560 kW der strukturellen Überlast",
+      "Sonntagnachmittag 14–22 Uhr und Sonntagsnacht 00–06 Uhr bilden statistisch denselben Hochlast-Subcluster SC1 → kein nachweisbarer Druckluftrückgang zwischen Nacht und Nachmittag",
+      "Hochrechnung: ~430 kW mittlere Druckluft-Reduktion × 17 h/Woche × 52 Wochen × 65 % Realisierungsgrad ≈ 99.000 kWh/Jahr Einsparpotenzial",
+      "Gesamtpotenzial laut statistischer Analyse: 410.978 kWh/Jahr (€72.332/Jahr) – Druckluftanteil (30 %, 65–80 % Realisierungsgrad): 70.000–100.000 kWh/Jahr"
+    ],
+    "amortisationPeriodInMonths": 20,
+    "reasoning": "Das Druckluftsystem ist in Kaltwalzwerken einer der größten und gleichzeitig flexibelsten Nebenverbraucher – im Gegensatz zu Öfen oder Emulsionskreisläufen bestehen keine thermischen Massenträgheiten, die einen ungeregelten Dauerbetrieb zwingend erfordern. Die ISO-50001-Zertifizierung des Standorts schafft bereits die regulatorische und organisatorische Grundlage für die Implementierung eines automatisierten Wochenend-Druckluftmanagements. Die außerordentlich hohe statistische Konfidenz von 96,4 % bei gleichzeitig fehlender Saisonalität belegt, dass es sich um ein strukturelles Betriebsproblem handelt, das unabhängig von produktionsbedingten Schwankungen dauerhaft besteht und somit zuverlässig adressierbar ist.",
+    "questions": [
+      {
+        "question": "Wie viele Kompressoren sind am Standort Bandstahlstraße im Druckluftnetz aktiv, und verfügen sie über drehzahlgeregelte Antriebe (VSD/VFD)?",
+        "suggestedAnswers": [
+          {
+            "answer": "1–2 Kompressoren, teilweise oder vollständig drehzahlgeregelt"
+          },
+          {
+            "answer": "3–5 Kompressoren mit automatischer Lastfolge-Steuerung, gemischter Bestand"
+          },
+          {
+            "answer": "Mehr als 5 Kompressoren unterschiedlicher Generationen ohne zentrale Steuerung"
+          },
+          {
+            "answer": "Bestand und Regelungsgrad sind nicht vollständig dokumentiert"
+          }
+        ]
+      },
+      {
+        "question": "Welche Druckluft-Verbraucher müssen am Wochenende zwingend mit Volldruck versorgt werden?",
+        "suggestedAnswers": [
+          {
+            "answer": "Nur Sicherheits- und Notfallsysteme – reduzierter Grunddruck ausreichend"
+          },
+          {
+            "answer": "Wartungs- und Instandhaltungsarbeiten erfordern gelegentlich Volldruck"
+          },
+          {
+            "answer": "Produktionsvorbereitung ab Sonntagabend erfordert frühzeitigen Volldruckaufbau"
+          },
+          {
+            "answer": "Wochenend-Druckluftbedarf ist nicht systematisch erfasst und dokumentiert"
+          }
+        ]
+      },
+      {
+        "question": "Ist eine Anbindung der Kompressorensteuerung an das bestehende Energiemanagementsystem (EMS) bzw. die Leittechnik technisch möglich?",
+        "suggestedAnswers": [
+          {
+            "answer": "Ja – vollständig in bestehende Leittechnik integrierbar ohne Zusatzhardware"
+          },
+          {
+            "answer": "Teilweise – Nachrüstung von Kommunikationsmodulen oder Sensoren erforderlich"
+          },
+          {
+            "answer": "Nein – separate Kompressorensteuerung ohne EMS-Schnittstelle vorhanden"
+          },
+          {
+            "answer": "Technische Machbarkeit wurde noch nicht bewertet"
+          }
+        ]
+      },
+      {
+        "question": "Gibt es bereits definierte Wochenend-Druckprofile oder Abschaltsequenzen für das Druckluftsystem?",
+        "suggestedAnswers": [
+          {
+            "answer": "Ja – Abschaltsequenzen sind definiert, werden aber nicht automatisiert ausgeführt"
+          },
+          {
+            "answer": "Nein – Kompressoren laufen dauerhaft auf festem Betriebsdruck"
+          },
+          {
+            "answer": "Informelle Praxis einzelner Schichten, aber keine standardisierten Profile"
+          },
+          {
+            "answer": "Wochenend-Betriebsmodus wird aktuell neu erarbeitet"
+          }
+        ]
+      }
+    ],
+    "confidence": 82,
+    "category": "PRESSURIZED_AIR",
+    "investmentType": "MEDIUM_INTENSITY",
+    "effortLevel": "MEDIUM"
+  },
+  {
+    "locationId": 0,
+    "insightId": "ins_4a9f2e3c",
+    "title": "Kaltwalzwerk-Hilfsaggregate automatisiert in Wochenend-Standby versetzen",
+    "shortDescription": "Emulsionskühlung, Hydraulikpowerunits und Hallenlüftung des Kaltwalzwerks Bandstahlstraße verbleiben während 17 Wochenstunden ohne Produktionsbezug dauerhaft im Vollbetriebsmodus",
+    "description": "Der statistische Sub-Cluster 'Weekend Night (High) [SC1]' am Standort Bandstahlstraße umfasst alle Perioden von Samstagnacht bis Sonntagabend, in denen die Anlage strukturell bei median 3.760 kW statt am erreichbaren Minimum von 1.896 kW betrieben wird (Delta: 1.864 kW, +98 %). Besonders aufschlussreich ist, dass Sonntagnachmittag (14–22 Uhr) und Sonntagsnacht (00–06 Uhr) statistisch in denselben Hochlast-Subcluster fallen: Das Lastniveau differenziert nicht zwischen Nacht- und Nachmittagsbetrieb – die Hilfsaggregate zeigen keinen Produktionspause-Effekt. Dies ist ein starker Indikator dafür, dass Emulsionskühlaggregate, Hydraulikpowerunits, Rollenbettlüftung und Kühlwasserpumpen keine automatisierte Standby-Logik besitzen und dauerhaft auf Vollbetrieb verbleiben. Eine SPS-gestützte Standby-Automatisierung mit definierten Wiederanlaufzeiten, Temperaturüberwachung für Emulsionskreisläufe und druckgesteuerter Hydraulikabsenkung kann den größten Einzelanteil des strukturellen Einsparpotenzials realisieren, ohne metallurgische Qualitäts- oder Verfügbarkeitsrisiken zu erzeugen.",
+    "yearlySavingsRangeFrom": 21100,
+    "yearlySavingsRangeTo": 29000,
+    "investmentRangeFrom": 45000,
+    "investmentRangeTo": 85000,
+    "unit": "kWh",
+    "yearlySavingsEnergyRangeFrom": 120000,
+    "yearlySavingsEnergyRangeTo": 165000,
+    "evidences": [
+      "Median-Last im Wochenend-Cluster: 3.760 kW – P25: 3.016 kW, P75: 4.470 kW; Baseline: 1.896 kW → strukturelles Delta zwischen 1.120 kW (P25) und 2.574 kW (P75) je nach Woche",
+      "Sonntagnachmittag 14–22 Uhr und Sonntagsnacht 00–06 Uhr bilden statistisch denselben Sub-Cluster SC1 → kein messbarer Energierückgang zwischen diesen Perioden; Aggregate schalten nicht in Standby",
+      "17 Stunden/Woche strukturelle Überlast ohne jegliche saisonale Variation über alle 52 Kalenderwochen hinweg – Konfidenz 96,4 %",
+      "Walzwerk-Hilfsaggregate (Emulsion, Hydraulik, Lüftung, Kühlwasser) verantworten in Kaltwalzwerken typischerweise 35–45 % des Hilfsenergiebedarfs → geschätztes Standby-Potenzial: 650–840 kW des Delta-Werts",
+      "Gesamtpotenzial laut statistischer Analyse: 410.978 kWh/Jahr (€72.332/Jahr) – Hilfsaggregate-Anteil (45 %, 60–80 % Realisierungsgrad): 120.000–165.000 kWh/Jahr"
+    ],
+    "amortisationPeriodInMonths": 31,
+    "reasoning": "Emulsionskühlung, Hydrauliksysteme und Hallenlüftung sind die energieintensivsten Nebenaggregate eines Kaltwalzwerks und bieten bei konsequenter Standby-Schaltung das größte absolute Einsparpotenzial aus diesem Insight. Der eindeutige statistische Befund – identisches Lastprofil zwischen Sonntagsnacht und Sonntagnachmittag über alle 52 Wochen – schließt produktionsbedingte Erklärungen weitgehend aus und weist auf strukturell fehlende Standby-Automatisierung hin. Technisch ist die Standby-Schaltung dieser Aggregate bei vergleichbaren ISO-50001-zertifizierten Stahlwerken etabliert; die bestehende Zertifizierung am Standort erleichtert die Verankerung als operative Kontrolle im Energiemanagementsystem und die Dokumentation der Maßnahmenwirkung.",
+    "questions": [
+      {
+        "question": "Verfügen die Emulsionskühlaggregate am Kaltwalzwerk über eine temperaturgeführte Standby-Steuerung?",
+        "suggestedAnswers": [
+          {
+            "answer": "Ja – Emulsionstemperatur wird überwacht und steuert automatisch den Aggregatebetrieb"
+          },
+          {
+            "answer": "Nein – Emulsionskühlung läuft dauerhaft auf fester Drehzahl ohne Temperaturrückkopplung"
+          },
+          {
+            "answer": "Teilweise – Temperaturüberwachung vorhanden, jedoch keine automatische Abschaltlogik"
+          },
+          {
+            "answer": "Technischer Stand der Emulsionssteuerung ist nicht vollständig dokumentiert"
+          }
+        ]
+      },
+      {
+        "question": "Müssen die Hydraulikpowerunits am Kaltwalzwerk am Wochenende unter Systemdruck gehalten werden?",
+        "suggestedAnswers": [
+          {
+            "answer": "Ja – Sicherheitssperren und Bremssysteme erfordern dauerhaften Mindestdruck"
+          },
+          {
+            "answer": "Nein – Hydrauliksysteme können vollständig druckentlastet und abgeschaltet werden"
+          },
+          {
+            "answer": "Teilweise – Sicherheitshydraulik unter Mindestdruck; Arbeitshydraulik vollständig abschaltbar"
+          },
+          {
+            "answer": "Hydraulische Mindestanforderungen am Wochenende sind nicht definiert"
+          }
+        ]
+      },
+      {
+        "question": "Welche Vorlaufzeit benötigen die Hilfsaggregate vor Produktionsbeginn für den geregelten Hochlauf?",
+        "suggestedAnswers": [
+          {
+            "answer": "Weniger als 30 Minuten – schneller Wiederanlauf aller Aggregate möglich"
+          },
+          {
+            "answer": "30–60 Minuten – Emulsion muss auf Betriebstemperatur konditioniert werden"
+          },
+          {
+            "answer": "Mehr als 60 Minuten – komplexe, mehrstufige Anfahrsequenz erforderlich"
+          },
+          {
+            "answer": "Vorlaufzeit ist nicht standardisiert und variiert je nach Schicht und Schichtleiter"
+          }
+        ]
+      },
+      {
+        "question": "Besteht eine SPS- oder Leittechnik-seitige Möglichkeit zur zeitgesteuerten Standby-Schaltung der Hilfsaggregate?",
+        "suggestedAnswers": [
+          {
+            "answer": "Ja – bestehende SPS/Leittechnik kann entsprechend erweitert und programmiert werden"
+          },
+          {
+            "answer": "Teilweise – Umrüstung einzelner Steuerungsmodule und Feldbusanbindungen erforderlich"
+          },
+          {
+            "answer": "Nein – neue Automatisierungsinfrastruktur oder Retrofit-Schnittstellen notwendig"
+          },
+          {
+            "answer": "Technische Machbarkeit wurde noch nicht durch die Instandhaltung bewertet"
+          }
+        ]
+      }
+    ],
+    "confidence": 78,
+    "category": "OTHER",
+    "investmentType": "HIGH_INTENSITY",
+    "effortLevel": "HIGH"
+  },
+  {
+    "locationId": 0,
+    "insightId": "ins_4a9f2e3c",
+    "title": "Verbindliches Wochenend-Abschaltprotokoll für Nebenaggregate einführen",
+    "shortDescription": "Das vollständige Fehlen systematischer Abschaltroutinen führt am Kaltwalzwerk Bandstahlstraße zu 1.864 kW struktureller Überlast in 17 produktionsarmen Wochenstunden – investitionsarme Quick Wins durch Protokoll und Verantwortlichkeiten realisierbar",
+    "description": "Die statistische Analyse identifiziert eine strukturelle Grundlasterhöhung von 1.864 kW (98 % über Minimum) während 17 produktionsarmer Stunden pro Wochenende über alle 52 Kalenderwochen ohne saisonale Variation und mit 96,4 % Konfidenz. Der Befund, dass Sonntagnachmittag und Sonntagsnacht statistisch dasselbe Lastprofil zeigen, deutet auf das vollständige Fehlen systematischer Abschaltroutinen hin: Zwischen dem Ende der Samstagsproduktion und dem Beginn der Montags-Frühschicht gibt es keinen nachweisbaren Energieabbau-Schritt. Als kurzfristige, investitionsarme Ergänzung zu den technischen Automatisierungsmaßnahmen kann die Einführung verbindlicher Wochenend-Abschaltprotokolle – mit Checklisten, klar definierten Schichtverantwortlichkeiten und digitaler Kontrolle im Energiemanagementsystem – einen messbaren Anteil der Einsparpotenziale unmittelbar ohne Automatisierungsinvestition heben. Maßnahmen umfassen manuelle Druckabsenkung der Druckluftversorgung, Reduzierung nicht kritischer Hallenlüftungsstufen und Abschaltung von Hilfspumpen, die am Wochenende keinen Bedarf haben. Die ISO-50001-Zertifizierung verpflichtet zudem zu dokumentierten Kontrollen bei identifizierten Einsparpotenzialen dieser Größenordnung.",
+    "yearlySavingsRangeFrom": 9700,
+    "yearlySavingsRangeTo": 12700,
+    "investmentRangeFrom": 2000,
+    "investmentRangeTo": 5000,
+    "unit": "kWh",
+    "yearlySavingsEnergyRangeFrom": 55000,
+    "yearlySavingsEnergyRangeTo": 72000,
+    "evidences": [
+      "Strukturelle Grundlasterhöhung über alle 52 Wochen ohne saisonale Abweichung – Konfidenz 96,4 %; kein betrieblicher Anlass, der dauerhaften Vollbetrieb aller Nebenaggregate begründet, wurde in den Hypothesen identifiziert",
+      "Sonntagnachmittag 14–22 Uhr und Sonntagsnacht 00–06 Uhr bilden denselben Hochlast-Sub-Cluster SC1 – kein messbarer Energierückgang zwischen diesen Zeitfenstern, was auf fehlende Abschaltroutinen hindeutet",
+      "Gesamtpotenzial laut statistischer Analyse: 410.978 kWh/Jahr – betriebliche Sofortmaßnahmen ohne Automatisierung können erfahrungsgemäß 15–20 % kurzfristig heben: 55.000–82.000 kWh/Jahr",
+      "Energiepreis 0,176 €/kWh → Quick-Win-Potenzial aus betrieblichen Protokollmaßnahmen: 9.700–12.700 €/Jahr bei minimalem Investitionsaufwand von 2.000–5.000 €",
+      "ISO 50001 verpflichtet zu dokumentierten operativen Kontrollen bei identifizierten signifikanten Energieeinsparpotenzialen – Protokolleinführung direkt als Managementsystem-Maßnahme verankerbar"
+    ],
+    "amortisationPeriodInMonths": 4,
+    "reasoning": "Investitionsarme Abschaltprotokolle sind der schnellste Weg, einen Teil des strukturellen Einsparpotenzials zu realisieren und gleichzeitig eine belastbare operative Datenbasis für nachgelagerte Automatisierungsmaßnahmen zu schaffen. Im ISO-50001-Kontext lassen sich Protokolle als verbindliche operative Kontrolle verankern und durch das EMS-Monitoring auf Wirksamkeit überprüfen. Die Maßnahme erzeugt unmittelbaren ROI innerhalb weniger Monate und schafft die organisatorische Grundlage (Verantwortlichkeiten, Checklisten, Messung), auf der die technischen Automatisierungsmaßnahmen effizient aufsetzen können.",
+    "questions": [
+      {
+        "question": "Existieren am Standort Bandstahlstraße bereits Abschaltpläne oder Checklisten für das Wochenende?",
+        "suggestedAnswers": [
+          {
+            "answer": "Ja – formalisierte Checklisten vorhanden, werden aber nicht konsequent umgesetzt"
+          },
+          {
+            "answer": "Teilweise – informelle Praxis einzelner Schichtleiter ohne standardisierte Dokumentation"
+          },
+          {
+            "answer": "Nein – keine systematischen Abschaltpläne für Nebenaggregate vorhanden"
+          },
+          {
+            "answer": "Checklisten existieren, sind jedoch veraltet und nicht am aktuellen Maschinenbestand ausgerichtet"
+          }
+        ]
+      },
+      {
+        "question": "Wer ist aktuell für die Abschaltung von Nebenaggregaten bei Schichtende am Samstag verantwortlich?",
+        "suggestedAnswers": [
+          {
+            "answer": "Schichtleiter mit klar definierten, dokumentierten Zuständigkeiten"
+          },
+          {
+            "answer": "Jeder Maschinenführer eigenverantwortlich für seinen jeweiligen Bereich"
+          },
+          {
+            "answer": "Keine klar definierte Verantwortlichkeit – aktuell ungeklärt"
+          },
+          {
+            "answer": "Wartungs- bzw. Instandhaltungspersonal übernimmt die Abschaltung am Wochenende"
+          }
+        ]
+      },
+      {
+        "question": "Werden aktuelle Wochenend-Verbrauchsdaten dem Betriebspersonal und den Schichtleitern zugänglich gemacht?",
+        "suggestedAnswers": [
+          {
+            "answer": "Ja – Energieverbrauch ist im EMS-Dashboard für alle Schichten in Echtzeit sichtbar"
+          },
+          {
+            "answer": "Teilweise – Energiedaten verfügbar, aber nicht aktiv an Schichtleiter kommuniziert"
+          },
+          {
+            "answer": "Nein – Energieverbrauchsauswertung erfolgt nur im Energiemanagement, nicht in der Produktion"
+          },
+          {
+            "answer": "Monitoring-Infrastruktur vorhanden, aber kein operativer Echtzeitzugang für Produktionspersonal"
+          }
+        ]
+      }
+    ],
+    "confidence": 88,
+    "category": "OTHER",
+    "investmentType": "NO_INTENSITY",
+    "effortLevel": "LOW"
+  },
+  {
+    "locationId": 0,
+    "insightId": "ins_b5e10d7a",
+    "title": "Samstags-Nacht-Grundlast durch verbindliche Abschaltanweisung sofort senken",
+    "shortDescription": "Samstag 00:00-06:00 Uhr weist mit 5.184 kW den hoechsten Grundverbrauch aller Wochenend-Cluster auf - 69% ueber dem nachgewiesenen Referenzwert von 3.072 kW",
+    "description": "Die Analyse am Standort Bandstahlstrasse zeigt, dass das Subcluster 'Weekend Night (High) [SC2]' - Samstag 00:00-06:00 Uhr sowie 11:00-12:00 Uhr - mit einem Median-Verbrauch von 5.184 kW die absolut hoechste Grundlaststufe aller Wochenend-Zeitfenster bildet. Betrieblich sollten diese Stunden zu den ruhigsten der Woche zaehlen, doch die Zone-Verteilung belegt, dass der Cluster ganzjaehrig von Beobachtungen im Critical-Bereich (>=P75) dominiert wird - ein strukturelles, kein saisonales Muster. Als wahrscheinliche Ursachen gelten automatisch ablaufende Anlaufsequenzen fuer Hydrauliksysteme, Druckluftversorgung und Kuehlkreislaeufe sowie ggf. Vorwaermprogramme des Kaltwalzwerks, die nach festem Wochentags-Zeitplan ohne Wochenend-Ausnahme starten. Als kostenminimale Sofortmassnahme wird die Einfuehrung einer verbindlichen, schichtfuehrergerueften Abschaltanweisung fuer den Freitag-Spaetschicht-Abschluss empfohlen, die alle nicht betriebsnotwendigen Aggregate systematisch stillsetzt und die Grundlast auf das nachgewiesene erreichbare Minimum von 3.072 kW absenkt.",
+    "yearlySavingsRangeFrom": 13700,
+    "yearlySavingsRangeTo": 17800,
+    "investmentRangeFrom": 0,
+    "investmentRangeTo": 4000,
+    "unit": "kWh",
+    "yearlySavingsEnergyRangeFrom": 78000,
+    "yearlySavingsEnergyRangeTo": 101000,
+    "evidences": [
+      "Subcluster SC2 (Samstag 00:00-06:00 Uhr + 11:00-12:00 Uhr) zeigt einen Median-Verbrauch von 5.184 kW - der hoechste Absolutwert aller Wochenend-Cluster am Standort Bandstahlstrasse",
+      "Nachgewiesener Referenzwert (Baseline) betraegt 3.072 kW; das Delta von 2.112 kW entspricht 68,75% Ueberschuss waehrend betrieblich ruhiger Stunden",
+      "P25 = 4.424 kW und P75 = 5.840 kW belegen geringe Streuung - der erhoehte Verbrauch tritt konsistent und nicht als gelegentlicher Ausreisser auf",
+      "Zone-Verteilung (Plot 58d) bestaetigt ganzjaehrige Dominanz der Critical-Zone (>=P75) - das Muster ist strukturell und saisonunabhaengig",
+      "Statistisches Einsparpotenzial laut Analyse: 155.378 kWh/Jahr bzw. 27.347 EUR/Jahr (0,176 EUR/kWh); realistisch erreichbar durch Abschaltanweisung (50-65%): 78.000-101.000 kWh/Jahr"
+    ],
+    "amortisationPeriodInMonths": 2,
+    "reasoning": "Der stark erhoehte Verbrauch in den betrieblich stillsten Wochenstunden ist ein klares Indiz fuer ungeplante Systembetriebe - typischerweise automatisch ablaufende Anlauf- oder Warmhalteprogramme ohne Produktionsbezug. Da keine Produktionsaktivitaet am fruehen Samstagmorgen die 5.184 kW rechtfertigt, bietet eine strukturierte Abschaltanweisung mit minimalem Investitionsaufwand unmittelbare Einsparungen. Die ISO-50001-Zertifizierung des Standorts schafft die organisatorische Grundlage fuer eine auditierbare und nachvollziehbare Umsetzung dieser Anweisung.",
+    "questions": [
+      {
+        "question": "Welche Systeme laufen am Standort Bandstahlstrasse samstagnachts (00:00-06:00 Uhr) regulaer weiter?",
+        "suggestedAnswers": [
+          {
+            "answer": "Druckluft-Vordruckaufbau und Hydraulikaggregat-Warmhalten fuer eine geplante Samstag-Fruehschicht"
+          },
+          {
+            "answer": "Kaltwalzwerk-Anlaufsequenzen starten automatisch nach festem Zeitplan, unabhaengig vom Wochenende"
+          },
+          {
+            "answer": "Durchlaufgluehofen wird auf Betriebstemperatur gehalten, auch wenn keine Produktion geplant ist"
+          },
+          {
+            "answer": "Kombination mehrerer Systeme ohne dokumentierte Wochenend-Ausnahme im Steuerungssystem"
+          }
+        ]
+      },
+      {
+        "question": "Gibt es eine dokumentierte und verbindliche Abschaltprozedur fuer den Freitagsabend?",
+        "suggestedAnswers": [
+          {
+            "answer": "Ja, eine formale Checkliste existiert und wird regelmaessig und vollstaendig befolgt"
+          },
+          {
+            "answer": "Teilweise - einzelne Bereiche haben eigene Verfahren, aber keine einheitliche standortweite Regelung"
+          },
+          {
+            "answer": "Nein, die Abschaltung obliegt den einzelnen Schichtfuehrern ohne standardisierten Prozess"
+          },
+          {
+            "answer": "Abschaltprozedur existiert, wird aber nicht konsequent und vollstaendig umgesetzt"
+          }
+        ]
+      },
+      {
+        "question": "Findet samstagnachts gelegentlich Wartungs- oder Reparaturarbeit statt, die Vollbetrieb der Infrastruktur erfordert?",
+        "suggestedAnswers": [
+          {
+            "answer": "Ja, planmaessige Wartungsarbeiten mit Vollbetrieb finden regelmaessig (monatlich oder haeufiger) statt"
+          },
+          {
+            "answer": "Gelegentlich, aber nicht haeufig genug, um den durchgaengig hohen Verbrauch zu erklaeren"
+          },
+          {
+            "answer": "Nein, Samstagnacht ist planmaessig wartungs- und produktionsfrei"
+          },
+          {
+            "answer": "Unbekannt - keine systematische Erfassung der Samstag-Nacht-Aktivitaeten vorhanden"
+          }
+        ]
+      },
+      {
+        "question": "Welche Anlaufzeit benoetigen die Hauptaggregate (Kaltwalzwerk, Druckluft, Hydraulik) fuer einen regulaeren Produktionsstart?",
+        "suggestedAnswers": [
+          {
+            "answer": "Unter 1 Stunde - Anlagen koennen kurz vor Schichtbeginn gestartet werden"
+          },
+          {
+            "answer": "1-3 Stunden - eine gewisse Vorwaermzeit ist betrieblich notwendig"
+          },
+          {
+            "answer": "Mehr als 3 Stunden - ein frueherer Start ist aus Prozess- oder Qualitaetsgruenden erforderlich"
+          },
+          {
+            "answer": "Anlaufzeiten variieren stark je nach Aggregat und Jahreszeit"
+          }
+        ]
+      }
+    ],
+    "confidence": 78,
+    "category": "OTHER",
+    "investmentType": "NO_INTENSITY",
+    "effortLevel": "LOW"
+  },
+  {
+    "locationId": 0,
+    "insightId": "ins_b5e10d7a",
+    "title": "Automatischen Wochenend-Modus fuer Anlagensteuerung und Nebenaggregate implementieren",
+    "shortDescription": "Zeitplan-gesteuerte Anlaufsequenzen fuer Kaltwalzwerk, Druckluft, Hydraulik und Kuehlung laufen samstagnachts dauerhaft auf Vollbetrieb - 2.112 kW ueber dem Referenzwert ohne Produktionsbedarf",
+    "description": "Das Subcluster 'Weekend Night (High) [SC2]' am Standort Bandstahlstrasse weist samstags von 00:00-06:00 Uhr und 11:00-12:00 Uhr einen strukturell erhoehten Grundverbrauch von median 5.184 kW aus - 2.112 kW (69%) ueber dem nachgewiesenen Referenzwert. Die ganzjaehrig Critical-Zone-dominierte Zone-Verteilung schliesst operative Zufaelligkeit als Ursache aus und belegt eine fest programmierte Steuerungslogik als Treiber. Wahrscheinliche Ursachen sind automatische, zeitplangesteuerte Anlaufprogramme fuer Druckluft-Vordruckaufbau, Hydraulikaggregat-Warmhalten, Kuehlkreislaeufe sowie potenzielle Warmhalteprogramme des 180-Meter-Durchlaufgluehofen - alle aktiv nach Werktagszeitplan ohne Wochenend-Ausnahme. Die Massnahme sieht die Einfuehrung eines dedizierten Wochenend-Modus im Leitsystem (SCADA/EMS/SPS) vor, der alle nicht produktionsbedingten Automatiksequenzen fuer die Samstagnacht deaktiviert, zeitlich verschiebt oder auf ein technisch notwendiges Minimum (Frostschutz, Sicherheitssysteme) reduziert. Im Rahmen des bestehenden ISO-50001-Systems kann diese Aenderung als auditierbare Energiezielmasssnahme dokumentiert und dauerhaft ueberwacht werden.",
+    "yearlySavingsRangeFrom": 17800,
+    "yearlySavingsRangeTo": 21800,
+    "investmentRangeFrom": 15000,
+    "investmentRangeTo": 40000,
+    "unit": "kWh",
+    "yearlySavingsEnergyRangeFrom": 101000,
+    "yearlySavingsEnergyRangeTo": 124000,
+    "evidences": [
+      "SC2-Cluster zeigt Median 5.184 kW bei P25 = 4.424 kW und P75 = 5.840 kW - hohe zeitliche Konsistenz, kein saisonales oder zufaelliges Muster",
+      "Delta zur Baseline: 2.112 kW (68,75%) dauerhaft ueber den gesamten Jahresverlauf; ganzjaehrige Critical-Zone-Dominanz bestaetigt systematische Steuerungsursache",
+      "Zeitfenster Samstag 00:00-06:00 Uhr + 11:00-12:00 Uhr (7 h/Woche) ist betrieblich die ruhigste Phase - kein Produktionsgrund fuer Vollbetrieb aller Aggregate",
+      "Statistisches Einsparpotenzial: 155.378 kWh/Jahr = 27.347 EUR/Jahr; durch automatisierten Wochenend-Modus realistisch erreichbar (65-80%): 101.000-124.000 kWh/Jahr",
+      "ISO-50001-Zertifizierung am Standort schafft strukturelle Grundlage fuer auditierbare Steuerungsaenderungen und dauerhaftes Monitoring der Massnahme"
+    ],
+    "amortisationPeriodInMonths": 17,
+    "reasoning": "Die zeitliche Exaktheit des Clusters (Samstag 00:00-06:00 Uhr) und seine ganzjaehrige Persistenz schliessen operative Ursachen aus und zeigen programmierte Automatisierungslogik als eindeutigen Treiber. Ein Wochenend-Modus im Leitsystem ist die technisch nachhaltigste Loesung, da er zuverlaessig ohne manuelle Intervention wirkt und nicht von individuellem Schichtfuehrerverhalten abhaengt. Angesichts des branchenueblichen Engineering-Aufwands fuer Steuerungsaenderungen an Kaltwalzanlagen dieser Komplexitaet ist eine Amortisationszeit von ca. 17 Monaten realistisch und fuer eine ISO-50001-Energiezielmasssnahme wirtschaftlich attraktiv.",
+    "questions": [
+      {
+        "question": "Welches Leitsystem steuert die samstaeglichen Anlaufsequenzen am Standort Bandstahlstrasse?",
+        "suggestedAnswers": [
+          {
+            "answer": "Zentrales SCADA-/EMS-System - Anpassung durch interne Automatisierungstechnik moeglich"
+          },
+          {
+            "answer": "Dezentrale SPS-Steuerung pro Aggregat - Aenderungen erfordern Einzel-Engineering je Anlage"
+          },
+          {
+            "answer": "Mischung aus zentralem Leitsystem und lokalen Anlagensteuerungen"
+          },
+          {
+            "answer": "Steuerungsstruktur nicht vollstaendig dokumentiert - Bestandsaufnahme erforderlich"
+          }
+        ]
+      },
+      {
+        "question": "Gibt es technische Mindestbetriebsanforderungen (z.B. Frostschutz, Ofentemperaturerhalt, Sicherheitssysteme), die einen reduzierten Wochenend-Modus begrenzen?",
+        "suggestedAnswers": [
+          {
+            "answer": "Ja, Durchlaufgluehofen und bestimmte Kuehlkreislaeufe muessen aus Prozess- oder Qualitaetsgruenden auf Mindesttemperatur gehalten werden"
+          },
+          {
+            "answer": "Minimale Einschraenkungen - die meisten Systeme koennen fuer die Samstagnacht vollstaendig abgesenkt werden"
+          },
+          {
+            "answer": "Anforderungen sind bekannt und bereits in bestehenden Abschaltverfahren beruecksichtigt"
+          },
+          {
+            "answer": "Technische Mindestanforderungen muessen erst systematisch durch Fachabteilungen erhoben werden"
+          }
+        ]
+      },
+      {
+        "question": "Wie lange dauert es erfahrungsgemaess, einen neuen Zeitplan-Modus im bestehenden Leitsystem zu implementieren, zu testen und freizugeben?",
+        "suggestedAnswers": [
+          {
+            "answer": "Weniger als 1 Monat - Standardkonfiguration im vorhandenen System ohne externe Lieferanten"
+          },
+          {
+            "answer": "1-3 Monate - Engineering, interne Tests und Sicherheitsfreigabe erforderlich"
+          },
+          {
+            "answer": "Mehr als 3 Monate - komplexe Integrations- und Validierungsanforderungen mit Lieferantenbeteiligung"
+          },
+          {
+            "answer": "Zeitaufwand haengt stark vom Steuerungssystem-Lieferanten und der Anlagenverfuegbarkeit ab"
+          }
+        ]
+      },
+      {
+        "question": "Wird samstagnachts gelegentlich ungeplant produziert oder Wartung mit Vollbetrieb aller Infrastruktursysteme durchgefuehrt?",
+        "suggestedAnswers": [
+          {
+            "answer": "Selten bis nie - Samstagnacht ist planmaessig produktions- und vollwartungsfrei"
+          },
+          {
+            "answer": "Gelegentlich (1-2x pro Monat) - Wochenend-Modus muss einfach und schnell uebersteuert werden koennen"
+          },
+          {
+            "answer": "Regelmaessig (woechentlich) - erhoehter Verbrauch ist zum Teil betrieblich begruendet"
+          },
+          {
+            "answer": "Nicht systematisch erfasst - Haeufigkeit und Art der Samstag-Nacht-Aktivitaeten muessen erst erhoben werden"
+          }
+        ]
+      }
+    ],
+    "confidence": 75,
+    "category": "OTHER",
+    "investmentType": "MEDIUM_INTENSITY",
+    "effortLevel": "MEDIUM"
+  },
+  {
+    "locationId": 0,
+    "insightId": "ins_c72f4b8e",
+    "title": "Samstagnachmittag-Grundlast durch operatives Abschaltprotokoll senken",
+    "shortDescription": "Der Samstagnachmittag-Subcluster [SC0] steigt statistisch signifikant um +508 kW/Jahr (+17,2 %) – ein sofort adressierbarer Anteil durch verbindliche Schichtendisziplin ohne Investitionskosten",
+    "description": "Die Langzeitanalyse der Samstagnachmittag-Stunden (13–22 Uhr) am Kaltwalzwerk Bandstahlstraße zeigt einen statistisch hochsignifikanten Anstieg der Grundlast um +508,7 kW pro Jahr (+17,2 %/Jahr), was einem kumulierten Mehrverbrauch von 238.066 kWh pro Jahr entspricht. Besonders trügerisch ist der aktuelle Kurzfristtrend der letzten vier Wochen, der mit 0 %/Woche scheinbar 'stabil' erscheint – da Lang- und Kurzfristtrend divergieren, handelt es sich jedoch um eine temporäre Fluktuation ohne echten Trendbruch. Als sofort umsetzbarer erster Schritt sollte ein verbindliches Betriebsprotokoll für Samstagnachmittage eingeführt werden: Alle nicht produktionsnotwendigen Hilfsverbraucher (Lüftungskreise, Hydraulikaggregate, Kühleinheiten) sind bei ausgesetztem Walzbetrieb systematisch abzuschalten. Durch diese operative Schichtendisziplin ohne Kapitalinvestition können 15–30 % des kumulierten Mehrverbrauchs direkt adressiert werden. Die bestehende ISO 50001-Zertifizierung am Standort schafft die strukturelle Voraussetzung für verbindliche Protokolle und messbare Wirkungsnachweise.",
+    "yearlySavingsRangeFrom": 5000,
+    "yearlySavingsRangeTo": 12000,
+    "investmentRangeFrom": 0,
+    "investmentRangeTo": 2000,
+    "unit": "kWh",
+    "yearlySavingsEnergyRangeFrom": 28000,
+    "yearlySavingsEnergyRangeTo": 68000,
+    "evidences": [
+      "Langfristtrend Samstagnachmittag [SC0]: +508,7 kW/Jahr (+17,2 %/Jahr) – statistisch hochsignifikant über den gesamten Beobachtungszeitraum",
+      "Kumulierter jährlicher Mehrbedarf durch den Trend: 238.066 kWh/Jahr (9 h/Woche × 52 Wochen × durchschnittliche Driftleistung); Einzelcluster macht damit eine erhebliche Belastungsposition aus",
+      "Kurzfristtrend der letzten 4 Wochen zeigt scheinbare Stabilität (0 %/Woche) – divergiert vom Langfristtrend, was auf eine temporäre Schwankung ohne echten Trendbruch hindeutet und ein günstiges Interventionsfenster öffnet",
+      "Operatives Einsparpotenzial von 15–30 % der Driftmenge = 28.000–68.000 kWh/Jahr → ca. 5.000–12.000 €/Jahr bei 0,176 €/kWh durch reines Abschaltmanagement realisierbar",
+      "ISO 50001-Zertifizierung am Standort ermöglicht verbindliche Einführung und Messung des Protokolls ohne zusätzlichen Compliance-Aufwand"
+    ],
+    "amortisationPeriodInMonths": 1,
+    "reasoning": "Die scheinbare Kurzfriststabilität (0 %/Woche) birgt das Risiko, dass Maßnahmen aufgeschoben werden – genau dann, wenn das Zeitfenster für kostengünstige Intervention optimal ist. Ein operatives Abschaltprotokoll ist ohne Kapitalinvestition umsetzbar, amortisiert sich innerhalb eines Monats und dient gleichzeitig als Grundlage für die Identifikation konkreter Treiberaggregate. Die ISO 50001-Struktur stellt sicher, dass Wirkung und Compliance dokumentiert und im nächsten Energieaudit nachgewiesen werden können.",
+    "questions": [
+      {
+        "question": "Welche Hilfsaggregate laufen am Samstagnachmittag (13–22 Uhr) typischerweise weiter, wenn kein aktiver Walzbetrieb stattfindet?",
+        "suggestedAnswers": [
+          {
+            "answer": "Kühlaggregate für Walzöl- und Hydraulikkreisläufe im Bereitschaftsbetrieb"
+          },
+          {
+            "answer": "Lüftungs- und Absauganlagen der Produktionshallen unabhängig vom Betriebszustand"
+          },
+          {
+            "answer": "Hydrauliksysteme für Walzgerüste im Dauerbetrieb trotz abgeschalteter Gerüste"
+          },
+          {
+            "answer": "Mehrere Systeme ohne klare Dokumentation der Betriebsnotwendigkeit am Wochenende"
+          }
+        ]
+      },
+      {
+        "question": "Gibt es aktuell eine verbindliche Checkliste oder ein Protokoll für das Abschalten von Anlagen am Samstagmittag?",
+        "suggestedAnswers": [
+          {
+            "answer": "Nein, die Abschaltentscheidung liegt im Ermessen der Schichtführung"
+          },
+          {
+            "answer": "Ja, aber sie wird nicht konsequent eingehalten"
+          },
+          {
+            "answer": "Ja, und die Einhaltung wird durch den Energiebeauftragten regelmäßig geprüft"
+          },
+          {
+            "answer": "Teilweise – einige Systeme sind geregelt, andere laufen ohne formale Freigabe weiter"
+          }
+        ]
+      },
+      {
+        "question": "Wie lange dauert es typischerweise, einen Hilfsverbraucher nach dem Abschalten wieder sicher hochzufahren?",
+        "suggestedAnswers": [
+          {
+            "answer": "Weniger als 15 Minuten – Kaltstart problemlos möglich"
+          },
+          {
+            "answer": "15–60 Minuten – Vorwärmphase oder Systemcheck erforderlich"
+          },
+          {
+            "answer": "Mehr als 60 Minuten – kritische Anlaufprozedur notwendig"
+          },
+          {
+            "answer": "Unterschiedlich je Aggregat; aggregatspezifische Anlaufzeiten müssen erst erfasst werden"
+          }
+        ]
+      }
+    ],
+    "confidence": 70,
+    "category": "OTHER",
+    "investmentType": "NO_INTENSITY",
+    "effortLevel": "LOW"
+  },
+  {
+    "locationId": 0,
+    "insightId": "ins_c72f4b8e",
+    "title": "Inventarisierung und Dekommissionierung kumulierter Hilfsaggregate am Kaltwalzwerk",
+    "shortDescription": "Sukzessiv hinzugefügte, nie dekommissionierte Hilfsaggregate (Lüfter, Hydraulikeinheiten, Lüftungskreise) treiben die Samstagnachmittag-Grundlast strukturell nach oben – ein systematischer Audit identifiziert und beseitigt redundante Dauerlasten",
+    "description": "Der statistisch signifikante Langzeitanstieg von +17,2 %/Jahr über den gesamten Beobachtungszeitraum – ohne sprunghafte Ereignisse, sondern als kontinuierliche Drift – ist ein klassisches Erkennungsmerkmal schleichend kumulierter Hilfsaggregate: Bei Kapazitätserweiterungen, Prozessumstellungen oder Nachrüstungen werden Kühlaggregate, Hydraulikeinheiten oder Lüftungskreise hinzugefügt, beim Wegfall des ursprünglichen Bedarfs aber nicht wieder dekommissioniert. Im Kaltwalzbereich sind typische Kandidaten redundante Walzöl-Kühlanlagen nach Gerüstumbauten, doppelt ausgelegte Hydraulikpumpen im Dauerbetrieb oder Absauganlagen veralteter Prozesslinien. Eine strukturierte Energieinventur der Samstagnachmittag-Zeitscheibe – unterstützt durch temporäre Strommessung an verdächtigen Abzweigen – ermöglicht die gezielte Identifikation und kontrollierte Außerbetriebnahme dieser Lasten. Als ISO 50001-zertifizierter Standort verfügt Wälzholz Bandstahlstraße bereits über die methodischen und dokumentarischen Voraussetzungen für eine solche Inventarisierung.",
+    "yearlySavingsRangeFrom": 14000,
+    "yearlySavingsRangeTo": 22000,
     "investmentRangeFrom": 8000,
     "investmentRangeTo": 20000,
     "unit": "kWh",
     "yearlySavingsEnergyRangeFrom": 80000,
-    "yearlySavingsEnergyRangeTo": 110000,
+    "yearlySavingsEnergyRangeTo": 125000,
     "evidences": [
-      "Mediane Wochenend-Grundlast: 6.180 kW vs. beste beobachtete Grundlast: 5.160 kW - Differenz 1.020 kW (~20%)",
-      "Statistisches Jahrespotenzial laut Insight: 222.705 kWh / €39.196 - Glüh- und Beizanlagen-Hilfssysteme decken schätzungsweise ~40-50% davon ab",
-      "Die Wochenend-Grundlastschwankungen treten ohne erkennbare Produktionsmengen-Erklärung auf, was auf unterschiedliche Abfahrprozeduren als Hauptursache hindeutet",
-      "Evidence Reliability Score des Insights: 0,97 - sehr hohe statistische Zuverlässigkeit der identifizierten Differenz",
-      "Glühofen-Hilfssysteme (Ventilatoren, Pumpen) und Beizlinien-Dampfheizung sind gemäß Unternehmensangaben die dominierenden Stromverbraucher an Werk Nord neben den Walzantrieben"
+      "Langfristige Grundlastdrift von +508,7 kW/Jahr ohne erkennbare Produktionserweiterungsereignisse: Der gleichmäßig kontinuierliche Anstieg entspricht dem typischen Muster inkrementell aufgebauter, nicht dekommissionierter Hilfsaggregate",
+      "238.066 kWh/Jahr kumulierter Mehrverbrauch: Bereits 4–6 redundante Aggregate à 30–50 kW Dauerlast × 468 h/Jahr (9 h/Woche × 52 Wochen) erklären den Drift vollständig",
+      "Fehlende Dekommissionierungsprozesse bei Kapazitätsanpassungen sind ein branchenbekanntes Muster in der Kaltbandproduktion (Kühlung, Hydraulik, Lüftung) – bestätigt durch Erfahrungswerte aus vergleichbaren Metallverarbeitungsstandorten",
+      "Einsparpotenzial 80.000–125.000 kWh/Jahr entspricht 34–53 % des kumulierten Drifts – konservativ kalkuliert für die Dekommissionierung von 3–5 nachgewiesenermaßen redundanten Aggregaten",
+      "Bei 0,176 €/kWh ergibt sich ein Sparpotenzial von 14.000–22.000 €/Jahr; Amortisation der Audit- und Dekommissionierungskosten (8.000–20.000 €) in ca. 9 Monaten"
     ],
-    "amortisationPeriodInMonths": 10,
-    "reasoning": "In einem kontinuierlichen 3-Schicht-Betrieb mit Glüh- und Beizprozessen besteht ein klares technisches Einsparpotenzial durch den Wechsel auf definierte Wartehaltebetrieb-Setpoints. Die statistisch nachgewiesene Streuung der Wochenend-Grundlast - ohne korrelierenden Produktionsunterschied - ist ein starker Indikator dafür, dass operative Abfahrprozeduren (und nicht physikalische Prozessgrenzen) das limitierende Element sind.",
-    "confidence": 80,
-    "category": "HEATING",
+    "amortisationPeriodInMonths": 9,
+    "reasoning": "Inkrementelle Laststeigerungen ohne dokumentierte Produktionserweiterung über mehrere Jahre sind das Erkennungsmerkmal nicht dekommissionierter Hilfsaggregate – die Hypothese wird durch den gleichmäßigen (nicht sprunghaften) Trendverlauf gestützt. Da die ISO 50001-Zertifizierung am Standort bereits Inventarisierungsmethodik und Energiemessprogramme vorschreibt, sind die organisatorischen Voraussetzungen für eine effiziente Umsetzung vorhanden. Das Einsparpotenzial ist bewusst konservativ kalkuliert und berücksichtigt nur den auf unnötige Dauerlast zurückführbaren Anteil des Drifts.",
+    "questions": [
+      {
+        "question": "Wie wird die Dekommissionierung von Hilfsaggregaten nach Prozessumstellungen oder Kapazitätsanpassungen am Standort aktuell gehandhabt?",
+        "suggestedAnswers": [
+          {
+            "answer": "Es gibt einen formalen Dekommissionierungsprozess als Teil des Änderungsmanagements (MoC)"
+          },
+          {
+            "answer": "Dekommissionierung erfolgt ad hoc, wenn Platzmangel oder Wartungsaufwand auffällig werden"
+          },
+          {
+            "answer": "Kein systematischer Prozess – Aggregate bleiben meist im Betrieb, bis sie ausfallen"
+          },
+          {
+            "answer": "ISO 50001 schreibt Überprüfung vor, wird aber nicht konsequent auf Hilfsaggregate angewandt"
+          }
+        ]
+      },
+      {
+        "question": "Sind temporäre Untermesspunkte (z. B. Zangenstrommessung) für die Inventarisierung am Samstagnachmittag kurzfristig einsetzbar?",
+        "suggestedAnswers": [
+          {
+            "answer": "Ja, das interne Instandhaltungsteam kann dies eigenständig durchführen"
+          },
+          {
+            "answer": "Ja, aber ein externer Messtechnikdienstleister ist erforderlich"
+          },
+          {
+            "answer": "Nein, Zugangsbeschränkungen oder Sicherheitsauflagen erschweren Messungen im laufenden Betrieb"
+          },
+          {
+            "answer": "Noch nicht erprobt – Machbarkeit muss intern geprüft werden"
+          }
+        ]
+      },
+      {
+        "question": "Welche Bereiche am Kaltwalzwerk haben in den letzten 3–5 Jahren die größten Kapazitäts- oder Prozessveränderungen erfahren?",
+        "suggestedAnswers": [
+          {
+            "answer": "Walzgerüste und zugehörige Hydrauliksysteme (Erweiterung oder Umbau)"
+          },
+          {
+            "answer": "Kühlöl- und Emulsionskreisläufe (veränderte Anforderungen durch Produktwechsel)"
+          },
+          {
+            "answer": "Lüftungs- und Absaugsysteme (neue Sicherheits- oder Emissionsauflagen)"
+          },
+          {
+            "answer": "Mehrere Bereiche gleichzeitig – kein eindeutiger Schwerpunkt identifizierbar"
+          }
+        ]
+      }
+    ],
+    "confidence": 76,
+    "category": "OTHER",
     "investmentType": "MEDIUM_INTENSITY",
     "effortLevel": "MEDIUM"
   },
   {
-    "locationId": 1,
-    "insightId": "ins_3a7f1c2e",
-    "title": "Druckluft- und Hydrauliksysteme im Wochenend-Stillstand absenken",
-    "shortDescription": "Druckluft- und Hydrauliksysteme der Walzlinien werden am Wochenende auf vollem Betriebsdruck gehalten, obwohl kein Band verarbeitet wird.",
-    "description": "Die Wochenend-Grundlastanalyse für Werk Nord deutet darauf hin, dass Druckluft- und Hydrauliksysteme der Walzlinien durchgehend auf Produktionsdruck betrieben werden, auch wenn keine Bandverarbeitung stattfindet. Kompressoren und Hydraulikaggregate verbrauchen kontinuierlich Antriebsenergie für Leckage-Kompensation und Druckhaltefunktion. Durch die Implementierung von zeitgesteuerten Druckabsenkungen oder automatischen Standby-Schaltungen außerhalb der Produktionsfenster kann die Antriebsenergie dieser Systeme signifikant reduziert werden.",
-    "yearlySavingsRangeFrom": 7920,
-    "yearlySavingsRangeTo": 12320,
-    "investmentRangeFrom": 2000,
-    "investmentRangeTo": 8000,
+    "locationId": 0,
+    "insightId": "ins_c72f4b8e",
+    "title": "Instandhaltungskampagne zur Behebung energierelevanter Infrastrukturdegradation",
+    "shortDescription": "Progressive Effizienzeinbußen durch verschmutzte Wärmetauscher, Druckluftleckagen und Motorleistungsverluste akkumulieren sich schleichend in der Samstagnachmittag-Grundlast und erfordern eine gezielte Instandhaltungskampagne",
+    "description": "Ein wesentlicher Anteil des Langzeittrends von +508,7 kW/Jahr kann auf progressive Infrastrukturdegradation zurückzuführen sein: Verschmutzte Wärmetauscher im Kühlölkreislauf erhöhen den Pumpenbedarf für denselben Wärmeübergang; Druckluftleckagen im Kaltwalzwerk steigern den Verdichterbedarf kontinuierlich; Motoreffizienzeinbußen durch Lagerverschleiß, Wicklungsdegradation oder unzureichende Schmierung erhöhen den Strombedarf bei konstanter mechanischer Leistung. Diese Effekte sind einzeln schwer sichtbar, summieren sich aber über Jahre – auch am Samstagnachmittag, wenn Anlagen im Teillast- oder Bereitschaftsbetrieb laufen und Ineffizienzen nicht durch Produktionsdruck maskiert werden. Eine gezielte Instandhaltungskampagne mit Fokus auf energierelevante Messgrößen (Druckverluste, Wärmeübertragungskoeffizienten, Motorwirkungsgrade) adressiert diesen Anteil der Grundlasterhöhung systematisch und reduziert gleichzeitig die Ausfallwahrscheinlichkeit kritischer Aggregate. Im Kontext der ISO 50001-Zertifizierung können bestehende Energieleistungskennzahlen (EnPI) als Before-After-Referenz für den Wirksamkeitsnachweis genutzt werden.",
+    "yearlySavingsRangeFrom": 11000,
+    "yearlySavingsRangeTo": 18000,
+    "investmentRangeFrom": 20000,
+    "investmentRangeTo": 50000,
     "unit": "kWh",
-    "yearlySavingsEnergyRangeFrom": 45000,
-    "yearlySavingsEnergyRangeTo": 70000,
+    "yearlySavingsEnergyRangeFrom": 65000,
+    "yearlySavingsEnergyRangeTo": 100000,
     "evidences": [
-      "1.020 kW Differenz zwischen medianer und bester Wochenend-Grundlast; Druckluft- und Hydraulikantriebe decken typisch 15-25% der industriellen Grundlast ab",
-      "Wochenend-Zeitfenster umfasst ca. 19 Stunden/Woche (Sa 12-24 Uhr + So 00-06 Uhr + 15-16 Uhr) × 52 Wochen = ~988 Betriebsstunden/Jahr",
-      "Statistisches Gesamtpotenzial des Insights: 222.705 kWh/Jahr - Druckluftsysteme verantworten schätzungsweise 20-30% davon",
-      "Hydraulische Prozesse sind laut Unternehmensangaben explizit als Hauptverbraucher an Werk Nord (Walzprozesse) dokumentiert",
-      "Leckage-bedingte Grundlast von Druckluftsystemen beläuft sich in der Industrie typisch auf 20-30% der Kompressorleistung im Stillstand"
+      "Langzeittrend +17,2 %/Jahr ohne dokumentierte Produktionserweiterungen: Degradationsbedingte Mehrleistungsaufnahme bei gleichem Prozessoutput ist neben der Aggregatakkumulation die zweite zentrale Erklärungshypothese",
+      "Wärmetauscher in Walzöl- und Emulsionskühlung unterliegen Ablagerungsbildung; 10–20 % Wärmeübergangseinbußen erhöhen Pumpenlaufzeiten und -leistung nachweisbar – typische Reinigungszyklen von 2–3 Jahren werden in energieintensiven Betrieben oft überschritten",
+      "Druckluftleckagen in Kaltwalzwerken verursachen branchenüblich 20–30 % Leckageverluste; bereits 10 kW unkompensierte Leckageleistung erzeugen 4.680 kWh Mehrbedarf allein im Samstagnachmittag-Cluster (468 h/Jahr)",
+      "Einsparpotenzial 65.000–100.000 kWh/Jahr entspricht 27–42 % des jährlichen Drifts – realistisch bei gezielter Sanierung von 3–5 Teilsystemen (Wärmetauscher-Reinigung, Leckage-Behebung, 2–3 Motorentausch/-instandsetzung)",
+      "Bei 0,176 €/kWh ergibt sich 11.000–18.000 €/Jahr; Amortisation bei Investition von 20.000–50.000 € in ca. 29 Monaten – innerhalb des für ISO 50001-Investitionen typischen Rahmens"
     ],
-    "amortisationPeriodInMonths": 6,
-    "reasoning": "Druckluft- und Hydrauliksysteme sind in Walzwerken bekannte Grundlasttreiber, da sie auch im Stillstand Energie für Leckagekompensation und Druckhaltefunktion verbrauchen. Die Maßnahme erfordert primär eine Anpassung der Zeitsteuerung oder SPS-Logik und ist damit eine klassische 'Low-Hanging-Fruit'-Optimierung mit sehr kurzer Amortisationszeit.",
-    "confidence": 75,
-    "category": "PRESSURIZED_AIR",
-    "investmentType": "NO_INTENSITY",
-    "effortLevel": "LOW"
-  },
-  {
-    "locationId": 1,
-    "insightId": "ins_3a7f1c2e",
-    "title": "Dampferzeuger-Teillastbetrieb an Wochenenden implementieren",
-    "shortDescription": "Die Dampferzeugung für Beizprozesse wird am Wochenende nicht auf den tatsächlichen Bedarf abgesenkt, was zu unnötigem Energieverbrauch führt.",
-    "description": "Werk Nord betreibt gasbefeuerte Dampferzeuger primär zur Aufheizung der Säurebäder in den Beizlinien. An Wochenenden, wenn die Beizlinien nicht aktiv produzieren, wird die Dampfproduktion offenbar nicht entsprechend gedrosselt - Kessel-Hilfsaggregate (Speisewasserpumpen, Brennluftgebläse, Kondensatpumpen) laufen auf oder nahe Produktionslast und verursachen einen unnötigen elektrischen Grundverbrauch. Durch die Einführung eines definierten Wochenend-Teillastbetriebs mit reduzierten Dampfdrücken und automatischer Abschaltung nicht benötigter Kessel können sowohl der elektrische als auch der thermische Energieverbrauch signifikant gesenkt werden.",
-    "yearlySavingsRangeFrom": 7040,
-    "yearlySavingsRangeTo": 10560,
-    "investmentRangeFrom": 5000,
-    "investmentRangeTo": 15000,
-    "unit": "kWh",
-    "yearlySavingsEnergyRangeFrom": 40000,
-    "yearlySavingsEnergyRangeTo": 60000,
-    "evidences": [
-      "Dampferzeugung (Dampferzeugung für Beizprozesse) ist laut Unternehmensangaben der Hauptgasverbrauch an Werk Nord - die zugehörigen Hilfsaggregate sind relevante Stromverbraucher",
-      "Wochenend-Grundlastdifferenz von 1.020 kW über ~988 Stunden/Jahr = statistisches Potenzial von 222.705 kWh; Dampferzeuger-Hilfssysteme decken schätzungsweise ~18-27% davon ab",
-      "Intermittierendes Auftreten der Best-Practice-Grundlast (5.160 kW) zeigt, dass die Anlage prinzipiell in der Lage ist, diese Lastreduktion zu realisieren - sie wird nur nicht systematisch umgesetzt",
-      "Evidence Reliability Score: 0,9685 - statistisch sehr belastbare Identifikation der Grundlastlücke",
-      "Kesselwirkungsgrade sinken bei Teillastbetrieb ohne aktive Regelung - unnötige Brenner-Taktungen erhöhen den Hilfsstrombedarf der Hilfsaggregate"
+    "amortisationPeriodInMonths": 29,
+    "reasoning": "Infrastrukturdegradation ist in energieintensiven Walzbetrieben eine anerkannte, aber oft unterschätzte Verbrauchsquelle, da die Einzeleffekte gering und räumlich verteilt sind. Der gleichmäßig kontinuierliche Charakter des Langzeittrends – ohne erkennbare Sprünge durch Anlagenzugänge – stützt diese Hypothese komplementär zur Aggregatakkumulation. Als ISO 50001-zertifizierter Betrieb verfügt Wälzholz über definierte EnPI-Kennzahlen, die eine strukturierte Before-After-Bewertung der Instandhaltungsmaßnahmen ermöglichen und den Wirksamkeitsnachweis für das nächste Audit sicherstellen. Die Maßnahme erzielt doppelten Nutzen: Energieeinsparung und Reduktion ungeplanter Ausfälle durch frühzeitige Behebung altersbedingter Degradation.",
+    "questions": [
+      {
+        "question": "Wann wurden Wärmetauscher im Kühlöl- und Emulsionskreislauf des Kaltwalzwerks Bandstahlstraße zuletzt gereinigt oder geprüft?",
+        "suggestedAnswers": [
+          {
+            "answer": "Innerhalb der letzten 12 Monate (planmäßige Wartung nach Wartungsplan)"
+          },
+          {
+            "answer": "Vor 1–3 Jahren (außerplanmäßig oder nach Störung)"
+          },
+          {
+            "answer": "Keine systematische Reinigung – nur reaktiv bei messbarem Leistungsabfall"
+          },
+          {
+            "answer": "Unbekannt – Dokumentation lückenhaft oder nicht zentral verfügbar"
+          }
+        ]
+      },
+      {
+        "question": "Wurde zuletzt ein umfassendes Druckluft-Leckage-Audit am Standort Bandstahlstraße durchgeführt?",
+        "suggestedAnswers": [
+          {
+            "answer": "Ja, innerhalb der letzten 24 Monate mit dokumentierten Ergebnissen und Behebungsmaßnahmen"
+          },
+          {
+            "answer": "Nein, letztes Audit liegt mehr als 3 Jahre zurück"
+          },
+          {
+            "answer": "Kein formales Audit – Leckagen werden nur bei Sichtbarkeit oder Druckabfall behoben"
+          },
+          {
+            "answer": "Druckluftleckagen sind bekannt, aber bisher nicht systematisch quantifiziert oder bewertet"
+          }
+        ]
+      },
+      {
+        "question": "Gibt es am Standort eine gepflegte Motordatenbank mit Betriebsstunden, Nennwirkungsgraden und letzten Wartungsdaten für die energierelevanten Hilfsantriebe?",
+        "suggestedAnswers": [
+          {
+            "answer": "Ja, vollständig im Instandhaltungsmanagementsystem (z. B. SAP PM) erfasst und aktuell"
+          },
+          {
+            "answer": "Teilweise – kritische Produktionsantriebe sind erfasst, Hilfsaggregate nicht vollständig"
+          },
+          {
+            "answer": "Nein, Motordaten werden nur bei Austausch oder nach Ausfall dokumentiert"
+          },
+          {
+            "answer": "Datenbank existiert, wird aber nicht systematisch für Energieplanung oder -kennzahlen genutzt"
+          }
+        ]
+      }
     ],
-    "amortisationPeriodInMonths": 14,
-    "reasoning": "Die Dampferzeugungs-Infrastruktur ist ein systemischer Energieverbraucher, dessen Wochenend-Betriebsverhalten starken Einfluss auf die Grundlast hat. Da Beizprozesse am Wochenende typischerweise pausieren, besteht ein klar abgrenzbares Einsparpotenzial durch Teillastprogramme.",
     "confidence": 72,
-    "category": "HEATING",
-    "investmentType": "MEDIUM_INTENSITY",
-    "effortLevel": "MEDIUM"
-  },
-  {
-    "locationId": 1,
-    "insightId": "ins_9b4e2d7a",
-    "title": "Echtzeit-Energiemonitoring und Frühwarnsystem einführen",
-    "shortDescription": "Unerkannte 7-tägige Verbrauchsanomalie von +661,5 kW (5,6%) zeigt fehlende automatische Abweichungserkennung",
-    "description": "Zwischen dem 8. und 14. September 2025 lag der Verbrauch von Werk Nord dauerhaft 661,5 kW über dem Regimebasiswert - ein Exzess von 111.132 kWh im Wert von ca. 19.559 € - ohne dass dies durch konventionelle Betriebskontrollen erkannt wurde. Die Abweichung begann abrupt und hielt über die gesamte Woche an, was auf eine systemische Zustandsveränderung hindeutet, nicht auf einen transienten Fehler. Durch die Implementierung eines automatisierten Energiemanagementsystems mit konfigurierbaren Schwellenwerten (z. B. >3-5% Abweichung vom Baseline über mehr als 12 Stunden) kann eine solche Anomalie innerhalb von 24-48 Stunden erkannt und behoben werden.",
-    "yearlySavingsRangeFrom": 20000,
-    "yearlySavingsRangeTo": 40000,
-    "investmentRangeFrom": 8000,
-    "investmentRangeTo": 20000,
-    "unit": "kWh",
-    "yearlySavingsEnergyRangeFrom": 120000,
-    "yearlySavingsEnergyRangeTo": 240000,
-    "evidences": [
-      "Anomalie vom 08.-14.09.2025: mittlere Abweichung +661,5 kW über 168 Stunden = 111.132 kWh Exzessverbrauch (ca. 19.559 € bei 0,176 €/kWh)",
-      "Die Abweichung betrug durchgängig +5,57% gegenüber dem Basiswert von 11.882,3 kW - eine Größenordnung, die durch einen einfachen Prozentual-Alarm hätte erkannt werden können",
-      "73% aller Anomalietage sind laut Analyse unabhängig von Anfahrt-/Abfahrtereignissen, d. h. sie sind nur durch kontinuierliches Energiemonitoring erkennbar",
-      "Frühzeitige Erkennung nach max. 2 Tagen würde 5 von 7 Exzesstagen einsparen: 661,5 kW × 5 Tage × 24 h = 79.380 kWh pro Ereignis = ca. 13.971 €",
-      "Bei 2-3 Ereignissen pro Jahr ergibt sich ein Einsparpotenzial von 158.760-238.140 kWh/Jahr (ca. 27.942-41.913 €/Jahr)"
-    ],
-    "amortisationPeriodInMonths": 6,
-    "reasoning": "Werk Nord betreibt energieintensive Prozesse (Walzen, Glühen, Beizen, Dampferzeugung) im 3-Schicht-Betrieb mit einem Basislastprofil von ~11.882 kW. Eine unerkannte Wochenanomalie in dieser Größenordnung ist ein klares Signal für fehlendes automatisiertes Monitoring.",
-    "confidence": 65,
     "category": "OTHER",
-    "investmentType": "MEDIUM_INTENSITY",
-    "effortLevel": "MEDIUM"
+    "investmentType": "HIGH_INTENSITY",
+    "effortLevel": "HIGH"
   },
   {
     "locationId": 1,
-    "insightId": "ins_9b4e2d7a",
-    "title": "Dampferzeugungs- und Säureheizanlage auf Fehlfunktionen und Driften untersuchen",
-    "shortDescription": "Mögliche stille Fehlfunktion im Dampf- oder Säureheizungssystem verursachte 7-tägigen Exzessverbrauch von 111.132 kWh",
-    "description": "Die wahrscheinlichste technische Ursache für die Anomalie vom 08.-14. September 2025 ist ein Fehler oder eine Drift im Dampferzeugungssystem (Gaskessel) oder im säurebeheizten Beizsystem, der sich über die gesamte Woche ohne Prozessalarm manifestierte. Solche Fehler - z. B. defekte Regelventile, verschlissene Brennereinstellungen, fehlerhafte Wärmetauscher oder nicht funktionierende Rücklaufregelung - erhöhen den Energiebedarf kontinuierlich und graduell, ohne unmittelbar die Produktionsqualität zu beeinträchtigen.",
-    "yearlySavingsRangeFrom": 10000,
+    "insightId": "ins_d0f93a51",
+    "title": "Strukturiertes Abschaltprogramm für Hilfssysteme am Wochenende einführen",
+    "shortDescription": "Am Standort Buschmühlenstraße liegt die Grundlast zwischen Samstag 12 Uhr und Sonntag 6 Uhr dauerhaft 1.020 kW über dem Bestwert – fehlende Abschaltroutinen für Hydraulik, Druckluft und Kühlwasser verursachen €39.196/Jahr strukturellen Mehrverbrauch",
+    "description": "Die statistische Analyse identifiziert am Standort Buschmühlenstraße – mit ca. 97 GWh/Jahr der größte Standort des Unternehmens – einen strukturellen Mehrverbrauch von 1.020 kW (19,8 %) im Zeitfenster Samstag 12:00–24:00 Uhr sowie Sonntag 00:00–06:00 Uhr und 15:00–16:00 Uhr (19 Stunden/Woche). Der Medianverbrauch beträgt in diesem Cluster 6.180 kW gegenüber einem beobachteten Bestwert von 5.160 kW. Das Muster tritt ganzjährig und ohne saisonale Entlastung auf – ein starkes Indiz dafür, dass Hilfssysteme der Kaltwalzstraßen (Hydraulikversorgung, Druckluftversorgung, Kühlwasserkreisläufe) ohne formales Abschaltverfahren weiterlaufen, obwohl kein aktiver Walzprozess stattfindet. Durch Einführung einer dokumentierten Abschaltroutine mit klaren Zuständigkeiten, Schritt-für-Schritt-Checkliste und Freigabeprotokoll können diese Nebenaggregate in einen energiesparenden Bereitschaftsbetrieb überführt werden. Ergänzend weist ein gekoppelter Anomalie-Befund auf 386 anomale Ereignisse pro Jahr in demselben Zeitfenster hin (+€34.964/Jahr), sodass das kombinierte Optimierungspotenzial bei rund €74.160/Jahr liegt.",
+    "yearlySavingsRangeFrom": 14000,
     "yearlySavingsRangeTo": 20000,
-    "investmentRangeFrom": 5000,
-    "investmentRangeTo": 15000,
-    "unit": "kWh",
-    "yearlySavingsEnergyRangeFrom": 55000,
-    "yearlySavingsEnergyRangeTo": 111000,
-    "evidences": [
-      "Anomalie vom 08.-14.09.2025 akkumulierte 111.132 kWh Exzessverbrauch (661,5 kW über 7 × 24 h = 168 h), Wert: ~19.559 €",
-      "Das Profil zeigt kein graduelles Ansteigen und keine schnelle Erholung - charakteristisch für einen anhaltenden Systemfehler, nicht für eine Produktionsspitze",
-      "Laut Unternehmensangaben ist Dampferzeugung via Gaskessel (für Säureaufheizung) und Glühprozesse der Hauptverbraucher bei Werk Nord",
-      "Hypothese 1 der statistischen Analyse benennt explizit 'Fehler oder Drift in der Dampferzeugungs- oder Säureheizungsanlage' als wahrscheinlichste Ursache",
-      "Konservativ: Verhinderung von 1 ähnlichem Ereignis pro Jahr = 55.000-111.000 kWh/Jahr Einsparung (ca. 10.000-20.000 € bei 0,176 €/kWh)"
-    ],
-    "amortisationPeriodInMonths": 8,
-    "reasoning": "Dampferzeugungs- und Beizanlagen mit gas- oder dampfbeheizten Säurebädern sind bekannte Quellen für stille Effizienzverluste, da Regelventile und Wärmetauscher schleichend degradieren ohne unmittelbar Alarme auszulösen.",
-    "confidence": 60,
-    "category": "HEATING",
-    "investmentType": "MEDIUM_INTENSITY",
-    "effortLevel": "MEDIUM"
-  },
-  {
-    "locationId": 1,
-    "insightId": "ins_9b4e2d7a",
-    "title": "Standardprotokoll für Hilfssysteme nach Wartungseingriffen einführen",
-    "shortDescription": "Fehlende Rücksetz-Prozedur für Kühl- und Lüftungsanlagen nach Wartung kann mehrtägige Verbrauchsanomalien verursachen",
-    "description": "Eine weitere plausible Ursache für die 7-tägige Anomalie ist, dass nach einem Wartungseingriff Anfang September 2025 Hilfsaggregate - wie Kühlwasserpumpen, Hallenbelüftung oder Kühleinheiten - in einem energieintensiven Konfigurationszustand verblieben. Ohne standardisierte Post-Maintenance-Checkliste werden solche Zustände oft erst nach Tagen bemerkt, da die betroffenen Systeme weiterhin normal zu funktionieren scheinen.",
-    "yearlySavingsRangeFrom": 8000,
-    "yearlySavingsRangeTo": 20000,
-    "investmentRangeFrom": 500,
-    "investmentRangeTo": 2000,
-    "unit": "kWh",
-    "yearlySavingsEnergyRangeFrom": 45000,
-    "yearlySavingsEnergyRangeTo": 111000,
-    "evidences": [
-      "Anomaliedauer: 7 aufeinanderfolgende Tage mit stabiler Überhöhung von 661,5 kW - kein gradueller Anlauf, kein Rückgang: typisch für vergessene Systemkonfiguration, nicht für Lasterhöhung",
-      "Die Analyse benennt explizit 'Hilfskühl- oder Lüftungssysteme in Hochlastkonfiguration nach Wartung' als Hypothese für die Anomalie",
-      "73% der Anomalietage im Werk sind unabhängig von An-/Abfahrprozessen - organisatorische Maßnahmen haben hier das größte Hebelwirkungspotenzial",
-      "111.132 kWh Exzessenergie (19.559 €) für eine einzige Woche zeigen, dass auch ein verhältnismäßig kleines Fehlkonfigurationsereignis erhebliche Kostenfolgen hat",
-      "Investition von 500-2.000 € für Dokumentation und Schulung vs. Einsparpotenzial von 8.000-20.000 €/Jahr: Amortisation in ca. 1 Monat"
-    ],
-    "amortisationPeriodInMonths": 1,
-    "reasoning": "Organisatorische Maßnahmen wie Checklisten und Post-Maintenance-Protokolle sind in der Stahl- und Metallverarbeitung etablierte, niedriginvestive Best Practices. Die Maßnahme kann kurzfristig ohne Investitionen implementiert werden und erzeugt unmittelbar messbaren Nutzen.",
-    "confidence": 55,
-    "category": "OTHER",
-    "investmentType": "NO_INTENSITY",
-    "effortLevel": "LOW"
-  },
-  {
-    "locationId": 2,
-    "insightId": "ins_c5f8a031",
-    "title": "Standby-Regelung für Glühlinien-Aggregate an Wochenend-Stillstandzeiten",
-    "shortDescription": "Bandantriebe, Ventilatoren und Pumpen der Glühlinie laufen an Wochenendmorgen auf nahezu Produktionsniveau weiter, obwohl kein Band verarbeitet wird",
-    "description": "Die Analyse zeigt, dass der Werk-Süd-Standort an Wochenendmorgen (Sa 04:00-09:00, So 06:00-11:00) mit einem Median-Leistungsbezug von 4.005 kW betrieben wird - obwohl die beste beobachtete Leistung in diesem Zeitfenster nur 1.398 kW beträgt. Ein wesentlicher Treiber ist, dass die elektrischen Nebenaggregate der Glühlinie (Bandantrieb, Ventilatoren, Pumpen) nicht auf einen definierten Standby-Sollwert heruntergeregelt werden, wenn kein aktiver Produktionslauf stattfindet.",
-    "yearlySavingsRangeFrom": 26400,
-    "yearlySavingsRangeTo": 38720,
     "investmentRangeFrom": 2000,
     "investmentRangeTo": 6000,
     "unit": "kWh",
-    "yearlySavingsEnergyRangeFrom": 150000,
-    "yearlySavingsEnergyRangeTo": 220000,
+    "yearlySavingsEnergyRangeFrom": 80000,
+    "yearlySavingsEnergyRangeTo": 114000,
     "evidences": [
-      "Median-Leistungsbezug im Wochenend-Fenster: 4.005 kW vs. beste beobachtete Leistung 1.398 kW - Delta 2.606 kW (186% über Best-Observed)",
-      "Gesamtpotenzial laut statistischer Analyse: 496.165 kWh/Jahr bzw. 87.325 EUR/Jahr; Glühlinien-Nebenaggregate (Bandantrieb, Ventilatoren, Pumpen) sind der Haupt-Stromverbraucher am Standort laut Kundenbeschreibung",
-      "Histogramm-Spreizung von ca. 1.400 kW bis über 9.000 kW im selben Zeitfenster zeigt: vollständiges Abschalten wird gelegentlich bereits erreicht - fehlt nur die Systematik",
-      "Zeitfenster Sa 04:00-09:00 und So 06:00-11:00 (je 5 h × 52 Wochen = 520 Stunden/Jahr) mit durchschnittlicher Differenz von ~1.300 kW",
-      "Zuverlässigkeitsscore der Analyse: 0,92 - hohe Evidenzqualität der statistischen Grundlage"
+      "SC0 'Weekend Afternoon (High)': Medianverbrauch 6.180 kW vs. Basiswert 5.160 kW – strukturelle Differenz 1.020 kW (19,8 %) über 19 Stunden/Woche, ganzjährig stabil (kein saisonaler Ausgleich)",
+      "Statistisches Einsparpotenzial: 222.705 kWh/Jahr = €39.196/Jahr aus dem strukturellen Mehrverbrauch; statistische Konfidenz 96,85 %",
+      "Kombiniertes Potenzial mit Anomalie-Befund (386 anomale Ereignisse/Jahr, 10,16 Ereignisse/Woche): €74.160/Jahr in diesem Wochenend-Zeitfenster",
+      "Standort mit ca. 97 GWh Jahresverbrauch ist der größte Einzelstandort des Unternehmens – der strukturelle Gap von 222.705 kWh entspricht 0,23 % des Gesamtverbrauchs und ist allein durch operative Maßnahmen adressierbar",
+      "Schätzung erreichbarer Anteil: 80.000–114.000 kWh/Jahr durch Abschalten von Hydraulik, Druckluft und Kühlwasser in produktionsfreien Stunden (ca. 50–70 % Realisierungsgrad auf den operativen Anteil des Gaps)"
     ],
-    "amortisationPeriodInMonths": 2,
-    "reasoning": "Standby-Prozeduren für Ventilatoren und Pumpen sind bewährte Maßnahmen in der Stahlindustrie und erfordern keine Kapitalinvestitionen in neue Anlagen, sondern lediglich eine Anpassung von Betriebsanweisungen und ggf. kleiner SPS-Parameteränderungen.",
+    "amortisationPeriodInMonths": 3,
+    "reasoning": "Das ganzjährig stabile Strukturmuster ohne saisonale Schwankungen ist ein starkes Indiz dafür, dass der Mehrverbrauch nicht auf Produktionsaktivitäten, sondern auf das Fehlen formaler Abschaltroutinen zurückzuführen ist. Da Wälzholz bereits ISO 50001 zertifiziert ist, kann eine formale Abschaltroutine direkt in das bestehende Energiemanagementsystem integriert werden – ohne nennenswerte Investition. Der sehr kurze Amortisationszeitraum von ca. 3 Monaten macht diese Maßnahme zur attraktivsten Sofortmaßnahme am Standort.",
+    "questions": [
+      {
+        "question": "Sind die Kaltwalzanlagen und deren Hydrauliksysteme am Samstagabend und in der Nacht auf Sonntag typischerweise noch in Betrieb oder bereits stillgesetzt?",
+        "suggestedAnswers": [
+          {
+            "answer": "Walzbetrieb endet gegen 18 Uhr Samstag, Hydraulik bleibt aber auf Betriebsdruck"
+          },
+          {
+            "answer": "Durchgehender Schichtbetrieb bis Sonntagfrüh – Walzanlage läuft"
+          },
+          {
+            "answer": "Anlage steht; nur Notkühlsysteme bleiben aktiv"
+          },
+          {
+            "answer": "Situationsabhängig – kein einheitliches Abschaltverfahren vorhanden"
+          }
+        ]
+      },
+      {
+        "question": "Gibt es eine dokumentierte Abschaltroutine für Hydraulik, Druckluft und Kühlwasser an Wochenenden?",
+        "suggestedAnswers": [
+          {
+            "answer": "Nein – Entscheidung liegt beim Schichtführer"
+          },
+          {
+            "answer": "Ja, aber wird nicht konsequent eingehalten"
+          },
+          {
+            "answer": "Teilweise – für einzelne Aggregate, nicht systematisch"
+          },
+          {
+            "answer": "Abschalten ist aus Sicherheitsgründen nicht vorgesehen"
+          }
+        ]
+      },
+      {
+        "question": "Welche Mindestlast ist für Sicherheits- und Bereitschaftssysteme außerhalb der Produktionszeiten am Standort technisch erforderlich?",
+        "suggestedAnswers": [
+          {
+            "answer": "Unter 3.500 kW (Gebäude, Beleuchtung, Notversorgung)"
+          },
+          {
+            "answer": "3.500–4.500 kW (inkl. Kühlkreisläufe für empfindliche Anlagen)"
+          },
+          {
+            "answer": "Über 4.500 kW – mehrere Aggregate müssen betriebswarm bleiben"
+          },
+          {
+            "answer": "Bisher nicht definiert – technische Prüfung erforderlich"
+          }
+        ]
+      },
+      {
+        "question": "Wie lange dauert das Wiederanfahren der Hilfssysteme nach Wochenend-Bereitschaftsbetrieb bis zur vollen Produktionsbereitschaft?",
+        "suggestedAnswers": [
+          {
+            "answer": "Unter 30 Minuten – kein Einfluss auf Montagsproduktion"
+          },
+          {
+            "answer": "30 Minuten bis 2 Stunden – Montags-Anlauf muss entsprechend früher starten"
+          },
+          {
+            "answer": "Über 2 Stunden – kritisch für Produktionsplanung"
+          },
+          {
+            "answer": "Abhängig vom Aggregat – bisher nicht systematisch erfasst"
+          }
+        ]
+      }
+    ],
     "confidence": 82,
     "category": "OTHER",
     "investmentType": "NO_INTENSITY",
     "effortLevel": "LOW"
   },
   {
-    "locationId": 2,
-    "insightId": "ins_c5f8a031",
-    "title": "Strukturierter Anlaufplan für Walz- und Schneidantriebe am Wochenende",
-    "shortDescription": "Walz- und Schneidantriebe (inkl. Hydraulik) bleiben über das Wochenende dauerhaft aufgeheizt und unter Last, weil ein geplanter Kalt-Anlauf bislang nicht vorgesehen ist",
-    "description": "Neben den Glühlinien-Aggregaten tragen die Walz- und Schneidantriebe mit ihren Hydrauliksystemen erheblich zur überhöhten Wochenend-Grundlast bei. Um lange Aufwärmzeiten zu vermeiden, werden diese Antriebe typischerweise nicht vollständig abgeschaltet, sondern über das gesamte Wochenende auf Betriebstemperatur gehalten. Durch die Einführung eines Anlauf-Zeitplans - beispielsweise automatisches Aufheizen der Hydraulik 2-3 Stunden vor dem ersten Produktionsauftrag Montag frühmorgens - können die Antriebe samstags nach Produktionsende vollständig abgeschaltet werden.",
-    "yearlySavingsRangeFrom": 14080,
-    "yearlySavingsRangeTo": 22880,
+    "locationId": 1,
+    "insightId": "ins_d0f93a51",
+    "title": "Wochenend-Bereitschaftsmodus für Durchlaufglühofen und Beschichtungsanlage implementieren",
+    "shortDescription": "Thermische Prozessanlagen (180-m-Durchlaufglühofen, Beschichtungsbäder) verbleiben am Wochenende auf Produktions-Sollwerten – eine automatisierte Sollwertabsenkung in der Prozessleittechnik adressiert den thermisch getriebenen Anteil des strukturellen 1.020-kW-Gaps",
+    "description": "Der strukturelle Mehrverbrauch von 1.020 kW im Zeitfenster Samstag 12:00–24:00 Uhr und Sonntag 00:00–06:00 Uhr am Standort Buschmühlenstraße wird neben mechanischen Hilfssystemen wesentlich durch thermische Prozessanlagen getrieben. Der 180-Meter-Durchlaufglühofen mit integrierter Beschichtungstechnologie sowie die elektrochemischen und chemischen Prozessketten der Oberflächenbeschichtung benötigen während produktionsloser Wochenendstunden eine Grundtemperaturhaltung – jedoch nicht zwingend auf Produktionsniveau. Durch Implementierung eines wochenend-spezifischen Bereitschaftsmodus in der Prozessleittechnik (reduzierte Ofentemperatur, minimaler Schutzgasfluss, abgesenkte Badheizkurven) kann der thermisch bedingte Anteil des strukturellen Mehrverbrauchs automatisch und reproduzierbar gesenkt werden. Die einmalige Programmierung eines Wochenend-Fahrplans in der SPS-Steuerung erfordert moderate Investitionen in die Automatisierung, spart danach jedoch dauerhaft und ohne operativen Mehraufwand Energie.",
+    "yearlySavingsRangeFrom": 11000,
+    "yearlySavingsRangeTo": 17000,
     "investmentRangeFrom": 15000,
     "investmentRangeTo": 35000,
     "unit": "kWh",
-    "yearlySavingsEnergyRangeFrom": 80000,
-    "yearlySavingsEnergyRangeTo": 130000,
+    "yearlySavingsEnergyRangeFrom": 63000,
+    "yearlySavingsEnergyRangeTo": 96000,
     "evidences": [
-      "Gesamtlücke zwischen Median (4.005 kW) und Best-Observed (1.398 kW): 2.606 kW - Walz-/Hydraulikantriebe sind laut Kundenbeschreibung ein Hauptverbraucher neben der Glühlinie",
-      "Zeitfenster Sa 04:00-09:00 und So 06:00-11:00 (520 h/Jahr): 520 h × ~650 kW (geschätzter Anteil Walzantriebe) × 60% Realisierungsgrad = ca. 202.800 kWh/Jahr Bruttopotenzial",
-      "Historisches Best-Observed von 1.398 kW belegt, dass vollständiges Abschalten an bestimmten Wochenenden bereits gelingt - systematische Umsetzung würde diesen Zustand reproduzierbar machen",
-      "Investition in Leittechnik-Anpassung (Anlaufplanung, automatische Hydraulik-Vorwärmung) amortisiert sich bei 14.000-23.000 EUR/Jahr Einsparung innerhalb von 9-18 Monaten",
-      "Evidence-Reliability-Score der statistischen Grundlage: 0,92 - sehr hohe Verlässlichkeit der Analyse"
+      "Struktureller Gap 1.020 kW über 19 Stunden/Woche = 222.705 kWh/Jahr statistisch bestimmtes Gesamtpotenzial; thermische Anlagen tragen erfahrungsgemäß 30–50 % der industriellen Wochenend-Grundlast-Überhöhung bei",
+      "Kein saisonaler Ausgleich: ganzjährig stabiles Muster – charakteristisch für thermisch dominierte Lasten mit konstant gehaltenen Sollwerten unabhängig vom Materialfluss",
+      "Bereitschaftsbetrieb von Durchlaufglühöfen erlaubt Temperaturabsenkung von 50–200 °C je nach Stahlsorte, was typischerweise 10–20 % Energieeinsparung im Haltefenster bedeutet",
+      "Schätzung erreichbarer Anteil: 63.000–96.000 kWh/Jahr durch Absenkung von Ofentemperatur, Schutzgasfluss und Badheizkurven auf Bereitschaftsniveau (ca. 28–43 % des statistischen Gesamtpotenzials)",
+      "Statistische Konfidenz 96,85 %: Das Muster ist hochgradig reproduzierbar und tritt in nahezu jedem Wochenend-Zeitfenster auf – Grundlage für verlässliche Einsparprognose"
+    ],
+    "amortisationPeriodInMonths": 21,
+    "reasoning": "Thermische Prozessanlagen wie Durchlaufglühöfen verbrauchen im Haltebetrieb unverhältnismäßig hohe Energiemengen, da Wärmeverluste proportional zur Temperaturdifferenz zur Umgebung anfallen – unabhängig davon, ob Material prozessiert wird. Eine wochenend-spezifische Sollwertabsenkung ist in ISO-50001-zertifizierten Stahlwerken eine etablierte Maßnahme mit messbarem Effekt. Die einmalige Investition in die PLT-Programmierung amortisiert sich bei diesem Einsparvolumen in ca. 21 Monaten und ist danach dauerhaft ertragswirksam.",
+    "questions": [
+      {
+        "question": "Auf welche Mindesttemperatur kann der 180-m-Durchlaufglühofen am Wochenende ohne Anlage- oder Auskleidungsschäden abgesenkt werden?",
+        "suggestedAnswers": [
+          {
+            "answer": "Unter 300 °C – Wiederaufheizzeit unter 2 Stunden akzeptabel"
+          },
+          {
+            "answer": "300–600 °C – Ofenauskleidung muss thermisch stabilisiert bleiben"
+          },
+          {
+            "answer": "Über 600 °C – Anlage darf nicht unter Prozesstemperatur fallen"
+          },
+          {
+            "answer": "Unbekannt – technische Prüfung mit Anlagenbauer erforderlich"
+          }
+        ]
+      },
+      {
+        "question": "Können die Beschichtungsbäder (chemisch/elektrochemisch) am Wochenende auf eine reduzierte Bereitschaftstemperatur abgesenkt werden?",
+        "suggestedAnswers": [
+          {
+            "answer": "Ja – Bäder können auf Bereitschaftstemperatur (–20 bis –40 °C) abgesenkt werden"
+          },
+          {
+            "answer": "Nein – Badbeschaffenheit erfordert konstante Temperaturhaltung auf Produktionsniveau"
+          },
+          {
+            "answer": "Sporadische Wochenendproduktion verhindert systematisches Absenken"
+          },
+          {
+            "answer": "Variiert je nach Produktlinie und Auftragsbestand"
+          }
+        ]
+      },
+      {
+        "question": "Unterstützt das vorhandene Prozessleitsystem (PLT/SPS) eine automatische, wochenendspezifische Sollwertabsenkung ohne manuelle Eingriffe?",
+        "suggestedAnswers": [
+          {
+            "answer": "Ja – Wochenend-Fahrpläne können direkt im System hinterlegt werden"
+          },
+          {
+            "answer": "Teilweise – manuelle Freigabe durch Schichtpersonal erforderlich"
+          },
+          {
+            "answer": "Nachrüstung der Steuerung notwendig (Schätzung: 3–6 Monate Vorlauf)"
+          },
+          {
+            "answer": "Nicht bekannt – Systemprüfung mit dem Automatisierungsteam notwendig"
+          }
+        ]
+      },
+      {
+        "question": "Gibt es produktionstechnische Gründe, warum am Samstagabend oder in der Nacht auf Sonntag noch Glüh- oder Beschichtungskapazität auf Produktionsniveau benötigt wird?",
+        "suggestedAnswers": [
+          {
+            "answer": "Nein – Wochenendproduktion endet regulär vor 18 Uhr Samstag"
+          },
+          {
+            "answer": "Ja – Eilaufträge erfordern gelegentlich Wochenend-Schichten"
+          },
+          {
+            "answer": "Selten und unvorhersehbar – kein verlässlicher Produktionskalender für Wochenenden"
+          },
+          {
+            "answer": "Ofen läuft durch aus thermischer Trägheit, aber kein aktiver Produktionsprozess"
+          }
+        ]
+      }
+    ],
+    "confidence": 75,
+    "category": "OTHER",
+    "investmentType": "MEDIUM_INTENSITY",
+    "effortLevel": "MEDIUM"
+  },
+  {
+    "locationId": 1,
+    "insightId": "ins_e3c2bd7f",
+    "title": "Sonntagsnachmittag-Grundlast durch strukturiertes Abschaltprotokoll reduzieren",
+    "shortDescription": "Der Verbrauch am Sonntagnachmittag liegt strukturell 34 % über dem nachgewiesenen Tiefstwert (6.360 kW Median vs. 4.740 kW Baseline) — ein konsistentes Muster, das auf nicht bedarfsgerecht abgeschaltete Hilfssysteme hindeutet.",
+    "description": "Die statistische Analyse zeigt, dass die Buschmühlenstraße am Sonntagnachmittag (12:00–15:00 und 16:00–22:00 Uhr) einen Median-Verbrauch von 6.360 kW aufweist, obwohl ein nachgewiesener Tiefstwert von 4.740 kW an anderen Sonntagen bereits erreicht wurde. Die 1.620 kW-Lücke (34,2 %) deutet auf automatische Wiederanlaufsequenzen von Kühlsystemen, Druckluftanlagen oder Hallenlüftungen hin, die sich unabhängig vom tatsächlichen Produktionsbedarf aktivieren. Auffällig ist, dass die Sonntagsbaseline (4.740 kW) sogar 420 kW unter der Samstagbaseline (5.160 kW) liegt — der Standort ist sonntags grundsätzlich in der Lage, niedrigere Lasten zu erreichen, tut dies jedoch am Nachmittag strukturell nicht. Als erster Schritt sollten klare Abschalt- und Betriebsprotokolle für Sonntagnachmittage eingeführt werden, die festlegen, welche Systeme wann deaktiviert bleiben können und ab welchem Zeitpunkt eine Anlaufvorbereitung für den Montag tatsächlich erforderlich ist. Als ISO 50001-zertifizierter Betrieb bietet Wälzholz bereits die organisatorische Grundlage für solche Energiebetriebsprozeduren.",
+    "yearlySavingsRangeFrom": 13200,
+    "yearlySavingsRangeTo": 15840,
+    "investmentRangeFrom": 1000,
+    "investmentRangeTo": 3000,
+    "unit": "kWh",
+    "yearlySavingsEnergyRangeFrom": 75000,
+    "yearlySavingsEnergyRangeTo": 90000,
+    "evidences": [
+      "Sonntagnachmittag-Median: 6.360 kW vs. nachgewiesene Baseline: 4.740 kW → 1.620 kW Überschuss (34,2 %)",
+      "Sub-Cluster SC1 deckt 9 Stunden/Woche ab (12:00–15:00 und 16:00–22:00 Uhr sonntags) — statistisch stabil und eigenständig gegenüber dem Samstags-Cluster SC0",
+      "Die Sonntags-Baseline (4.740 kW) liegt 420 kW unter der Samstags-Baseline (5.160 kW) — der Standort erreicht sonntags nachweislich niedrigere Lasten, schöpft dieses Potenzial am Nachmittag jedoch nicht aus",
+      "Statistisches Netto-Einsparpotenzial laut Analyse: 150.210 kWh/Jahr bzw. 26.437 €/Jahr; bei 50–60 % Realisierungsgrad durch operative Maßnahmen: 75.000–90.000 kWh/Jahr",
+      "52 Wochen × 9 h × 1.620 kW = 757.080 kWh rechnerisches Bruttopotenzial; statistische Bereinigung ergibt 150.210 kWh netto — zeigt, dass der Überschuss kein Einzelereignis ist, sondern strukturell auftritt"
+    ],
+    "amortisationPeriodInMonths": 2,
+    "reasoning": "Das eigenständige Sub-Cluster-Muster und die deutliche Abweichung vom erreichbaren Sonntagsminimum belegen, dass kein permanenter Produktionsbedarf hinter dem Überschussverbrauch steht. Ein strukturiertes Abschaltprotokoll ist als erster Schritt ohne nennenswerte Investitionen umsetzbar und liefert schnelle, messbare Einsparungen. Für ein ISO 50001-zertifiziertes Stahlunternehmen ist die Entwicklung und Umsetzung solcher Betriebsprozeduren ein etabliertes Werkzeug des Energiemanagements.",
+    "questions": [
+      {
+        "question": "Welche Systeme werden am Sonntagnachmittag typischerweise aktiv betrieben oder laufen automatisch wieder an?",
+        "suggestedAnswers": [
+          {
+            "answer": "Kühlwasserkreisläufe und Wärmetauscher laufen durchgehend"
+          },
+          {
+            "answer": "Druckluftversorgung wird automatisch reaktiviert"
+          },
+          {
+            "answer": "Walzwerks-Hallenlüftung läuft im Produktionsmodus weiter"
+          },
+          {
+            "answer": "Mehrere Systeme laufen automatisch an — ohne zentrale Koordination"
+          }
+        ]
+      },
+      {
+        "question": "Wie früh vor dem Montagsanlauf muss die Betriebsbereitschaft der Hilfssysteme hergestellt sein?",
+        "suggestedAnswers": [
+          {
+            "answer": "Alle Systeme müssen bereits ab Sonntagmittag aktiv sein"
+          },
+          {
+            "answer": "Anlaufvorbereitung ab 18:00–20:00 Uhr sonntags ist ausreichend"
+          },
+          {
+            "answer": "Montagmorgen ab 04:00–06:00 Uhr reicht für den Produktionshochlauf"
+          },
+          {
+            "answer": "Abhängig vom Produktionsplan — variiert je nach Woche"
+          }
+        ]
+      },
+      {
+        "question": "Gibt es dokumentierte Abschaltprozeduren für den Wochenendstillstand an diesem Standort?",
+        "suggestedAnswers": [
+          {
+            "answer": "Ja, Prozeduren existieren und werden konsequent eingehalten"
+          },
+          {
+            "answer": "Prozeduren existieren, aber die Umsetzung ist inkonsistent"
+          },
+          {
+            "answer": "Informelle Absprachen, aber keine formalisierten Prozeduren"
+          },
+          {
+            "answer": "Keine strukturierten Abschaltprozeduren vorhanden"
+          }
+        ]
+      },
+      {
+        "question": "Finden am Sonntagnachmittag regelmäßig Wartungs- oder Reparaturschichten statt, die Vollbetrieb der Hilfssysteme erfordern?",
+        "suggestedAnswers": [
+          {
+            "answer": "Ja, planmäßige Wartungsschichten finden regelmäßig sonntags statt"
+          },
+          {
+            "answer": "Gelegentlich — abhängig vom Instandhaltungsbedarf der Woche"
+          },
+          {
+            "answer": "Selten, nur bei dringenden Störungen"
+          },
+          {
+            "answer": "Nein, Sonntagnachmittag ist regulär produktions- und wartungsfrei"
+          }
+        ]
+      }
+    ],
+    "confidence": 65,
+    "category": "OTHER",
+    "investmentType": "NO_INTENSITY",
+    "effortLevel": "MEDIUM"
+  },
+  {
+    "locationId": 1,
+    "insightId": "ins_e3c2bd7f",
+    "title": "Automatische Lastabsenkung am Sonntagnachmittag via Energiemanagementsystem",
+    "shortDescription": "Lüftung, Kühlung und Druckluft sollen am Sonntagnachmittag automatisch in einen energiereduzierten Bereitschaftsmodus versetzt werden, um den 34 %-Überschussverbrauch (1.620 kW) dauerhaft und systemseitig zu eliminieren.",
+    "description": "Die strukturelle Überlast am Sonntagnachmittag (1.620 kW über der Baseline, 9 Stunden/Woche, statistisch stabiler Sub-Cluster SC1) lässt sich langfristig nur durch eine automatisierte Steuerungslösung zuverlässig und konsistent adressieren. Operative Abschaltprotokolle allein sind anfällig für Inkonsistenzen; eine automatische Umschaltung auf einen 'Sonntag-Bereitschaftsmodus' im Energiemanagementsystem (EMS) oder in den Anlagensteuerungen wirkt dagegen unabhängig von menschlichem Handeln. Konkret sollten Hallenlüftungsanlagen auf Minimalluftmenge, Kühlsysteme auf Erhaltungsmodus und die Druckluftversorgung auf reduzierten Systemdruck umgeschaltet werden, sofern kein aktiver Walz- oder Beschichtungsbetrieb stattfindet. Ein automatischer Hochlauf auf Produktionsbereitschaft kann zu einem definierten Zeitpunkt (z. B. 04:00 Uhr montags) vorprogrammiert werden. Die bestehende ISO 50001-Zertifizierung des Standorts liefert den organisatorischen Rahmen für Betrieb, Dokumentation und Überprüfung einer solchen Steuerung.",
+    "yearlySavingsRangeFrom": 17600,
+    "yearlySavingsRangeTo": 21120,
+    "investmentRangeFrom": 15000,
+    "investmentRangeTo": 35000,
+    "unit": "kWh",
+    "yearlySavingsEnergyRangeFrom": 100000,
+    "yearlySavingsEnergyRangeTo": 120000,
+    "evidences": [
+      "Sub-Cluster SC1 tritt statistisch stabil auf: 9 h/Woche × 52 Wochen = 468 h/Jahr strukturelle Überlast mit Median-Überschuss von 1.620 kW",
+      "Geringe Streuung des SC1-Clusters (P25: 5.700 kW / P75: 6.660 kW, Spanne nur 960 kW) belegt ein systemisches — nicht zufälliges — Ursachenmuster, das durch automatisierte Steuerung vollständig erfassbar ist",
+      "Nachgewiesene Baseline von 4.740 kW wurde bereits an Sonntagen erreicht: technische Machbarkeit der Lastreduzierung ist bewiesen",
+      "Statistisches Einsparpotenzial: 150.210 kWh/Jahr; bei 67–80 % Realisierungsgrad durch automatisierte Steuerung: 100.000–120.000 kWh/Jahr → 17.600–21.120 €/Jahr",
+      "Sonntags-Baseline (4.740 kW) liegt 420 kW unter der Samstags-Baseline (5.160 kW): differentielle Betriebssteuerung zwischen Wochentagen ist am Standort bereits implizit vorhanden — eine EMS-Automatisierung formalisiert dies"
     ],
     "amortisationPeriodInMonths": 15,
-    "reasoning": "Das Beibehalten von Walzantrieben auf Betriebstemperatur ist eine verbreitete, aber oft nicht notwendige Praxis in der Kaltwalzindustrie. Moderne Hydrauliksysteme mit Vorwärm-Automatik erreichen Betriebsbereitschaft in 1,5-3 Stunden.",
-    "confidence": 72,
-    "category": "OTHER",
-    "investmentType": "MEDIUM_INTENSITY",
-    "effortLevel": "MEDIUM"
-  },
-  {
-    "locationId": 2,
-    "insightId": "ins_c5f8a031",
-    "title": "Elektrische Hilfslasten der Gasöfen an Wochenend-Stillstandzeiten reduzieren",
-    "shortDescription": "Gasbefeuerte Öfen werden an Wochenendmorgen auf Volltemperatur gehalten, wodurch elektrische Hilfsverbraucher (Ventilatoren, Pumpen) unnötig auf vollem Niveau weiterlaufen",
-    "description": "Die gasbeheizten Öfen am Werk Süd werden während der Wochenend-Stillstandzeiten (Sa 04:00-09:00, So 06:00-11:00) auf Prozesstemperatur gehalten, anstatt auf einen abgesenkten Wartesollwert umzuschalten. Dies zieht zwingend einen Dauerbetrieb der elektrischen Hilfsaggregate - insbesondere Umwälzventilatoren und Kühlwasserpumpen - nach sich. Durch die Programmierung eines Temperatur-Absenkprogramms (Idle-Setpoint) für produktionsfreie Wochenendmorgen können diese elektrischen Hilfslasten erheblich reduziert werden.",
-    "yearlySavingsRangeFrom": 10560,
-    "yearlySavingsRangeTo": 16720,
-    "investmentRangeFrom": 5000,
-    "investmentRangeTo": 18000,
-    "unit": "kWh",
-    "yearlySavingsEnergyRangeFrom": 60000,
-    "yearlySavingsEnergyRangeTo": 95000,
-    "evidences": [
-      "Gesamtpotenzial 496.165 kWh/Jahr (87.325 EUR/Jahr) aus dem Wochenend-Fenster; Gasöfen und ihre elektrischen Hilfsaggregate sind gemäß Standortbeschreibung ein eigenständiger Hauptverbraucher",
-      "Elektrische Hilfslasten (Ventilatoren, Umwälzpumpen) eines auf Volltemperatur gehaltenen Industrieofens betragen typischerweise 15-25% der gesamten elektrischen Standby-Last",
-      "Sa 04:00-09:00 + So 06:00-11:00 = 520 h/Jahr; bei 390-650 kW × 520 h × 50% Realisierungsgrad: 101.400-169.000 kWh/Jahr Bruttopotenzial elektrisch",
-      "Zusätzliche Gaseinsparung durch Temperaturabsenkung ist in dieser Kalkulation nicht enthalten und verbessert die Amortisation weiter",
-      "Sonntag 21:00-24:00 Fenster wurde als potenziell betriebsnotwendige Vorwärmphase (Hochfahren für Montagmorgen) identifiziert und ist in dieser Maßnahme bewusst ausgenommen"
+    "reasoning": "Die statistisch belegte Konsistenz des SC1-Musters (geringe P25–P75-Streuung, stabile Cluster-Zugehörigkeit) macht diesen Überschussverbrauch zu einem idealen Kandidaten für eine automatisierte Steuerungslösung mit dauerhafter Wirkung. Im Vergleich zu rein manuellen Maßnahmen sichert eine EMS-Integration die Konsequenz der Einsparungen unabhängig von Schichtbesetzung oder saisonalen Schwankungen. Für ein ISO 50001-zertifiziertes Stahlunternehmen mit industriellen Prozesssteuerungen ist die technische Realisierbarkeit gut gegeben; der Amortisationszeitraum von ca. 15 Monaten ist für eine technische Steuerungsmaßnahme dieser Einspargrößenordnung attraktiv.",
+    "questions": [
+      {
+        "question": "Ist am Standort Buschmühlenstraße ein übergeordnetes Energiemanagementsystem (EMS) oder eine Gebäudeleittechnik (GLT) im Einsatz, das Zeitprogramme für Verbraucher verwalten kann?",
+        "suggestedAnswers": [
+          {
+            "answer": "Ja, ein EMS ist vorhanden und kann um Zeitprogramme für Wochenendbetrieb erweitert werden"
+          },
+          {
+            "answer": "Gebäudeleittechnik vorhanden, aber nur für Gebäudeklimatik — nicht für Produktionsnebenanlagen"
+          },
+          {
+            "answer": "SPS-Steuerungen der Einzelanlagen können direkt parametriert werden"
+          },
+          {
+            "answer": "Kein übergeordnetes System vorhanden — manuelle Bedienung erforderlich"
+          }
+        ]
+      },
+      {
+        "question": "Welche Systeme können ohne Prozessrisiko auf Bereitschaftsmodus reduziert werden, wenn kein aktiver Walz- oder Beschichtungsbetrieb stattfindet?",
+        "suggestedAnswers": [
+          {
+            "answer": "Hallenlüftung und Klimatisierung der Walzwerkshallen"
+          },
+          {
+            "answer": "Druckluftversorgung (reduzierter Systemdruck möglich)"
+          },
+          {
+            "answer": "Kühlwasserkreisläufe (Erhaltungskühlung auf Minimalleistung ausreichend)"
+          },
+          {
+            "answer": "Alle genannten Systeme können auf Bereitschaftsmodus reduziert werden"
+          }
+        ]
+      },
+      {
+        "question": "Gibt es Prozessanforderungen (z. B. Temperaturhaltung von Walzöl, Mindestkühlleistung für Lager oder Hydrauliksysteme), die eine vollständige Reduzierung verhindern?",
+        "suggestedAnswers": [
+          {
+            "answer": "Ja, Walzöl- und Hydrauliktemperaturen erfordern kontinuierliche Umwälzpumpen"
+          },
+          {
+            "answer": "Mindestkühlleistung für Hauptlager und Antriebe muss sichergestellt bleiben"
+          },
+          {
+            "answer": "Prozessanforderungen sind gering — Bereitschaftsmodus mit deutlich unter 50 % Nennleistung möglich"
+          },
+          {
+            "answer": "Anforderungen variieren je Anlage — eine Einzelbewertung pro System ist notwendig"
+          }
+        ]
+      }
     ],
-    "amortisationPeriodInMonths": 11,
-    "reasoning": "Temperatur-Absenkprogramme (Idle-Setpoints) sind Stand der Technik bei industriellen Durchlauföfen und Glühöfen in der Stahlindustrie. Die Maßnahme ist risikoarm, da das Sunday-21:00-Fenster als Aufheizphase ausgenommen wird.",
-    "confidence": 68,
+    "confidence": 60,
     "category": "OTHER",
     "investmentType": "MEDIUM_INTENSITY",
+    "effortLevel": "HIGH"
+  },
+  {
+    "locationId": 1,
+    "insightId": "ins_f7a15c62",
+    "title": "Anstieg der Wochenend-Grundlast stoppen: Betriebsorganisation und Hilfsaggregat-Management optimieren",
+    "shortDescription": "Die Wochenend-Grundlast am Standort Buschmühlenstraße steigt langfristig um +248 kW/Jahr (+4,0%/Jahr) – ein laufender Verbrauchsanstieg, der sich trotz kurzfristiger Entspannung nicht von selbst auflöst.",
+    "description": "Die Datenanalyse für das Wochenend-Zeitfenster Samstag 12:00–24:00 und Sonntag 00:00–06:00 sowie 15:00–16:00 (19 Stunden/Woche) zeigt einen statistisch hoch signifikanten Langfristtrend von +248 kW/Jahr (+4,02%/Jahr), der in der laufenden Basis eine jährliche Konsummigration von 245.205 kWh erzeugt. Der kurzfristige Rückgang der letzten vier Wochen (−2,9%/Woche) täuscht: Langzeit- und Kurzzeit-Richtung stimmen nicht überein, was auf ein temporäres Dip-Ereignis hindeutet, das den strukturellen Aufwärtstrend überdeckt. Eine wahrscheinliche Ursache ist die sukzessive Ergänzung von Hilfsaggregaten – Kühlkreisläufe, Druckluftkapazitäten – im Zuge von Produktionserweiterungen, ohne dass die Wochenend-Abschaltprozesse entsprechend angepasst wurden. Durch eine systematische Bestandsaufnahme aller Wochenend-Verbraucher, Überarbeitung der Abschalt-Checklisten und gezielte Abschalt-Automatisierung lässt sich der Trend stoppen und ein Großteil des akkumulierten Mehrverbrauchs dauerhaft einsparen.",
+    "yearlySavingsRangeFrom": 21000,
+    "yearlySavingsRangeTo": 30000,
+    "investmentRangeFrom": 2000,
+    "investmentRangeTo": 6000,
+    "unit": "kWh",
+    "yearlySavingsEnergyRangeFrom": 120000,
+    "yearlySavingsEnergyRangeTo": 170000,
+    "evidences": [
+      "Langfristiger Trend im Cluster 'Weekend Afternoon (High) [SC0]': +248,2 kW/Jahr (+4,02%/Jahr) über den vollständigen 12-Monats-Analysezeitraum – statistisch hoch signifikant (Konfidenz: 96,9%)",
+      "Jährliche Konsummigration: 245.205 kWh/Jahr – dieser Betrag wächst kumulativ, sofern keine Gegenmaßnahme ergriffen wird",
+      "Wochenend-Zeitfenster: Samstag 12:00–24:00 und Sonntag 00:00–06:00 + 15:00–16:00 (19 h/Woche = 988 Betriebsstunden/Jahr ohne Produktion)",
+      "Kurzfristiger Trend (letzte 4 Wochen): −2,9%/Woche – widerspricht dem Langfristtrend und birgt das Risiko einer Fehlbewertung als bereits gelöst",
+      "Einsparpotenzial bei 50–70% Realisierung: 120.000–170.000 kWh/Jahr × €0,176/kWh = €21.120–€29.920/Jahr → konservativ €21.000–€30.000/Jahr"
+    ],
+    "amortisationPeriodInMonths": 2,
+    "reasoning": "Der statistisch belastbare Aufwärtstrend (+248 kW/Jahr, Konfidenz 96,9%) in einem Wochenend-Leerlauf-Fenster ohne reguläre Produktion ist ein starkes Indiz für unkontrolliertes Wachstum der Hilfsaggregatelast – ein typisches Muster nach Produktionserweiterungen ohne angepasste Abschalt-Governance. Die trügerische Kurzzeitsignallage (−2,9%/Woche aktuell) macht diesen Fall besonders dringlich: Ohne gezielte Untersuchung besteht die Gefahr, dass die Maßnahme aufgeschoben wird, obwohl der strukturelle Aufwärtstrend aktiv weiterläuft. Als ISO-50001-zertifizierter Standort verfügt Buschmühlenstraße über die Grundlage für eine strukturierte Ursachenanalyse und zügige Abstellmaßnahme.",
+    "questions": [
+      {
+        "question": "Welche Hilfsaggregate (Kühlung, Druckluft, Hydraulik) laufen am Wochenende regelmäßig, obwohl keine Produktion stattfindet?",
+        "suggestedAnswers": [
+          {
+            "answer": "Kühlwasserpumpen und Chiller dauerhaft aktiv aus Prozessschutzgründen"
+          },
+          {
+            "answer": "Druckluftkompressoren zur Grundversorgung des Hallennetzes"
+          },
+          {
+            "answer": "Hydraulikaggregate für Walzgerüste im Standby-Modus"
+          },
+          {
+            "answer": "Kein vollständiger Überblick vorhanden – systematische Bestandsaufnahme notwendig"
+          }
+        ]
+      },
+      {
+        "question": "Gibt es am Standort einen strukturierten Wochenend-Abschaltplan (Checkliste oder automatisiertes SPS-Ablaufprogramm)?",
+        "suggestedAnswers": [
+          {
+            "answer": "Ja, schriftliche Checkliste mit definierten Verantwortlichen"
+          },
+          {
+            "answer": "Ja, automatisierter Ablauf über das Prozessleitsystem"
+          },
+          {
+            "answer": "Informell – abhängig vom Ermessen des Schichtleiters"
+          },
+          {
+            "answer": "Nein, kein strukturierter Abschaltprozess vorhanden"
+          }
+        ]
+      },
+      {
+        "question": "Wurden in den letzten 12–18 Monaten neue Hilfsaggregate oder Kühlkreise installiert, ohne entsprechende Abschaltroutinen im Wochenendplan zu ergänzen?",
+        "suggestedAnswers": [
+          {
+            "answer": "Ja, im Rahmen einer Kapazitätserweiterung wurden neue Systeme hinzugefügt"
+          },
+          {
+            "answer": "Nein, die Anlagenkonfiguration ist seit über 2 Jahren stabil"
+          },
+          {
+            "answer": "Teilweise – vereinzelte Ergänzungen, Status der Abschaltroutinen unbekannt"
+          },
+          {
+            "answer": "Nicht bekannt – erfordert Rücksprache mit der Instandhaltung"
+          }
+        ]
+      },
+      {
+        "question": "Hat das interne ISO-50001-Energiemonitoring diesen Trendanstieg bisher identifiziert und bewertet?",
+        "suggestedAnswers": [
+          {
+            "answer": "Ja, der Trend war intern bereits Thema und wird untersucht"
+          },
+          {
+            "answer": "Nein, die kurzfristige Abnahme der letzten Wochen wurde als Verbesserung gewertet"
+          },
+          {
+            "answer": "Der Standort wird im EMS noch nicht auf dieser Granularitätsstufe überwacht"
+          },
+          {
+            "answer": "Noch nicht analysiert – wird im nächsten Audit adressiert"
+          }
+        ]
+      }
+    ],
+    "confidence": 65,
+    "category": "OTHER",
+    "investmentType": "NO_INTENSITY",
     "effortLevel": "MEDIUM"
   },
   {
+    "locationId": 1,
+    "insightId": "ins_f7a15c62",
+    "title": "Walzwerks-Anlagendegradation durch strukturiertes Präventivwartungsprogramm am Standort Buschmühlenstraße aufhalten",
+    "shortDescription": "Schleichender Wirkungsgradverlust durch Lagerreibung, Hydraulikdichtungsverschleiß und Wärmetauscher-Fouling treibt den kontinuierlichen Anstieg der Wochenend-Grundlast von +4%/Jahr.",
+    "description": "Neben betriebsorganisatorischen Ursachen liefert die Anlagendegradation eine technisch plausible Erklärung für den Langfristtrend von +248 kW/Jahr im Wochenend-Leerlauf: Erhöhte Lagerreibung an Walzgerüst-Komponenten, auslaufende Hydraulikdichtungen und Fouling in Kühl- und Wärmetauschersystemen erhöhen die Verlustleistung schleichend über Monate – ein in Kaltwalzwerken gut belegtes Phänomen. Im Wochenend-Leerlauf, wenn die Produktion den Degradationseffekt nicht überdeckt, tritt dieser Einfluss besonders deutlich in der Grundlast hervor. Ein strukturiertes Präventivwartungsprogramm mit regelmäßiger Thermographie, Schwingungsanalyse an kritischen Antrieben und definierten Reinigungszyklen für Wärmetauscher kann den aufgebauten Effizienzrückstand abtragen und den weiteren Trendanstieg bremsen. Der bestehende ISO-50001-Rahmen des Standorts bietet eine ideale Basis, um dieses Programm mit Energie-KPIs zu verknüpfen und den Erfolg messtechnisch nachzuweisen.",
+    "yearlySavingsRangeFrom": 14000,
+    "yearlySavingsRangeTo": 22000,
+    "investmentRangeFrom": 20000,
+    "investmentRangeTo": 50000,
+    "unit": "kWh",
+    "yearlySavingsEnergyRangeFrom": 80000,
+    "yearlySavingsEnergyRangeTo": 125000,
+    "evidences": [
+      "Langfristtrend +248,2 kW/Jahr im Wochenend-Leerlauf zeigt jahreszeitenunabhängige Konsistenz – Hinweis auf eine kontinuierlich wirkende mechanische Ursache (Degradation) statt auf saisonale Produktionsschwankungen",
+      "Kaltwalzwerk-Branchenwissen: Wärmetauscher-Fouling erhöht Pumpenenergieaufwand typischerweise um 15–30%; erhöhte Lagerreibung verursacht 5–20% Mehrverbrauch je Antrieb",
+      "Bei 988 Wochenend-Leerlaufstunden/Jahr und Degradations-Rückgewinnung von 80–125 kW: 79.040–123.500 kWh/Jahr Einsparung → konservativ 80.000–125.000 kWh/Jahr",
+      "Finanzielle Einsparung: 80.000–125.000 kWh × €0,176/kWh = €14.080–€22.000/Jahr",
+      "ISO-50001-Zertifizierung ermöglicht strukturierte KPI-Integration (z. B. spezifischer Leerlaufenergiebedarf je Aggregat) und messbaren Nachweis der Programm-Wirksamkeit"
+    ],
+    "amortisationPeriodInMonths": 23,
+    "reasoning": "Schleichende Anlagendegradation wird im Energiemonitoring selten kurzfristig sichtbar – erst ein vollständiger 12-Monats-Trend legt die Systematik offen. Die hohe statistische Konfidenz von 96,9% und die Saisonunabhängigkeit des Anstiegs stützen eine physikalische Ursache, die unabhängig von Betriebs- oder Produktungsmengen wirkt. Investitionen in Präventivwartung zahlen sich in energieintensiven Kaltwalzwerken erfahrungsgemäß mehrfach aus: Neben der direkten Energieeinsparung werden ungeplante Stillstände reduziert und die Lebensdauer kritischer Komponenten verlängert. Der Amortisationszeitraum von ~23 Monaten ist für ein Investitionsprogramm im Anlagenbau dieser Branche wirtschaftlich attraktiv.",
+    "questions": [
+      {
+        "question": "Welche kritischen Anlagenkomponenten am Standort Buschmühlenstraße werden aktuell nicht zustandsbasiert überwacht?",
+        "suggestedAnswers": [
+          {
+            "answer": "Hauptlager der Walzgerüste (nur zeitplanbasiert gewartet)"
+          },
+          {
+            "answer": "Hydraulikdichtungen (reaktiv bei Leckage getauscht)"
+          },
+          {
+            "answer": "Wärmetauscher der Kühl- und Hydrauliksysteme"
+          },
+          {
+            "answer": "Es gibt bereits ein vollständiges Condition-Monitoring-Programm für alle kritischen Komponenten"
+          }
+        ]
+      },
+      {
+        "question": "Wie häufig werden die Wärmetauscher der Hydraulik- und Kühlsysteme am Standort Buschmühlenstraße gereinigt?",
+        "suggestedAnswers": [
+          {
+            "answer": "Jährlich im Rahmen des geplanten Anlagenstillstands"
+          },
+          {
+            "answer": "Alle 2–3 Jahre oder erst bei messbarer Leistungsabnahme"
+          },
+          {
+            "answer": "Keine definierten Reinigungsintervalle vorhanden"
+          },
+          {
+            "answer": "Quartalsweise im Rahmen eines bereits aktiven zustandsbasierten Programms"
+          }
+        ]
+      },
+      {
+        "question": "Gibt es in den Wartungsprotokollen der letzten 12 Monate Hinweise auf erhöhte Betriebstemperaturen, veränderte Druckdifferenzen oder erhöhte Vibrationen an Walzwerks-Antrieben?",
+        "suggestedAnswers": [
+          {
+            "answer": "Ja, vereinzelte Auffälligkeiten wurden von der Instandhaltung dokumentiert"
+          },
+          {
+            "answer": "Nein, alle überwachten Parameter innerhalb der Sollgrenzen"
+          },
+          {
+            "answer": "Keine systematische Aufzeichnung dieser Parameter vorhanden"
+          },
+          {
+            "answer": "Unbekannt – erfordert Auswertung der Wartungsprotokolle durch die Instandhaltung"
+          }
+        ]
+      }
+    ],
+    "confidence": 55,
+    "category": "OTHER",
+    "investmentType": "HIGH_INTENSITY",
+    "effortLevel": "HIGH"
+  },
+  {
     "locationId": 2,
-    "insightId": "ins_e2b9d4f6",
-    "title": "Echtzeit-Energiemonitoring mit automatischen Anomalie-Alarmen einführen",
-    "shortDescription": "22 Betriebstage mit durchschnittlich 2.371 kW Mehrverbrauch blieben 2025 unentdeckt - ein Echtzeit-Alerting-System würde frühzeitiges Eingreifen ermöglichen.",
-    "description": "Die statistische Analyse zeigt, dass an 22 Betriebstagen im Jahr 2025 ein mittlerer Mehrverbrauch von 2.371 kW gegenüber dem erwarteten Tagesprofil auftrat - ein annualisiertes Exzesspotenzial von 1.252.911 kWh (ca. 220.512 €). Besonders kritisch: 87% dieser Anomalietage stehen in keinem Zusammenhang mit An- oder Abfahrereignissen, d. h. die Überschreitungen entstehen im laufenden Betrieb und bleiben ohne dediziertes Monitoring unbemerkt.",
+    "insightId": "ins_g89d4e02",
+    "title": "Lastkoordinations-Protokoll für energieintensive Betriebstage einführen",
+    "shortDescription": "22 Tage mit durchgehend 2.371 kW Mehrverbrauch über die gesamte Betriebszeit zeigen ungeplante Überlagerung gleichzeitiger Großverbraucher an der Feldmühlenstraße",
+    "description": "Die statistische Analyse identifiziert 22 einzelne Betriebstage, an denen der Gesamtverbrauch am Standort Feldmühlenstraße durchgehend 2.371 kW über der normalen Betriebsbaseline lag – nicht auf Nacht- oder Wochenendstunden begrenzt, sondern während regulärer Schichtzeiten. Die Anomalietage häufen sich auffällig im Februar–März 2025 (22.–23. Feb., 15.–16. März, 29. März), was auf wiederkehrende Qualifizierungskampagnen, Versuchswalzungen oder großangelegte Werkstoffprüfungen hindeutet, bei denen Laboröfen, Prüfstände und Walzanlagen gleichzeitig unter Volllast laufen. Obwohl ein Teil dieser Tage betrieblich unvermeidbar sein mag, bietet die Einführung eines formellen Koordinationsprotokolls – das die parallele Aktivierung mehrerer Großverbraucher genehmigungspflichtig macht und Prozesse zeitlich staffelt – als ISO 50001-konforme Maßnahme erhebliches Einsparpotenzial ohne nennenswerte Investition. Durch konsequente Prozessstaffelung können geschätzt 40–60 % des jährlichen Mehrverbrauchs von 1.252.911 kWh reduziert werden.",
     "yearlySavingsRangeFrom": 88000,
     "yearlySavingsRangeTo": 132000,
-    "investmentRangeFrom": 15000,
-    "investmentRangeTo": 30000,
+    "investmentRangeFrom": 5000,
+    "investmentRangeTo": 15000,
     "unit": "kWh",
     "yearlySavingsEnergyRangeFrom": 500000,
     "yearlySavingsEnergyRangeTo": 750000,
     "evidences": [
-      "22 Anomalietage mit mittlerem Exzess von 2.371 kW ergeben annualisiert 1.252.911 kWh Mehrverbrauch (Insight-Daten 2025)",
-      "87% der Anomalietage sind unabhängig von Hochfahr-/Abfahrereignissen - die Überschreitungen entstehen mitten im Normalbetrieb ohne Auslöser-Alarm",
-      "Exzess-Spitzen im November/Dezember erreichen 3.000-6.000 kW über Erwartungsprofil, was auf ein eskalierendes Muster ohne frühzeitige Intervention hindeutet",
-      "Anomalien verteilen sich auf 7 Monate (Feb, Mär, Mai, Jun, Okt, Nov, Dez) - kein Echtzeit-System hat diese Verteilung als Warnsignal erfasst",
-      "Konservative Annahme: 50% Reduktion der Anomaliestunden durch frühzeitiges Eingreifen -> ca. 626.000 kWh/Jahr × 0,176 €/kWh ≈ 110.000 €/Jahr"
+      "22 identifizierte Anomalietage mit mittlerer Abweichung von +2.371 kW über den gesamten Tageslastgang – entspricht ~39 % Mehrverbrauch gegenüber der normalen Betriebsbaseline",
+      "Gesamtpotenzial: 1.252.911 kWh / €220.512 pro Jahr – das größte Einzelsparpotenzial unter allen erfassten Wälzholz-Standorten",
+      "Häufung der Anomalietage in Feb.–März 2025 (22.–23. Feb., 15.–16. März, 29. März) deutet auf planbare, kampagnengebundene Aktivitäten der Werkstofftechnik hin",
+      "22 Tage × 24 h × 2.371 kW = 1.252.848 kWh – rechnerische Verifikation bestätigt volltagige Laststeigerung ohne punktuelle Spitze",
+      "Bei 40–60 % Reduzierung der behebbaren Anomalietage ergibt sich ein Einsparpotenzial von 500.000–750.000 kWh/Jahr → €88.000–€132.000/Jahr (bei €0,176/kWh)"
     ],
-    "amortisationPeriodInMonths": 3,
-    "reasoning": "Ein Echtzeit-Alerting-System ist die unmittelbarste Maßnahme: Es verhindert nicht zwingend das Entstehen der Anomalie, ermöglicht aber sofortiges Eingreifen und verkürzt damit Schadensdauer und -umfang.",
-    "confidence": 80,
-    "category": "OTHER",
-    "investmentType": "MEDIUM_INTENSITY",
-    "effortLevel": "MEDIUM"
-  },
-  {
-    "locationId": 2,
-    "insightId": "ins_e2b9d4f6",
-    "title": "Energieprofil pro Produktgrad und Walzprogramm erstellen und überwachen",
-    "shortDescription": "Bestimmte Stahlgüten oder Walzprogramme erzeugen vermutlich Tage mit bis zu 6.000 kW Mehrverbrauch - eine Zuordnung von Energieverbrauch zu Produktionsaufträgen macht diese Überschreitungen steuerbar.",
-    "description": "Eine der zentralen Hypothesen für die 22 Anomalietage ist, dass bestimmte Produktgüten (z. B. höhere Festigkeitsklassen oder engere Toleranzen) signifikant höhere Ofentemperaturen, langsamere Bandgeschwindigkeiten oder zusätzliche Glühzyklen erfordern und damit den Gesamtenergieverbrauch je Schicht deutlich anheben - ohne dass dies im Produktionsplan als energetisches Risiko markiert ist.",
-    "yearlySavingsRangeFrom": 55000,
-    "yearlySavingsRangeTo": 88000,
-    "investmentRangeFrom": 5000,
-    "investmentRangeTo": 15000,
-    "unit": "kWh",
-    "yearlySavingsEnergyRangeFrom": 315000,
-    "yearlySavingsEnergyRangeTo": 500000,
-    "evidences": [
-      "22 Anomalietage verteilen sich über 7 Monate ohne saisonales Clustering - dies ist typisch für auftragsgebundene Ursachen wie wechselnde Produktgüten, nicht für jahreszeitliche Effekte",
-      "Exzess-Magnitudenspitzen von 3.000-6.000 kW im Nov/Dez übersteigen den Jahresmittel-Exzess (2.371 kW) um das 1,3- bis 2,5-fache - konsistent mit dem Einplanen hochenergetischer Sondergüten",
-      "Hypothese 1 der Insight-Analyse: Produktgüten mit höheren Ofentemperaturen oder Bandgeschwindigkeiten werden ohne Energiemonitoring-Alerts verplant",
-      "22 Tage × 24 h × 2.371 kW = 1.251.888 kWh Jahresexzess; 25-40% durch Scheduling-Optimierung adressierbar = 313.000-501.000 kWh/Jahr × 0,176 €/kWh ≈ 55.000-88.000 €/Jahr",
-      "Die Maßnahme erfordert primär Datenanalyse und Prozessanpassung - keine Hardware-Investition, daher sehr kurze Amortisationszeit"
+    "amortisationPeriodInMonths": 1,
+    "reasoning": "Als ISO 50001-zertifizierter Standort verfügt die Feldmühlenstraße bereits über die organisatorischen Strukturen für Energiemanagement-Protokolle, sodass die Maßnahme ohne nennenswerte Kapitalinvestition in bestehende Prozesse integriert werden kann. Die enge zeitliche Häufung der Anomalietage auf Feb.–März deutet auf planbare, kampagnengebundene Aktivitäten hin, die durch bessere Abstimmung zwischen Produktionsplanung, Werkstofftechnik und Energiemanagement erheblich reduziert werden können. Eine mittlere Abweichung von 2.371 kW über ganze Tage legt nahe, dass mehrere Großverbraucher ohne übergeordnete Koordination gleichzeitig aktiviert werden – ein klassisches Optimierungsfeld für Lastmanagement mit sehr schnellem Amortisationshorizont.",
+    "questions": [
+      {
+        "question": "Welche Prozesse laufen an den identifizierten Anomalietagen typischerweise gleichzeitig?",
+        "suggestedAnswers": [
+          {
+            "answer": "Laboröfen und Qualifizierungsprüfstände gemeinsam mit Prototyp-Walzversuchen"
+          },
+          {
+            "answer": "Wärmebehandlung und Oberflächenanalytik gleichzeitig mit laufendem Produktionsbetrieb"
+          },
+          {
+            "answer": "Vollständige Qualifizierungskampagnen mit allen Subsystemen unter Volllast"
+          },
+          {
+            "answer": "Unbekannt – keine vollständige Erfassung der simultanen Aktivitäten vorhanden"
+          }
+        ]
+      },
+      {
+        "question": "Gibt es eine zentrale Terminplanung, die Energieintensität bei der Schedulierung von Qualifizierungsläufen berücksichtigt?",
+        "suggestedAnswers": [
+          {
+            "answer": "Nein – Produktion und Werkstofftechnik planen unabhängig voneinander"
+          },
+          {
+            "answer": "Ansatzweise – Abstimmung erfolgt ad hoc, nicht systematisch"
+          },
+          {
+            "answer": "Ja, aber Energieverbrauch ist kein Planungskriterium"
+          },
+          {
+            "answer": "Ja, Energieaspekte werden bereits bei der Terminierung berücksichtigt"
+          }
+        ]
+      },
+      {
+        "question": "Welcher Anteil der Hochlasttage ist betrieblich unvermeidbar (z. B. termingebundene Inbetriebnahmen oder Kundenqualifizierungen)?",
+        "suggestedAnswers": [
+          {
+            "answer": "Weniger als 25 % – die meisten Tage wären durch bessere Planung vermeidbar"
+          },
+          {
+            "answer": "25–50 % – ein nennenswerter Teil ist aus geschäftlichen Gründen unvermeidbar"
+          },
+          {
+            "answer": "Mehr als 50 % – die meisten Hochlasttage sind betrieblich oder vertraglich notwendig"
+          },
+          {
+            "answer": "Nicht bekannt – eine Kategorisierung der Anomalietage liegt nicht vor"
+          }
+        ]
+      },
+      {
+        "question": "Wie lange dauern typische Qualifizierungskampagnen an der Werkstofftechnik?",
+        "suggestedAnswers": [
+          {
+            "answer": "1–2 Tage (Einzel-Qualifizierungsversuche pro Werkstoffgüte)"
+          },
+          {
+            "answer": "3–5 Tage (mehrstufige Qualifizierungsläufe mit Zwischen-QS)"
+          },
+          {
+            "answer": "Mehr als eine Woche (umfassende Neugüte-Qualifizierungen)"
+          },
+          {
+            "answer": "Stark variierend je nach Güte und Prüfumfang"
+          }
+        ]
+      }
     ],
-    "amortisationPeriodInMonths": 2,
-    "reasoning": "Die Korrelationsanalyse zwischen Produktionsauftragsdaten und Lastprofilen ist eine analytische Maßnahme mit sehr geringen Kosten (interne Datenaufbereitung, ggf. externe Beratung für 1-2 Wochen).",
     "confidence": 72,
     "category": "OTHER",
     "investmentType": "NO_INTENSITY",
@@ -298,29 +1354,727 @@
   },
   {
     "locationId": 2,
-    "insightId": "ins_e2b9d4f6",
-    "title": "Zustandsüberwachung für Motoren, Antriebe und Hydrauliksysteme einführen",
-    "shortDescription": "Degradierte Elektromotoren, Umrichter oder Hydraulikaggregate an Walz- und Schneidanlagen können ganztägige Stromspitzen von über 2.000 kW verursachen - Predictive Maintenance verhindert diese Ereignisse proaktiv.",
-    "description": "Die Insight-Analyse zeigt, dass 87% der 22 Anomalietage unabhängig von An-/Abfahrvorgängen sind - ein klassisches Muster für schleichend degradierte Antriebssysteme: Verschlissene Lager erhöhen die Reibung, fehlerhafte Frequenzumrichter betreiben Motoren suboptimal, und undichte Hydraulikdichtungen erzwingen permanentes Nachregeln der Pumpen. Durch die Einführung von Zustandsüberwachung (Schwingungsanalyse an Hauptantrieben, Thermografie-Inspektionen, Stromwellformenanalyse an Umrichtern) können degradierte Aggregate frühzeitig identifiziert werden.",
-    "yearlySavingsRangeFrom": 44000,
-    "yearlySavingsRangeTo": 77000,
-    "investmentRangeFrom": 20000,
+    "insightId": "ins_g89d4e02",
+    "title": "Echtzeit-Energiemonitoring mit automatischer Tagesanomaliewarnung implementieren",
+    "shortDescription": "Ohne operative Echtzeitwarnung werden Hochlasttage mit 2.371 kW Mehrverbrauch erst retrospektiv erkannt – ein Frühwarnsystem ermöglicht tagesbegleitende Intervention",
+    "description": "Die 22 identifizierten Anomalietage wurden ausschließlich retrospektiv durch statistische Analyse entdeckt – nicht durch operative Echtzeitüberwachung. Ein integriertes Energiemonitoring-System, das den Tageslastgang kontinuierlich mit dem standortspezifischen Basisprofil vergleicht und bei Überschreitung definierter Schwellenwerte (z. B. >500 kW über Baseline für mehr als 1 Stunde) automatische Alarme an Energiemanagement und Produktionsleitung sendet, würde rechtzeitige Eingriffe noch am selben Tag ermöglichen. Die Lösung kann als Ergänzung zum bestehenden ISO 50001-Energiemanagementsystem eingebunden werden und lässt sich mit der Produktions- und Laborplanung koppeln, um vorgemerkte Hochlasttage vorausschauend zu kennzeichnen. Damit wird aus einer reaktiven eine proaktive Energiesteuerung, die sowohl die Häufigkeit als auch die Magnitude der Anomalietage dauerhaft reduziert.",
+    "yearlySavingsRangeFrom": 53000,
+    "yearlySavingsRangeTo": 88000,
+    "investmentRangeFrom": 25000,
     "investmentRangeTo": 50000,
     "unit": "kWh",
-    "yearlySavingsEnergyRangeFrom": 250000,
-    "yearlySavingsEnergyRangeTo": 440000,
+    "yearlySavingsEnergyRangeFrom": 300000,
+    "yearlySavingsEnergyRangeTo": 500000,
     "evidences": [
-      "87% der 22 Anomalietage sind unabhängig von Hochfahr-/Abfahrereignissen - charakteristisch für schleichend degradierte Betriebsmittel, nicht für Anlaufspitzen",
-      "Exzess-Intensität steigt von Feb/Mär auf Nov/Dez von ~2.000 kW auf 3.000-6.000 kW - konsistent mit fortschreitendem Verschleiß ohne Wartungsintervention im Jahresverlauf",
-      "Werk Süd betreibt Walzen, Schneiden und Glühen mit Bandantrieben, Ventilatoren, Pumpen und Hydraulik - alle diese Aggregate sind bekannte Quellen verschleißbedingter Stromaufnahme-Erhöhung",
-      "Hypothese 2 der Insight-Analyse: Motoren, Antriebe oder Hydraulikpacks in degradiertem Zustand ziehen Überstrom durch mechanischen Verschleiß oder Regelfehler ohne Prozessalarm",
-      "Adressierbares Potenzial 20-35% des Gesamtexzesses = 250.000-440.000 kWh/Jahr × 0,176 €/kWh = 44.000-77.000 €/Jahr"
+      "22 Anomalietage wurden ausschließlich retrospektiv erkannt – fehlende Echtzeitwarnung verhinderte jegliche operative Intervention am betreffenden Tag",
+      "Mittlere Abweichung 2.371 kW × 24 h = 56.904 kWh pro Anomalietag – ein Frühwarnsystem mit Eingriff nach 2–3 Stunden könnte bis zu 85–90 % des Tagesmehrverbrauchs verhindern",
+      "Häufung in Feb.–März ermöglicht vorausschauende Risikomarkierung im Produktionskalender auf Basis geplanter Kampagnenaktivitäten",
+      "Bei Erkennung und Intervention auf 50 % der adressierbaren Anomalietage: 300.000–500.000 kWh/Jahr Einsparung → €53.000–€88.000/Jahr (bei €0,176/kWh)",
+      "ISO 50001-Rahmenwerk am Standort schafft organisatorische Basis für Integration eines Echtzeit-Energiemonitoring-Systems ohne zusätzliche Zertifizierungsaufwände"
     ],
-    "amortisationPeriodInMonths": 7,
-    "reasoning": "Zustandsüberwachung ist im Bereich Walzwerke und Schwermaschinenbau eine etablierte Methode mit klar messbaren Energieeinsparungen neben den primären Instandhaltungsvorteilen.",
-    "confidence": 68,
+    "amortisationPeriodInMonths": 6,
+    "reasoning": "Echtzeitmonitoring-Systeme amortisieren sich in energieintensiven Industrieumgebungen typischerweise innerhalb von 6–12 Monaten, wenn klare Anomaliemuster vorliegen. Mit einer mittleren Abweichung von 2.371 kW und 22 identifizierten Anomalietagen ist das Potenzial ausreichend groß, um eine Monitoring-Lösung oder SCADA-Integration zu rechtfertigen. Der bestehende ISO 50001-Kontext am Standort beschleunigt die Implementierung, da Messpunkte, Kommunikationswege und Zuständigkeiten bereits definiert sind.",
+    "questions": [
+      {
+        "question": "Welche Energieüberwachungssysteme sind am Standort Feldmühlenstraße bereits vorhanden?",
+        "suggestedAnswers": [
+          {
+            "answer": "Nur Hauptzähler (Netzbezug), kein Submetering oder Unterzähler"
+          },
+          {
+            "answer": "Mehrere Lastgangzähler auf Aggregatsebene, aber kein zentrales Monitoring-Dashboard"
+          },
+          {
+            "answer": "Bestehendes SCADA/BMS mit Energiedaten, jedoch ohne automatisches Anomalie-Alerting"
+          },
+          {
+            "answer": "Umfassendes Energiemonitoring mit Dashboards, aber ohne automatische Warnmeldungen"
+          }
+        ]
+      },
+      {
+        "question": "In welchem Zeitrahmen nach Beginn eines Hochlasttages wäre eine operative Intervention technisch möglich?",
+        "suggestedAnswers": [
+          {
+            "answer": "Innerhalb von 1–2 Stunden – Prozesse können kurzfristig gedrosselt oder zeitlich versetzt werden"
+          },
+          {
+            "answer": "Erst nach 4–6 Stunden – Qualifizierungsläufe lassen sich nicht spontan unterbrechen"
+          },
+          {
+            "answer": "Kaum möglich – einmal gestartete Kampagnen müssen vollständig durchgeführt werden"
+          },
+          {
+            "answer": "Abhängig vom Prozess – manche Anlagen flexibel, andere nicht unterbrechbar"
+          }
+        ]
+      },
+      {
+        "question": "Ist eine Integration eines Energiemonitoring-Systems in die bestehende IT-Infrastruktur (SAP, MES, Laborplanung) vorgesehen oder bereits geplant?",
+        "suggestedAnswers": [
+          {
+            "answer": "Ja, eine EMS-Integration ist Teil der digitalen Roadmap"
+          },
+          {
+            "answer": "Nein, aktuell keine Integrationspläne vorhanden"
+          },
+          {
+            "answer": "Teilweise – Energiedaten fließen bereits in SAP, aber keine bidirektionale Verknüpfung"
+          },
+          {
+            "answer": "In Diskussion, aber Priorität und Zeitplan noch nicht definiert"
+          }
+        ]
+      },
+      {
+        "question": "Wer wäre für die operative Bearbeitung von Echtzeit-Energiewarnungen zuständig?",
+        "suggestedAnswers": [
+          {
+            "answer": "Energiemanager – bereits für ISO 50001 verantwortlich und mit direktem Mandat"
+          },
+          {
+            "answer": "Schichtleiter Produktion – hat unmittelbaren Zugriff auf Laststeuerung"
+          },
+          {
+            "answer": "Kombiniertes Team aus Energiemanagement und Werkstofftechnik-Leitung"
+          },
+          {
+            "answer": "Noch nicht definiert – organisatorische Zuständigkeit müsste erst geklärt werden"
+          }
+        ]
+      }
+    ],
+    "confidence": 65,
     "category": "OTHER",
     "investmentType": "MEDIUM_INTENSITY",
-    "effortLevel": "HIGH"
+    "effortLevel": "MEDIUM"
+  },
+  {
+    "locationId": 2,
+    "insightId": "ins_h6b80f1d",
+    "title": "Wochenend-Abschaltprotokoll für Labor- und Werkstoffprüfanlagen einführen",
+    "shortDescription": "Medianbezug von 4.005 kW samstags um 04:00 Uhr liegt 186% über dem nachgewiesenen Minimum — systematische Abschaltprozesse können den Großteil dieser Grundlast ohne Investitionsaufwand eliminieren",
+    "description": "Die statistische Analyse zeigt, dass der Standort Feldmühlenstraße 55 in den Fenstern Samstag 04:00–09:00 Uhr sowie Sonntag 06:00–11:00 Uhr und 21:00–24:00 Uhr einen Medianbezug von 4.005 kW aufweist — 186% (2.606 kW) über dem nachgewiesenen Minimum von 1.398 kW in denselben Zeitfenstern. Da am Standort ausschließlich Werkstofftechnik-Labor, Prozessentwicklung und Verwaltung betrieben werden und keine Schichtfertigung stattfindet, ist ein Bezug von 4.005 kW samstags um 04:00 Uhr vor jeglicher Personalanwesenheit ein starkes Indiz für Laboröfen, Wärmebehandlungsanlagen oder Werkstoffprüfgeräte, die nach Freitagsschichtende nicht systematisch abgeschaltet werden. Die Einführung dokumentierter Abschaltchecklisten für Laboröfen, Glüh- und Härteanlagen sowie sonstige Werkstoffprüfgeräte — ergänzt durch stichprobenartige Energiemonitoringkontrollen am Wochenende — kann auf Basis realistischer Abschaltquoten von 50–55% des statistischen Potenzials rund 210.000–260.000 kWh pro Jahr einsparen.",
+    "yearlySavingsRangeFrom": 37000,
+    "yearlySavingsRangeTo": 45800,
+    "investmentRangeFrom": 2000,
+    "investmentRangeTo": 5000,
+    "unit": "kWh",
+    "yearlySavingsEnergyRangeFrom": 210000,
+    "yearlySavingsEnergyRangeTo": 260000,
+    "evidences": [
+      "Medianbezug in den identifizierten Wochenendfenstern: 4.005 kW — 186% (2.606 kW) über dem nachgewiesenen Standortminimum von 1.398 kW",
+      "P25-Wert von 2.958 kW zeigt: selbst in den besten 25% der Wochenenden wird mehr als das Doppelte des Minimums bezogen — kein konsistentes Abschalten erkennbar",
+      "Statistisches Gesamtpotenzial: 496.165 kWh/Jahr = 87.325 €/Jahr über 13 identifizierte Wochenstunden",
+      "Standort betreibt R&D-Laboröfen, Wärmebehandlungs- und Werkstoffprüfanlagen — typische Verbraucher, die nach Freitagsschichtende weiterlaufen, wenn kein Abschaltprotokoll vorhanden ist",
+      "Konservative Abschaltquote 50–55%: 210.000–260.000 kWh/Jahr = 37.000–45.800 €/Jahr Einsparung (zu €0,176/kWh)"
+    ],
+    "amortisationPeriodInMonths": 1,
+    "reasoning": "Als ISO 50001-zertifizierter Standort bestehen bei Wälzholz bereits formale Strukturen für Energiemanagementsysteme und Schulungsprozesse — die Einführung eines verbindlichen Wochenend-Abschaltprotokolls ist damit eine Sofortmaßnahme mit nahezu null Investitionsaufwand. Das Muster einer konstant hohen Grundlast, die weit über dem nachgewiesenen Minimum liegt und keine erkennbare Wochenend-zu-Wochenend-Schwankung in den unteren Quartilen zeigt, deutet auf strukturell fehlendes Abschaltverhalten hin — nicht auf prozessbedingte Notwendigkeit. Die Amortisation liegt unter einem Monat.",
+    "questions": [
+      {
+        "question": "Welche Laboröfen oder Prüfanlagen laufen am Standort Feldmühlenstraße aktuell typischerweise über das Wochenende durch?",
+        "suggestedAnswers": [
+          {
+            "answer": "Glühöfen für Werkstoffcharakterisierung (müssen aus prozesstechnischen Gründen kontinuierlich betrieben werden)"
+          },
+          {
+            "answer": "Werkstoffprüfmaschinen (Zugprüfung, Härtemessung) im Standby-Modus"
+          },
+          {
+            "answer": "Elektrochemische Prüfstände oder Anlagen für Bipolarplatten-/Elektroband-R&D"
+          },
+          {
+            "answer": "Verschiedene Anlagen ohne klare Dokumentation des Wochenendbetriebszustands"
+          }
+        ]
+      },
+      {
+        "question": "Existiert aktuell ein formales Abschaltprotokoll für Laboröfen und Prüfanlagen am Freitagsschichtende?",
+        "suggestedAnswers": [
+          {
+            "answer": "Nein, die Entscheidung liegt im Ermessen der einzelnen Labormitarbeiter"
+          },
+          {
+            "answer": "Ja, aber es wird nicht konsequent kontrolliert oder dokumentiert"
+          },
+          {
+            "answer": "Ja, mit Checkliste und Bestätigung durch Vorgesetzte"
+          },
+          {
+            "answer": "Nur für bestimmte sicherheitskritische oder temperaturempfindliche Anlagen"
+          }
+        ]
+      },
+      {
+        "question": "Welche Anlagen müssen aus nachweisbaren Prozess- oder Qualitätsgründen auch am Wochenende weiterlaufen?",
+        "suggestedAnswers": [
+          {
+            "answer": "Nur Öfen mit laufenden Qualifizierungskampagnen für neue Stahlgüten (zeitkritische Zertifizierungsprogramme)"
+          },
+          {
+            "answer": "Empfindliche Messräume mit strenger Temperatur-/Feuchtigkeitskontrolle (Elektronenmikroskopie, Metallographie)"
+          },
+          {
+            "answer": "Keine — alle Anlagen könnten technisch abgeschaltet oder auf Standby versetzt werden"
+          },
+          {
+            "answer": "Die Anforderungen variieren je nach laufenden Versuchsprogrammen und müssen fallweise geprüft werden"
+          }
+        ]
+      }
+    ],
+    "confidence": 88,
+    "category": "OTHER",
+    "investmentType": "NO_INTENSITY",
+    "effortLevel": "LOW"
+  },
+  {
+    "locationId": 2,
+    "insightId": "ins_h6b80f1d",
+    "title": "BMS-Wochenendabsenkung für Lüftungs- und Klimaanlagen programmieren",
+    "shortDescription": "Das Gebäudeleitsystem implementiert keine Wochenend-Temperaturabsenkung für Hallen- und Laborbereiche und hält volle HVAC-Kapazität aufrecht, wenn keine Mitarbeiter anwesend sind",
+    "description": "Neben nicht abgeschalteten Prozessanlagen ist das Gebäudemanagementsystem (BMS) eine weitere wahrscheinliche Ursache der strukturellen Wochenend-Grundlast. Ein Standort mit Verwaltungsgebäude, Laborkomplex und Werkstoffprüfhallen dieser Größenordnung weist typischerweise einen HVAC-Grundlastanteil von 20–35% am Gesamtbezug auf; wenn das BMS mit unverändertem Werktagsprogramm läuft, bedeutet dies volle Klimatisierung und Lüftung von Samstag 04:00 Uhr bis Sonntagabend — ohne Belegschaft. Das Wochenendfenster Sonntag 21:00–24:00 Uhr ist ein klassisches Indiz für eine BMS-gesteuerte Vorwärmsequenz, die zu früh startet. Durch Programmierung des BMS auf Wochenend-Nachtabsenkung für HLK-Anlagen in Verwaltung, Labors und Hallen lassen sich 120.000–155.000 kWh pro Jahr einsparen, ohne Laborbereiche mit echtem Klimatisierungsbedarf zu beeinträchtigen.",
+    "yearlySavingsRangeFrom": 21100,
+    "yearlySavingsRangeTo": 27300,
+    "investmentRangeFrom": 8000,
+    "investmentRangeTo": 20000,
+    "unit": "kWh",
+    "yearlySavingsEnergyRangeFrom": 120000,
+    "yearlySavingsEnergyRangeTo": 155000,
+    "evidences": [
+      "Strukturelle Überversorgung von 2.606 kW im Medianbezug — HVAC-Anlagen machen bei vergleichbaren Industrie-/Laborgebäuden typisch 20–35% des Grundlastexzesses aus, entsprechend 520–910 kW potenzieller HVAC-Exzess",
+      "Wochenendfenster Samstag 04:00–09:00 Uhr entspricht dem Anlaufmuster eines BMS-Vorwärmprogramms, das ohne Berücksichtigung von Belegschaftszeiten arbeitet",
+      "Sonntag 21:00–24:00 Uhr ist typisches Muster einer zu früh startenden BMS-Vorwärmsequenz für den Montagbetrieb",
+      "Schätzung HVAC-Einsparung bei Wochenendabsenkung (25–30% des statistischen Potenzials): 120.000–155.000 kWh/Jahr = 21.100–27.300 €/Jahr (zu €0,176/kWh)",
+      "ISO 50001 Anforderung: systematische Optimierung von Heizungs-, Lüftungs- und Klimasystemen als Significant Energy User (SEU) ist Teil des zertifizierten Energiemanagements"
+    ],
+    "amortisationPeriodInMonths": 7,
+    "reasoning": "ISO 50001-zertifizierte Standorte müssen HLK-Anlagen als bedeutende Energieverbraucher (SEU) regelmäßig optimieren — eine BMS-Wochenendabsenkung ist eine direkte Maßnahme im Rahmen des bestehenden Zertifizierungssystems. Der Konfigurationsaufwand liegt überwiegend in der BMS-Programmierung und bereichsweiser Abstimmung mit Laborleitung, erfordert aber in der Regel keine Hardware-Investitionen. Bei einer Amortisationszeit von ca. 7 Monaten ist dies eine wirtschaftlich sehr attraktive Maßnahme mit dauerhafter jährlicher Wirkung.",
+    "questions": [
+      {
+        "question": "Ist das BMS des Standorts Feldmühlenstraße auf separate Wochenend- und Nachtprogramme konfiguriert?",
+        "suggestedAnswers": [
+          {
+            "answer": "Nein, es läuft mit einem einheitlichen Wochenprogramm ohne Unterscheidung zwischen Werktag und Wochenende"
+          },
+          {
+            "answer": "Ja, aber das Wochenendprogramm ist identisch oder nahezu identisch mit dem Werktagsprogramm"
+          },
+          {
+            "answer": "Ja, mit reduzierter Temperatur, aber ohne Abschaltung einzelner HLK-Kreise"
+          },
+          {
+            "answer": "Teilweise — Verwaltungsbereich hat Absenkung, Labors und Hallen laufen im Werktagsmodus"
+          }
+        ]
+      },
+      {
+        "question": "Welche Bereiche des Standorts erfordern nachweislich auch am Wochenende Klimatisierung oder kontrollierte Lüftung?",
+        "suggestedAnswers": [
+          {
+            "answer": "Nur Serverraum, Reinräume und klimatisierte Messräume mit engen Toleranzvorgaben"
+          },
+          {
+            "answer": "Labors mit hygroskopischen Materialien oder empfindlichen Messgeräten (Elektronenmikroskope, Profilometer)"
+          },
+          {
+            "answer": "Sämtliche Laborbereiche — Temperaturwechsel schädigen Referenzproben und Kalibrierstandards"
+          },
+          {
+            "answer": "Muss bereichsweise mit Laborleitung und Qualitätsmanagement abgestimmt werden"
+          }
+        ]
+      },
+      {
+        "question": "Wann wurde das BMS des Standorts zuletzt auf Optimierungspotenzial überprüft?",
+        "suggestedAnswers": [
+          {
+            "answer": "Seit der Erstinbetriebnahme des BMS wurde keine systematische Optimierungsüberprüfung durchgeführt"
+          },
+          {
+            "answer": "Im Rahmen der letzten ISO 50001-Rezertifizierung wurde das BMS geprüft"
+          },
+          {
+            "answer": "Innerhalb der letzten 2 Jahre durch das interne Energieteam oder einen externen Dienstleister"
+          },
+          {
+            "answer": "Eine BMS-Auditierung und Optimierung ist aktuell in Planung"
+          }
+        ]
+      }
+    ],
+    "confidence": 80,
+    "category": "HEATING",
+    "investmentType": "MEDIUM_INTENSITY",
+    "effortLevel": "MEDIUM"
+  },
+  {
+    "locationId": 2,
+    "insightId": "ins_h6b80f1d",
+    "title": "Neu in Betrieb genommene Prüfanlagen in ISO 50001-Abschaltplanung integrieren",
+    "shortDescription": "Die Wochenend-Grundlast wächst mit +29,5%/Jahr (+1.182 kW/Jahr) — neu installierte Werkstoff- und Forschungsanlagen sind offenbar nicht in das Energiemanagement und die Abschaltplanung eingebunden",
+    "description": "Ein eigenständiges und besonders dringliches Problem neben der bestehenden Strukturüberversorgung ist der rasant steigende Trend der Cluster-Grundlast: +1.182 kW pro Jahr (+29,5%/Jahr), entsprechend einer Jahresdrift von 799.244 kWh, die sich kumulativ aufbaut. Bei diesem Wachstum verdoppelt sich die Wochenend-Grundlast dieses Clusters in ca. 3,4 Jahren, und das Einsparpotenzial steigt von aktuell 87.325 €/Jahr auf über 150.000 €/Jahr. Als wahrscheinlichste Ursache gelten neu installierte Werkstoffprüf-, Prozessentwicklungs- oder F&E-Anlagen — insbesondere solche für die Qualifizierung von Elektroband, Bipolarplatten oder Hochfestigkeitsstählen, die seit 2023–2025 in Betrieb gegangen sind, ohne in das Wochenend-Abschaltprogramm und das formale ISO 50001-Energiemanagementsystem aufgenommen zu werden. Eine strukturierte Inventur neu installierter Anlagen und deren Integration in die Significant-Energy-User-Liste sowie in Abschaltpläne stoppt das Trendwachstum und ist als Compliance-Maßnahme im Rahmen der ISO 50001-Rezertifizierung ohnehin obligatorisch.",
+    "yearlySavingsRangeFrom": 8800,
+    "yearlySavingsRangeTo": 13200,
+    "investmentRangeFrom": 5000,
+    "investmentRangeTo": 15000,
+    "unit": "kWh",
+    "yearlySavingsEnergyRangeFrom": 50000,
+    "yearlySavingsEnergyRangeTo": 75000,
+    "evidences": [
+      "Trendwachstum im identifizierten Cluster: +1.182 kW/Jahr = +29,5%/Jahr — entspricht einer kumulativen Jahresdrift von 799.244 kWh",
+      "Bei unverändertem Wachstum verdoppelt sich die Cluster-Grundlast in ~3,4 Jahren und das Kostenpotenzial steigt von 87.325 €/Jahr auf über 150.000 €/Jahr",
+      "Trendwachstum von +29,5%/Jahr ist mit organischer Produktionssteigerung nicht erklärbar — deutet stark auf neu installierte Einzelanlagen ohne Abschaltregelung hin",
+      "ISO 50001 Norm (Kap. 6.3): neue energierelevante Anlagen müssen formal in die Energiebedarfsanalyse und SEU-Bewertung aufgenommen werden — dieser Schritt scheint bei neu installierten F&E-Anlagen nicht vollständig erfolgt zu sein",
+      "Konservative Schätzung für die durch neue Anlagen verursachte Mehrlast (aktuelles Jahr): 50.000–75.000 kWh = 8.800–13.200 €/Jahr; Trendverhinderung spart kumulativ ein Vielfaches über 3–5 Jahre"
+    ],
+    "amortisationPeriodInMonths": 11,
+    "reasoning": "Die Wachstumsrate von +29,5%/Jahr in einem definierten Wochenendfenster ist für einen Verwaltungs- und Laborstandort ohne Schichtfertigung eine klare Anomalie, die auf schrittweise hinzukommende, nicht erfasste Verbraucher hinweist. Als ISO 50001-zertifiziertes Unternehmen ist Wälzholz ohnehin verpflichtet, neue Significant Energy Users systematisch zu erfassen — die Maßnahme schließt eine bestehende Compliance-Lücke und verhindert, dass das aktuelle Einsparpotenzial in drei Jahren ein drei- bis vierfaches Investitionsvolumen erfordern würde. Die einmalige Auditinvestition von 5.000–15.000 € amortisiert sich in ca. 11 Monaten und liefert dauerhaften Schutz vor unkontrolliertem Anstieg der Wochenendgrundlast.",
+    "questions": [
+      {
+        "question": "Welche neuen Prüf- oder Forschungsanlagen wurden seit 2023 am Standort Feldmühlenstraße installiert oder in Betrieb genommen?",
+        "suggestedAnswers": [
+          {
+            "answer": "Anlagen für Elektroband- oder Bipolarplattenqualifizierung (H2/Elektrolyse-R&D, Brennstoffzellenmaterialien)"
+          },
+          {
+            "answer": "Neue Werkstoffprüfmaschinen für Hochfestigkeitsstähle oder Vergütungsverfahren"
+          },
+          {
+            "answer": "Anlagen für Beschichtungstechnologie-Entwicklung (Oberflächen, Korrosionsschutz)"
+          },
+          {
+            "answer": "Keine wesentlichen Neuinstallationen bekannt — Inventar muss geprüft werden"
+          }
+        ]
+      },
+      {
+        "question": "Werden neu installierte Anlagen am Standort formal in das ISO 50001-Energiemanagementsystem und die SEU-Liste aufgenommen?",
+        "suggestedAnswers": [
+          {
+            "answer": "Nein, neue Anlagen werden erst bei der nächsten Rezertifizierung systematisch erfasst"
+          },
+          {
+            "answer": "Ja, aber ohne Definition von Wochenend-Abschaltregelungen oder Betriebszeitfenstern"
+          },
+          {
+            "answer": "Teilweise — abhängig vom jeweiligen Installationsprojekt und der verantwortlichen Abteilung"
+          },
+          {
+            "answer": "Ja, vollständig mit Lastprofil, Betriebszeiten und Abschaltvorgaben dokumentiert"
+          }
+        ]
+      },
+      {
+        "question": "Wird der Energiebezug neu in Betrieb genommener Anlagen nach der Installation aktiv überwacht?",
+        "suggestedAnswers": [
+          {
+            "answer": "Nein, granulares Monitoring beginnt erst nach Abschluss der Inbetriebnahme- und Qualifizierungsphase"
+          },
+          {
+            "answer": "Ja, über das übergeordnete Standortzählersystem, aber ohne Einzelanlagen-Auflösung"
+          },
+          {
+            "answer": "Ja, mit dediziertem Unterzähler und monatlicher Auswertung durch das Energieteam"
+          },
+          {
+            "answer": "Nur bei Anlagen, die einen definierten Leistungsschwellenwert überschreiten"
+          }
+        ]
+      },
+      {
+        "question": "Gibt es am Standort eine aktuelle und vollständige Liste aller elektrischen Verbraucher mit ihrem Nenn- und Standby-Leistungsbedarf?",
+        "suggestedAnswers": [
+          {
+            "answer": "Nein, es existiert kein aktuelles Verbraucherinventar mit Leistungsangaben"
+          },
+          {
+            "answer": "Ja, aber die Liste wird nicht regelmäßig bei Neuinstallationen aktualisiert"
+          },
+          {
+            "answer": "Ja, vollständig gepflegt im Rahmen des ISO 50001-Systems"
+          },
+          {
+            "answer": "Eine Inventarisierung ist geplant, wurde aber noch nicht abgeschlossen"
+          }
+        ]
+      }
+    ],
+    "confidence": 75,
+    "category": "OTHER",
+    "investmentType": "MEDIUM_INTENSITY",
+    "effortLevel": "MEDIUM"
+  },
+  {
+    "locationId": 2,
+    "insightId": "ins_j1d46a8c",
+    "title": "Wochenend-Abschaltliste für Produktions- und F&E-Anlagen einführen",
+    "shortDescription": "Medianverbrauch am Wochenende beträgt 1.981 kW trotz nachgewiesener Möglichkeit, auf 25,6 kW zu sinken – strukturelles Einsparpotenzial von €69.000/Jahr",
+    "description": "Die Analyse des Standorts Feldmühlenstraße zeigt, dass der Verbrauch an Wochenend-Nachmittagen (Sa 09–18 Uhr, So 11–21 Uhr) bei einem Median von 1.981 kW liegt – obwohl an optimalen Wochenenden nachweislich ein Grundlastniveau von nur 25,6 kW erreicht wird. Diese Diskrepanz von 7.637% belegt, dass ein weitgehend abgeschalteter Betrieb technisch möglich ist, jedoch nicht systematisch umgesetzt wird. Es ist anzunehmen, dass Produktionsanlagen, F&E-Prüfstände oder technische Systeme im Hot-Standby-Modus weiterlaufen, anstatt nach der letzten Schicht vollständig abgeschaltet zu werden. Durch die Einführung verbindlicher Abschaltlisten, klarer Zuständigkeiten und einer wöchentlichen Energieverbrauchs-Review kann der Wochenendverbrauch ohne nennenswerte Investition strukturell gesenkt werden. Da der begleitende Trend +689,5 kW/Jahr (+34,8%/Jahr) beträgt und sich der Verbrauch damit innerhalb von ca. drei Jahren verdoppeln würde, ist zeitnahes Handeln besonders dringlich.",
+    "yearlySavingsRangeFrom": 34500,
+    "yearlySavingsRangeTo": 44900,
+    "investmentRangeFrom": 1500,
+    "investmentRangeTo": 4000,
+    "unit": "kWh",
+    "yearlySavingsEnergyRangeFrom": 196000,
+    "yearlySavingsEnergyRangeTo": 255000,
+    "evidences": [
+      "Medianverbrauch Sa 09–18 Uhr und So 11–21 Uhr beträgt 1.980,8 kW bei einer nachgewiesenen Mindestgrundlast von lediglich 25,6 kW – eine Abweichung von 7.637% (Delta: 1.955,2 kW)",
+      "P25/P75-Bandbreite von 1.404–2.448 kW zeigt eine strukturell hohe und konsistente Last im Wochenend-Zeitfenster – kein zufälliger Ausreißer, sondern ein wiederkehrendes Muster",
+      "Gesamtpotenzial: 392.665 kWh/Jahr (€69.109/Jahr bei €0,176/kWh) über 19 Stunden/Woche × 52 Wochen = 988 Stunden/Jahr im betroffenen Zeitfenster",
+      "Begleitender Trend: +689,5 kW/Jahr (+34,8%/Jahr, statistisch signifikant) – bei diesem Anstieg verdoppelt sich der Wochenendverbrauch innerhalb von ca. 3 Jahren ohne Gegenmaßnahmen",
+      "50–65% Realisierungsrate durch operative Maßnahmen ergibt ~196.000–255.000 kWh/Jahr Einsparung (€34.500–€44.900/Jahr bei €0,176/kWh)"
+    ],
+    "amortisationPeriodInMonths": 1,
+    "reasoning": "Das nachgewiesene Minimum von 25,6 kW belegt eindeutig, dass eine vollständige Abschaltung aller nicht betriebsnotwendigen Anlagen am Wochenende technisch realisierbar ist. Als ISO-50001-zertifizierter Betrieb verfügt Wälzholz Feldmühlenstraße bereits über die Energiemanagementstrukturen (Ziele, Verantwortlichkeiten, Monitoring), die die schnelle Einführung verbindlicher Abschaltprozeduren ermöglichen. Der steigende Trend (+34,8%/Jahr) macht operative Sofortmaßnahmen besonders wirtschaftlich, da jedes verzögerte Quartal das Einsparungspotenzial weiter erhöht.",
+    "questions": [
+      {
+        "question": "Welche Anlagen laufen typischerweise an Wochenend-Nachmittagen weiter – auch wenn keine Produktion oder F&E-Tests geplant sind?",
+        "suggestedAnswers": [
+          {
+            "answer": "F&E-Prüfstände und Versuchsanlagen im Hot-Standby-Modus"
+          },
+          {
+            "answer": "Kältemaschinen und Klimaanlagen im Dauerbetrieb"
+          },
+          {
+            "answer": "Druckluftversorgung für den gesamten Standort"
+          },
+          {
+            "answer": "Mehrere Verbrauchsgruppen ohne klare Dokumentation"
+          }
+        ]
+      },
+      {
+        "question": "Gibt es am Standort Feldmühlenstraße eine standardisierte Abschaltprozedur für das Wochenende?",
+        "suggestedAnswers": [
+          {
+            "answer": "Ja, aber sie wird nicht konsequent befolgt"
+          },
+          {
+            "answer": "Nein, die Entscheidung liegt beim jeweiligen Schichtführer oder Anlagenverantwortlichen"
+          },
+          {
+            "answer": "Ja, und sie wird regelmäßig im Rahmen des ISO-50001-Monitorings geprüft"
+          },
+          {
+            "answer": "Es gibt Ansätze, aber keine formalisierte und verbindliche Checkliste"
+          }
+        ]
+      },
+      {
+        "question": "Was ist der wahrscheinlichste Grund für den stark steigenden Wochenendverbrauch (+34,8%/Jahr)?",
+        "suggestedAnswers": [
+          {
+            "answer": "Neue F&E-Projekte erfordern zunehmend Wochenendtests mit schwerer Prüfausrüstung"
+          },
+          {
+            "answer": "Zusätzliche Anlagen wurden in Betrieb genommen, ohne Wochenend-Abschaltregelungen zu definieren"
+          },
+          {
+            "answer": "Unklar – die Ursache des Trends wurde bisher nicht systematisch untersucht"
+          },
+          {
+            "answer": "Saisonale Auftragspeaks führen zu gelegentlicher Wochenendproduktion mit eskalierender Tendenz"
+          }
+        ]
+      },
+      {
+        "question": "Wer trägt aktuell die Verantwortung für die Energieeffizienz an Wochenenden am Standort Feldmühlenstraße?",
+        "suggestedAnswers": [
+          {
+            "answer": "Der ISO-50001-Energiemanagementbeauftragte mit klarer Zuständigkeit"
+          },
+          {
+            "answer": "Die jeweiligen Abteilungsleiter (F&E, Produktion, Gebäudetechnik) in eigener Verantwortung"
+          },
+          {
+            "answer": "Keine explizite Zuständigkeit definiert"
+          },
+          {
+            "answer": "Die Gebäude- und Sicherheitstechnik, nicht die Produktionsverantwortlichen"
+          }
+        ]
+      }
+    ],
+    "confidence": 90,
+    "category": "OTHER",
+    "investmentType": "NO_INTENSITY",
+    "effortLevel": "LOW"
+  },
+  {
+    "locationId": 2,
+    "insightId": "ins_j1d46a8c",
+    "title": "Automatisierte Wochenend-Lastabschaltung über Energiemanagementsystem implementieren",
+    "shortDescription": "Technische Automatisierung der Wochenend-Abschaltung sichert 70–90% des €69.000/Jahr-Potenzials dauerhaft und personenunabhängig",
+    "description": "Ergänzend zu operativen Abschaltprozeduren ermöglicht eine technische Automatisierungslösung eine zuverlässige, personenunabhängige Steuerung der Wochenend-Lasten am Standort Feldmühlenstraße. Die nachgewiesene Grundlast von 25,6 kW an optimalen Wochenenden belegt, dass nahezu alle Verbraucher technisch abschaltbar sind; das strukturelle Muster mit Median 1.981 kW zeigt jedoch, dass operative Maßnahmen allein nicht ausreichen werden. Durch Integration eines automatisierten Lastabwurfprogramms in das bestehende oder ein erweitertes Energiemanagementsystem (EMS/SCADA/SPS) können Anlagen, die weder für Sicherheit noch für Produktionsvorbereitung benötigt werden, nach einem definierten Wochenend-Zeitplan automatisch gesteuert werden. Als nach ISO 50001 zertifizierter Betrieb verfügt Wälzholz Feldmühlenstraße über die organisatorische Infrastruktur und den Monitoring-Rahmen, um ein solches System effizient zu integrieren. Die rapide steigende Trendentwicklung (+34,8%/Jahr) macht eine technische Dauerlösung besonders dringlich, da operative Maßnahmen bei weiter wachsender Anlagenvielfalt zunehmend schwerer durchzusetzen sind.",
+    "yearlySavingsRangeFrom": 48400,
+    "yearlySavingsRangeTo": 62200,
+    "investmentRangeFrom": 25000,
+    "investmentRangeTo": 60000,
+    "unit": "kWh",
+    "yearlySavingsEnergyRangeFrom": 275000,
+    "yearlySavingsEnergyRangeTo": 353000,
+    "evidences": [
+      "Statistisches Gesamtpotenzial: 392.665 kWh/Jahr (€69.109/Jahr); 70–90% technische Realisierungsrate durch Automatisierung ergibt 275.000–353.000 kWh/Jahr (€48.400–€62.200/Jahr)",
+      "Median 1.980,8 kW vs. nachgewiesenes Minimum 25,6 kW: ein Verhältnis von 77:1 belegt, dass nahezu alle Wochenend-Verbraucher abschaltbar sind und die Energie nicht für unverzichtbare Basisprozesse benötigt wird",
+      "Trend +689,5 kW/Jahr (+34,8%/Jahr, statistisch signifikant): ohne technische Gegenmaßnahme verdoppelt sich der Wochenendverbrauch in ~3 Jahren, was manuelle Kontrollen zunehmend unwirksam macht",
+      "P25-Wert von 1.404,8 kW zeigt, dass selbst das untere Quartil der Wochenendlast noch 55-fach über der möglichen Grundlast liegt – das Problem ist strukturell, nicht auf Ausreißer beschränkt",
+      "Investition €25.000–€60.000 amortisiert sich bei Ø€55.300/Jahr Einsparung in ca. 9 Monaten; ISO-50001-Konformität schafft Synergieeffekte mit bestehendem Energiemonitoring"
+    ],
+    "amortisationPeriodInMonths": 9,
+    "reasoning": "Eine automatisierte Lösung adressiert das strukturelle Muster dauerhaft und unabhängig von personellen Wechseln oder Compliance-Lücken bei Abschaltprozeduren. Die ISO-50001-Zertifizierung des Standorts erfordert bereits ein systematisches Energiemonitoring und schafft damit die ideale Grundlage für eine EMS-Integration. Der stark steigende Trend (+34,8%/Jahr) erhöht den wirtschaftlichen Druck für eine technische Dauerlösung: Jedes Jahr Verzögerung erhöht nicht nur den Energieverbrauch, sondern auch den späteren Implementierungsaufwand, da mehr Anlagen berücksichtigt werden müssen.",
+    "questions": [
+      {
+        "question": "Verfügt der Standort Feldmühlenstraße über ein Gebäude- oder Energiemanagementsystem, das eine automatisierte Zeitplan-basierte Laststeuerung ermöglicht?",
+        "suggestedAnswers": [
+          {
+            "answer": "Ja, ein vollständiges SCADA- oder BMS-System ist vorhanden und könnte erweitert werden"
+          },
+          {
+            "answer": "Teilweise – einige Anlagen sind vernetzt, andere benötigen Nachrüstung"
+          },
+          {
+            "answer": "Nein, aber das ISO-50001-System bietet eine organisatorische Grundlage für die Einführung"
+          },
+          {
+            "answer": "Unbekannt – eine Bestandsaufnahme der Steuerungsinfrastruktur ist erforderlich"
+          }
+        ]
+      },
+      {
+        "question": "Welche Anlagen am Standort können ohne Sicherheitsrisiko oder kritische Produktionsauswirkung remote abgeschaltet werden?",
+        "suggestedAnswers": [
+          {
+            "answer": "Alle Produktions- und F&E-Anlagen, ausgenommen Sicherheits- und Brandschutzsysteme"
+          },
+          {
+            "answer": "Nur Klimatisierung und Beleuchtung; Produktionsanlagen erfordern manuellen Eingriff"
+          },
+          {
+            "answer": "Die meisten Anlagen, aber F&E-Prüfstände benötigen eine separate sicherheitstechnische Bewertung"
+          },
+          {
+            "answer": "Derzeit unklar – eine Anlagenmatrix für fernsteuerbare Verbraucher fehlt"
+          }
+        ]
+      },
+      {
+        "question": "Welcher technische Implementierungsansatz ist für die automatisierte Wochenend-Abschaltung am realistischsten?",
+        "suggestedAnswers": [
+          {
+            "answer": "Erweiterung des bestehenden ISO-50001-Energiemanagementsystems um Steuerfunktionen"
+          },
+          {
+            "answer": "Nachrüstung intelligenter Schaltaktoren und Zeitschaltuhren an Hauptverbrauchern"
+          },
+          {
+            "answer": "SPS-Programmierung für automatische zeitplan-basierte Abschaltsequenzen"
+          },
+          {
+            "answer": "Einführung einer Cloud-basierten Energiemanagementplattform mit Remote-Steuerung"
+          }
+        ]
+      }
+    ],
+    "confidence": 85,
+    "category": "OTHER",
+    "investmentType": "MEDIUM_INTENSITY",
+    "effortLevel": "MEDIUM"
+  },
+  {
+    "locationId": 2,
+    "insightId": "ins_k4e82b5f",
+    "title": "Ursachenanalyse: Exponentiell steigender Montagnacht-Verbrauch (+55 %/Jahr)",
+    "shortDescription": "Der Nacht-Cluster Montag 00–05 Uhr steigt mit +3.008 kW/Jahr und droht sich in unter 2 Jahren zu verdoppeln — sofortige Ursachenanalyse ist dringend erforderlich.",
+    "description": "Die statistische Analyse identifiziert am Standort Feldmühlenstraße einen einzigen Wochenacht-Cluster (Montag 00–05 Uhr), der mit +3.008 kW/Jahr (+55,0 %/Jahr) auf einem statistisch signifikanten Langzeittrend ansteigt. Besonders alarmierend ist die Übereinstimmung von Lang- und Kurzfristtrend: Der aktuelle 4-Wochen-Trend bestätigt eine weitere Beschleunigung (+20 %/Woche). Bereits heute liegt die Median-Grundlast bei 5.466 kW — 89 % über dem Standort-Baseline von 2.893 kW. Die annualisierte Verbrauchsdrift beträgt 782.100 kWh/Jahr, was bei ungebremstem Verlauf Mehrkosten von ca. 137.650 €/Jahr allein durch das Trendwachstum bedeutet. Für einen Werkstofftechnik- und F&E-Standort ohne Nachtschicht sind über 5.400 kW um 2 Uhr morgens kein normaler Betriebszustand. Mögliche Treiber sind automatisierte Aufwärmzyklen neu in Betrieb genommener Prüfanlagen, Batch-Berechnungsjobs von Simulations- oder Messtechnik-Clustern oder unkontrollierte Leerlaufphasen von Prozessanlagen. Als erster Schritt müssen die Hauptlastverursacher per Subzählerinstallation oder temporärer Messtechnik identifiziert werden, bevor gezielte Abschalt- und Optimierungsmaßnahmen eingeleitet werden können.",
+    "yearlySavingsRangeFrom": 15000,
+    "yearlySavingsRangeTo": 28000,
+    "investmentRangeFrom": 2000,
+    "investmentRangeTo": 6000,
+    "unit": "kWh",
+    "yearlySavingsEnergyRangeFrom": 85000,
+    "yearlySavingsEnergyRangeTo": 160000,
+    "evidences": [
+      "Cluster SC2 (Montag 00–05 Uhr): Langfristiger Anstieg +3.008 kW/Jahr (+55,0 %/Jahr) — statistisch signifikant bestätigt",
+      "4-Wochen-Kurzfristtrend: +20 %/Woche — Lang- und Kurzfristrichtung stimmen überein, die Dynamik beschleunigt sich aktiv",
+      "Annualisierte Verbrauchsdrift durch den Trend: 782.100 kWh/Jahr — Kostenäquivalent ca. 137.650 €/Jahr Mehrverbrauch bei unverändertem Verlauf",
+      "Aktueller Median-Verbrauch im Cluster: 5.466 kW vs. Baseline 2.893 kW (+89 % strukturelle Überversorgung in 5 Stunden/Woche = 260 h/Jahr)",
+      "Gesamtverbrauch im Zeitfenster aktuell ca. 1.421.000 kWh/Jahr; selbst eine 10–15 %-Reduktion entspräche 85.000–160.000 kWh/Jahr Einsparung"
+    ],
+    "amortisationPeriodInMonths": 2,
+    "reasoning": "Der Trend ist eindeutig, statistisch signifikant und beschleunigt sich aktiv — dies erfordert sofortiges Handeln. Eine Ursachenanalyse mit temporärer Submetering-Kampagne kostet wenig (2.000–6.000 €), liefert aber die Entscheidungsgrundlage für deutlich größere Einsparmaßnahmen. Bereits während der Analyse sind erste Quick-Wins (z.B. sofortige manuelle Abschaltung identifizierter Lasten) realisierbar. Die ISO 50001-Zertifizierung des Standorts stellt sicher, dass strukturierte Messprogramme und Maßnahmencontrolling bereits etabliert sind.",
+    "questions": [
+      {
+        "question": "Welche energieintensiven Systeme sind am Standort Feldmühlenstraße montags zwischen 00 und 05 Uhr bekanntermaßen aktiv?",
+        "suggestedAnswers": [
+          {
+            "answer": "Thermische Prüfanlagen (z.B. Glühöfen, Härteanlagen) mit automatisierten Vorheizkurven"
+          },
+          {
+            "answer": "IT-Infrastruktur (Rechencluster, Simulationsserver für FEM/Werkstoffmodellierung) mit nächtlichen Batch-Jobs"
+          },
+          {
+            "answer": "Druckluft- und Kühlsysteme, die auch außerhalb der Produktionszeiten laufen"
+          },
+          {
+            "answer": "Keine bekannte planmäßige Aktivität — die Lasten sind unklar"
+          }
+        ]
+      },
+      {
+        "question": "Sind seit Anfang 2025 neue Prüfanlagen, Produktionseinrichtungen oder IT-Systeme an diesem Standort in Betrieb genommen worden?",
+        "suggestedAnswers": [
+          {
+            "answer": "Ja, neue Prüfanlagen für Kaltwalz- oder Glühprozessentwicklung wurden installiert"
+          },
+          {
+            "answer": "Ja, IT-/Recheninfrastruktur wurde erweitert (z.B. mehr Simulationskapazität)"
+          },
+          {
+            "answer": "Keine größeren Neuinbetriebnahmen — der Anstieg ist unerwartet"
+          },
+          {
+            "answer": "Erweiterungen sind in Planung, aber noch nicht abgeschlossen"
+          }
+        ]
+      },
+      {
+        "question": "Gibt es am Standort separate Subzähler oder Messpunkte für die Hauptverbrauchergruppen (Prüfanlagen, HVAC, IT)?",
+        "suggestedAnswers": [
+          {
+            "answer": "Ja, Subzähler für die wichtigsten Verbraucher sind vorhanden und auslesbar"
+          },
+          {
+            "answer": "Teilweise — einige Verbrauchergruppen sind gemessen, andere nicht"
+          },
+          {
+            "answer": "Nein, es gibt nur den Hauptzähler 'Netzbezug'"
+          },
+          {
+            "answer": "Subzähler vorhanden, aber noch nicht in das Energiemanagementsystem integriert"
+          }
+        ]
+      },
+      {
+        "question": "Wie wird der Standort nach Ende der Betriebszeit abgesichert — gibt es automatisierte Abschaltprozesse oder -checklisten?",
+        "suggestedAnswers": [
+          {
+            "answer": "Manuelle Checkliste, die vom letzten Schichtmitarbeiter abgearbeitet wird"
+          },
+          {
+            "answer": "Teilautomatisiert über BMS, jedoch ohne vollständige Abdeckung aller Verbraucher"
+          },
+          {
+            "answer": "Keine systematische Abschaltprozedur — jede Anlage liegt in der Verantwortung der jeweiligen Abteilung"
+          },
+          {
+            "answer": "Vollautomatisierte Abschaltsequenzen über Gebäudeleitsystem"
+          }
+        ]
+      }
+    ],
+    "confidence": 65,
+    "category": "OTHER",
+    "investmentType": "NO_INTENSITY",
+    "effortLevel": "LOW"
+  },
+  {
+    "locationId": 2,
+    "insightId": "ins_k4e82b5f",
+    "title": "Automatisierte Abschalt- und Zeitplansteuerung für Montagfrüh-Grundlasten einführen",
+    "shortDescription": "5.466 kW Grundlast in einem produktionsfreien 5-Stunden-Fenster (Montag 00–05 Uhr) liegt 89 % über Baseline — gezielte Automatisierung kann nicht benötigte Lasten abschalten.",
+    "description": "Nachdem die Ursachenanalyse die Hauptlastverursacher identifiziert hat, besteht der nächste Schritt in der technischen Umsetzung: Einführung von Zeitschaltprogrammen, BMS-gesteuerten Abschaltsequenzen oder maschinenindividuellen Standby-Automatiken für alle Verbraucher, die im Fenster Montag 00–05 Uhr nicht betriebsnotwendig sind. Ziel ist eine Absenkung der Grundlast von derzeit 5.466 kW (Median) auf einen Zielwert von 3.200–3.800 kW — entsprechend einer Reduktion um 30–40 % des aktuellen Niveaus. Gleichzeitig wird durch die Automatisierung das weitere Trendwachstum (+3.008 kW/Jahr) gestoppt, da neue Anlagen von Beginn an in die Abschaltsteuerung integriert werden. Die Maßnahme ist besonders wirksam für Anlagen mit langen Vorheizkurven (z.B. Glühöfen, Prüfkammern), die ggf. auf kürzere Vorlaufzeiten oder effizientere Aufwärmstrategien umgestellt werden können, sowie für IT-Infrastruktur, die Batch-Jobs in weniger kritische Zeiten verschoben werden kann.",
+    "yearlySavingsRangeFrom": 32000,
+    "yearlySavingsRangeTo": 58000,
+    "investmentRangeFrom": 8000,
+    "investmentRangeTo": 22000,
+    "unit": "kWh",
+    "yearlySavingsEnergyRangeFrom": 180000,
+    "yearlySavingsEnergyRangeTo": 330000,
+    "evidences": [
+      "Struktureller Überschuss (SC2 Median vs. Baseline): 5.466 kW − 2.893 kW = 2.573 kW × 260 h/Jahr = 669.000 kWh/Jahr Überversorgung",
+      "Einsparungspotenzial bei 27–49 % Reduktion des strukturellen Überschusses: 180.000–330.000 kWh/Jahr (= 31.680–58.080 €/Jahr bei 0,176 €/kWh)",
+      "Trendstoppwirkung: Weitere Beschleunigung (+3.008 kW/Jahr) wird unterbunden — verhindert bis 2027 zusätzlich ca. 275.400 €/Jahr Kostenanstieg",
+      "Zeitfenster Montag 00–05 Uhr: 5 h × 52 Wochen = 260 h/Jahr — klar abgegrenztes, reproduzierbares Einsparzeitfenster ohne Produktionsunterbrechung",
+      "ISO 50001-zertifizierter Betrieb: Systematisches Monitoring und Maßnahmencontrolling über EnMS bereits etabliert — Umsetzungsbarriere gering"
+    ],
+    "amortisationPeriodInMonths": 4,
+    "reasoning": "Die Maßnahme greift in einem klar abgegrenzten, produktionsfreien Zeitfenster und erfordert keine Änderung am laufenden Betrieb. Die Kombination aus Trendstoppwirkung und struktureller Lastreduzierung macht sie zu einer der kosteneffizientesten Interventionen mit schnellem Amortisation. Durch die ISO 50001-Zertifizierung ist ein Monitoring-Framework bereits vorhanden, das die Wirksamkeitskontrolle und KPI-Integration erleichtert. Die Maßnahme ist stark abhängig von den Ergebnissen der vorgelagerten Ursachenanalyse — daher wurde ein moderater Konfidenzwert gewählt.",
+    "questions": [
+      {
+        "question": "Welche der identifizierten Nachtlasten können technisch ohne Produktionseinschränkung abgeschaltet oder auf spätere Zeiten verschoben werden?",
+        "suggestedAnswers": [
+          {
+            "answer": "Thermische Prüfanlagen können auf kürzere Vorheizkurven (z.B. 03–05 Uhr statt ab Mitternacht) umgestellt werden"
+          },
+          {
+            "answer": "IT-Batch-Jobs können auf Dienstag–Donnerstag Nacht verteilt werden ohne Projektverzögerung"
+          },
+          {
+            "answer": "Kühl- und Lüftungssysteme können im Nachtabsenkbetrieb auf Minimalleistung reduziert werden"
+          },
+          {
+            "answer": "Alle wesentlichen Lasten sind technisch oder prozessbedingt zwingend notwendig"
+          }
+        ]
+      },
+      {
+        "question": "Verfügt das Gebäudemanagementsystem (BMS/GLT) am Standort über freie Kapazitäten für neue Zeitprogramme?",
+        "suggestedAnswers": [
+          {
+            "answer": "Ja, BMS kann direkt erweitert werden — interne Ressourcen vorhanden"
+          },
+          {
+            "answer": "BMS vorhanden, aber für neue Zeitprogramme ist externer Dienstleister erforderlich"
+          },
+          {
+            "answer": "Kein zentrales BMS — Zeitsteuerung muss je Anlage individuell programmiert werden"
+          },
+          {
+            "answer": "BMS ist veraltet und muss im Zuge der Maßnahme teilerneuert werden"
+          }
+        ]
+      },
+      {
+        "question": "Sind Mindest-Vorwärmzeiten für Prüfanlagen oder Prozessöfen technisch vorgeschrieben oder können diese flexibel angepasst werden?",
+        "suggestedAnswers": [
+          {
+            "answer": "Vorwärmzeiten sind durch Prüfnormen (z.B. ISO, DIN) fest vorgegeben"
+          },
+          {
+            "answer": "Vorwärmzeiten basieren auf internen Erfahrungswerten und können optimiert werden"
+          },
+          {
+            "answer": "Hersteller gibt Mindestzeiten vor — Anpassung erfordert Freigabe/Validierung"
+          },
+          {
+            "answer": "Vorwärmzeiten variieren stark je nach Anlage und Material — standortspezifische Bewertung nötig"
+          }
+        ]
+      },
+      {
+        "question": "Wer ist am Standort für die Programmanpassung von Maschinensteuerungen und BMS-Zeitprogrammen zuständig?",
+        "suggestedAnswers": [
+          {
+            "answer": "Internes Instandhaltungs-/Energieteam kann Steuerungen eigenständig anpassen"
+          },
+          {
+            "answer": "Änderungen erfordern Beauftragung der jeweiligen Anlagenhersteller oder Systemintegratoren"
+          },
+          {
+            "answer": "Energiemanagementbeauftragter koordiniert mit externer SPS/BMS-Fachfirma"
+          },
+          {
+            "answer": "Noch nicht definiert — Zuständigkeiten müssen im Rahmen der Maßnahmenplanung geklärt werden"
+          }
+        ]
+      }
+    ],
+    "confidence": 58,
+    "category": "OTHER",
+    "investmentType": "MEDIUM_INTENSITY",
+    "effortLevel": "MEDIUM"
   }
 ]
