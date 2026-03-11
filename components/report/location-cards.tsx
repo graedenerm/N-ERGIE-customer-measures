@@ -119,18 +119,10 @@ export function LocationCards({ onSelectLocation }: { onSelectLocation: (id: num
                     </span>
                   </div>
                 </div>
-                <div className="flex items-center gap-1">
-                  <span
-                    className="text-sm font-bold font-mono"
-                    style={{ color: "#059669" }}
-                  >
-                    {loc.totalSavings}
-                  </span>
-                  <ChevronRight
-                    className="size-4 transition-transform group-hover:translate-x-0.5"
-                    style={{ color: "#1A2FEE" }}
-                  />
-                </div>
+                <ChevronRight
+                  className="size-4 transition-transform group-hover:translate-x-0.5"
+                  style={{ color: "#1A2FEE" }}
+                />
               </div>
             </motion.button>
           ))}

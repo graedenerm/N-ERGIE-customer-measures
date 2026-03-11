@@ -6,7 +6,8 @@ export const companyInfo = {
   description: "Kaltwalzen und Wärmebehandlung von Stahlband an Industriestandorten in Hagen",
   energyPrice: 0.176,
   energyPriceLabel: "€0,176/kWh (BDEW Industriedurchschnitt 2025)",
-  totalSavings: "€542.258",
+  totalSavingsMin: "€604.200",
+  totalSavingsMax: "€856.260",
   totalSavingsKwh: "3.081.011 kWh",
   totalInsights: 10,
   totalMeasures: 23,
@@ -15,7 +16,7 @@ export const companyInfo = {
 export const locations: Location[] = [
   {
     id: 0,
-    name: "Kaltwalzwerk [Bandstahlstr. 14-18]",
+    name: "Bandstahlstr. 14-18",
     city: "Hagen",
     annualConsumption: "~85 GWh/a",
     meanLoad: "9.700 kW",
@@ -28,7 +29,7 @@ export const locations: Location[] = [
   },
   {
     id: 1,
-    name: "Werk Buschmühlenstraße [Buschmühlenstr. 24]",
+    name: "Buschmühlenstr. 24",
     city: "Hagen",
     annualConsumption: "~97 GWh/a",
     meanLoad: "11.000 kW",
@@ -41,7 +42,7 @@ export const locations: Location[] = [
   },
   {
     id: 2,
-    name: "Hauptverwaltung & Werkstofftechnik [Feldmühlenstr. 55]",
+    name: "Feldmühlenstr. 55",
     city: "Hagen",
     annualConsumption: "~45 GWh/a",
     meanLoad: "5.100 kW",
