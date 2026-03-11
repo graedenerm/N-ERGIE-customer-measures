@@ -74,6 +74,7 @@ export async function POST(request: NextRequest) {
     await put(FEEDBACK_FILE, JSON.stringify(existingFeedback, null, 2), {
       access: 'private',
       addRandomSuffix: false,
+      allowOverwrite: true,
     })
     console.log('[v0] Feedback saved successfully')
 
