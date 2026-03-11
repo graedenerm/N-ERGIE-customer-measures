@@ -18,6 +18,7 @@ import {
 } from "lucide-react"
 import { insights } from "@/data/company-data"
 import type { Measure } from "@/data/types"
+import { FeedbackButtons } from "./feedback-buttons"
 
 function effortLabel(level: string) {
   switch (level) {
@@ -314,6 +315,11 @@ function MeasureCard({
           style={{ color: "#AEAEAE" }}
         />
       </button>
+      
+      {/* Feedback buttons outside button to avoid nesting */}
+      <div className="px-4 pb-3 flex justify-end">
+        <FeedbackButtons itemType="measure" itemId={`${measure.insightId}-${measure.title.slice(0, 30)}`} />
+      </div>
 
       {/* Linked Insight Footer */}
       {linkedInsight && (

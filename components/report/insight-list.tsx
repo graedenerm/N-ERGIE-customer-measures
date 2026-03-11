@@ -18,6 +18,7 @@ import {
 } from "lucide-react"
 import { insights } from "@/data/company-data"
 import type { Insight, Measure } from "@/data/types"
+import { FeedbackButtons } from "./feedback-buttons"
 
 function confidenceColor(c: number) {
   if (c >= 0.9) return { bg: "rgba(5,150,105,0.1)", text: "#059669", label: "Sehr hoch" }
@@ -131,7 +132,7 @@ function InsightCard({
           <h3 className="text-sm font-bold leading-snug" style={{ color: "#00095B" }}>
             {insight.title}
           </h3>
-          <p className="mt-1 text-xs leading-relaxed line-clamp-2" style={{ color: "#737373" }}>
+          <p className={`mt-1 text-xs leading-relaxed ${expanded ? "" : "line-clamp-2"}`} style={{ color: "#737373" }}>
             {insight.summary}
           </p>
         </div>
@@ -150,6 +151,11 @@ function InsightCard({
           )}
         </div>
       </button>
+      
+      {/* Feedback buttons outside the main button to avoid nesting */}
+      <div className="px-5 pb-3 flex justify-end">
+        <FeedbackButtons itemType="insight" itemId={insight.id} />
+      </div>
 
       <AnimatePresence>
         {expanded && (
