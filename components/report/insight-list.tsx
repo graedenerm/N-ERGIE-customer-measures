@@ -152,8 +152,8 @@ function InsightCard({
         </div>
       </button>
       
-      {/* Feedback buttons outside the main button to avoid nesting */}
-      <div className="px-5 pb-3 flex justify-end">
+      {/* Feedback buttons - positioned outside main button to avoid HTML nesting error */}
+      <div className="px-5 pb-3 flex justify-end border-t mt-0 pt-2" style={{ borderColor: "#F0F0F0" }}>
         <FeedbackButtons 
           itemType="insight" 
           itemId={insight.id} 
