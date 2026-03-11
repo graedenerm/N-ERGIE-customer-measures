@@ -6,6 +6,8 @@ export type ItemType = "insight" | "measure"
 export interface FeedbackEntry {
   itemType: ItemType
   itemId: string
+  itemName: string
+  locationName: string
   vote: FeedbackType
   comment?: string
   timestamp: string

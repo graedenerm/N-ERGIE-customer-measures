@@ -6,10 +6,11 @@ import { ThumbsUp, ThumbsDown, RefreshCw } from "lucide-react"
 interface FeedbackEntry {
   itemType: "insight" | "measure"
   itemId: string
+  itemName: string
+  locationName: string
   vote: "helpful" | "not_helpful"
   comment?: string
   timestamp: string
-  userAgent?: string
 }
 
 export default function FeedbackAdminPage() {
@@ -123,7 +124,7 @@ export default function FeedbackAdminPage() {
                   <div key={index} className="p-4 hover:bg-gray-50">
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-1">
+                        <div className="flex items-center gap-2 mb-2">
                           <span
                             className={`px-2 py-0.5 rounded text-xs font-medium ${
                               entry.itemType === "insight"
@@ -147,15 +148,29 @@ export default function FeedbackAdminPage() {
                             )}
                           </span>
                         </div>
-                        <p className="text-sm text-gray-600 font-mono">{entry.itemId}</p>
+                        <p className="text-sm font-semibold text-gray-900 mb-1">
+                          {entry.itemName || entry.itemId}
+                        </p>
+                        <p className="text-xs text-gray-500 mb-2">
+                          Standort: {entry.locationName || "Unbekannt"}
+                        </p>
                         {entry.comment && (
-                          <p className="mt-2 text-sm text-gray-800 bg-gray-50 p-2 rounded">
-                            &quot;{entry.comment}&quot;
+                          <p className="text-sm text-gray-800 bg-yellow-50 border border-yellow-200 p-2 rounded">
+                            Kommentar: &quot;{entry.comment}&quot;
                           </p>
                         )}
                       </div>
-                      <div className="text-xs text-gray-400 text-right">
-                        {new Date(entry.timestamp).toLocaleString("de-DE")}
+                      <div className="text-xs text-gray-400 text-right whitespace-nowrap">
+                        {new Date(entry.timestamp).toLocaleDateString("de-DE", {
+                          day: "2-digit",
+                          month: "2-digit",
+                          year: "numeric",
+                        })}
+                        <br />
+                        {new Date(entry.timestamp).toLocaleTimeString("de-DE", {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })} Uhr
                       </div>
                     </div>
                   </div>
