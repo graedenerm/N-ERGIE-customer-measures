@@ -24,11 +24,11 @@ export function FeedbackButtons({ itemType, itemId }: FeedbackButtonsProps) {
     }
   }, [itemType, itemId])
 
-  const handleVote = (newVote: FeedbackType) => {
+  const handleVote = async (newVote: FeedbackType) => {
     setVote(newVote)
     setShowComment(true)
     // Save immediately with just the vote
-    saveFeedback({
+    await saveFeedback({
       itemType,
       itemId,
       vote: newVote,
@@ -37,9 +37,9 @@ export function FeedbackButtons({ itemType, itemId }: FeedbackButtonsProps) {
     })
   }
 
-  const handleSubmitComment = () => {
+  const handleSubmitComment = async () => {
     if (vote) {
-      saveFeedback({
+      await saveFeedback({
         itemType,
         itemId,
         vote,
