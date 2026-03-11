@@ -131,7 +131,7 @@ function InsightCard({
           <h3 className="text-sm font-bold leading-snug" style={{ color: "#00095B" }}>
             {insight.title}
           </h3>
-          <p className="mt-1 text-xs leading-relaxed line-clamp-2" style={{ color: "#737373" }}>
+          <p className={`mt-1 text-xs leading-relaxed ${expanded ? "" : "line-clamp-2"}`} style={{ color: "#737373" }}>
             {insight.summary}
           </p>
         </div>
