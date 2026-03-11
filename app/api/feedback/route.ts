@@ -4,10 +4,11 @@ import { type NextRequest, NextResponse } from 'next/server'
 interface FeedbackEntry {
   itemType: 'insight' | 'measure'
   itemId: string
+  itemName?: string
+  locationName?: string
   vote: 'helpful' | 'not_helpful'
   comment?: string
   timestamp: string
-  userAgent?: string
 }
 
 // Feedback file stored in Vercel Blob (private store)
@@ -44,10 +45,10 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     const newFeedback: FeedbackEntry = await request.json()
+    console.log('[v0] Received feedback:', JSON.stringify(newFeedback))
     
-    // Add timestamp and user agent
+    // Add timestamp
     newFeedback.timestamp = new Date().toISOString()
-    newFeedback.userAgent = request.headers.get('user-agent') || undefined
 
     // Get existing feedback
     let existingFeedback: FeedbackEntry[] = []
@@ -69,10 +70,12 @@ export async function POST(request: NextRequest) {
     existingFeedback.push(newFeedback)
 
     // Save updated feedback
+    console.log('[v0] Saving', existingFeedback.length, 'feedback entries to blob')
     await put(FEEDBACK_FILE, JSON.stringify(existingFeedback, null, 2), {
       access: 'private',
       addRandomSuffix: false,
     })
+    console.log('[v0] Feedback saved successfully')
 
     return NextResponse.json({ success: true })
   } catch (error) {
