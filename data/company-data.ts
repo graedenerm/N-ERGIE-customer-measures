@@ -6,8 +6,8 @@ export const companyInfo = {
   description: "Kaltwalzen und Wärmebehandlung von Stahlband an Industriestandorten in Deutschland",
   energyPrice: 0.176,
   energyPriceLabel: "€0,176/kWh (BDEW Industriedurchschnitt 2025)",
-  totalSavings: "€366.592",
-  totalSavingsKwh: "2.082.914 kWh",
+  totalSavings: "€347.033",
+  totalSavingsKwh: "1.971.076 kWh",
   totalInsights: 4,
 }
 
@@ -37,19 +37,6 @@ export const locations: Location[] = [
     seasonal: "Nein (ganzjährig)",
     insightCount: 2,
     measureCount: 6,
-  },
-  {
-    id: 3,
-    name: "Werk West [Voerder Str. 10]",
-    city: "Hagen",
-    annualConsumption: "~45 GWh/a",
-    meanLoad: "5.100 kW",
-    peakLoad: "8.200 kW",
-    totalSavings: "€0/a",
-    totalSavingsKwh: "0 kWh/a",
-    seasonal: "Nein (ganzjährig)",
-    insightCount: 0,
-    measureCount: 0,
   },
 ]
 
