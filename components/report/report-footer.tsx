@@ -8,11 +8,10 @@ export function ReportFooter() {
           className="h-5 w-auto"
         />
         <p className="max-w-lg text-sm leading-relaxed" style={{ color: "#AEAEAE" }}>
-          Dieser Report wurde automatisiert erstellt auf Basis statistischer
-          Lastganganalyse und KI-{"gest\u00fctzter"} Kontextanreicherung.
-          Die dargestellten Einsparpotenziale sind {"Sch\u00e4tzungen"} und
-          {"bed\u00fcrfen"} der Validierung im Rahmen einer
-          standortspezifischen Detailanalyse.
+          Dieser Report wurde auf Basis statistischer Lastganganalyse und 
+          KI-gestützter Kontextanreicherung erstellt. Die dargestellten 
+          Einsparpotenziale sind Schätzungen und bedürfen der Validierung 
+          im Rahmen einer Detailanalyse.
         </p>
         <div className="mt-2 h-px w-16" style={{ backgroundColor: "rgba(26,47,238,0.3)" }} />
         <p className="text-xs" style={{ color: "#737373" }}>

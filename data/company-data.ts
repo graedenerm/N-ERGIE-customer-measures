@@ -1,7 +1,7 @@
 import type { Location, Insight } from "./types"
 
 export const companyInfo = {
-  name: "Wälzholz",
+  name: "Waelzholz",
   companyId: 99999,
   description: "Kaltwalzen und Wärmebehandlung von Stahlband an Industriestandorten in Hagen",
   energyPrice: 0.176,
@@ -104,7 +104,7 @@ export const insights: Insight[] = [
     savingsEur: "€39.196/a",
     savingsKwh: "222.705 kWh/a",
     confidence: 0.9685,
-    summary: "Das Werk Buschmühlenstraße ist mit fast 97 GWh/Jahr der verbrauchsstärkste Standort von Wälzholz, und sein Zeitfenster von Samstagnachmittag bis Sonntagmorgen (19 Stunden/Woche: Sa 12:00-24:00, So 00:00-06:00+15:00-16:00) hält einen Median von 6.180 kW - 1.020 kW (19,8%) über der besten beobachteten Basislinie von 5.160 kW. Diese strukturelle Lücke allein bedeutet €39.196/Jahr. Entscheidend ist, dass derselbe Cluster auch durch ein hochfrequentes Anomaliemuster gekennzeichnet ist: 386 anomale Ereignisse pro Jahr bei 10,16 Ereignissen/Woche, die weitere €34.964/Jahr hinzufügen - was die kombinierte Möglichkeit in diesem einzelnen wiederkehrenden Zeitfenster auf €74.160/Jahr bringt. Die Anomalie-Zeitlinie zeigt persistenten erhöhten Verbrauch, der sich das ganze Jahr über auf Samstagabende und frühe Sonntagmorgende konzentriert, ohne klare saisonale Entlastung.",
+    summary: "Das Werk Buschmühlenstraße ist mit fast 97 GWh/Jahr der verbrauchsstärkste Standort von Waelzholz, und sein Zeitfenster von Samstagnachmittag bis Sonntagmorgen (19 Stunden/Woche: Sa 12:00-24:00, So 00:00-06:00+15:00-16:00) hält einen Median von 6.180 kW - 1.020 kW (19,8%) über der besten beobachteten Basislinie von 5.160 kW. Diese strukturelle Lücke allein bedeutet €39.196/Jahr. Entscheidend ist, dass derselbe Cluster auch durch ein hochfrequentes Anomaliemuster gekennzeichnet ist: 386 anomale Ereignisse pro Jahr bei 10,16 Ereignissen/Woche, die weitere €34.964/Jahr hinzufügen - was die kombinierte Möglichkeit in diesem einzelnen wiederkehrenden Zeitfenster auf €74.160/Jahr bringt. Die Anomalie-Zeitlinie zeigt persistenten erhöhten Verbrauch, der sich das ganze Jahr über auf Samstagabende und frühe Sonntagmorgende konzentriert, ohne klare saisonale Entlastung.",
     whyNonObvious: "Derselbe Cluster ist auch durch ein hochfrequentes Anomaliemuster gekennzeichnet: 386 anomale Ereignisse pro Jahr bei 10,16 Ereignissen/Woche, die weitere €34.964/Jahr hinzufügen - was die kombinierte Möglichkeit auf €74.160/Jahr bringt.",
     supportingContext: "Kaltwalzwerk-Hilfssysteme (Hydraulik, Kühlwasser, Druckluft) werden am Standort Buschmühlenstraße das gesamte Wochenende über auf vollem Betriebsdruck gehalten, ohne strukturierte Samstag-zu-Sonntag-Lastreduktion.",
   },
@@ -143,8 +143,8 @@ export const insights: Insight[] = [
     savingsEur: "€220.512/a",
     savingsKwh: "1.252.911 kWh/a",
     confidence: 1.0,
-    summary: "Während des 'Primärbetriebs' an der Hauptverwaltung und Werkstofftechnik (Feldmühlenstraße) wurden 22 einzelne Tage identifiziert, an denen der standortweite Verbrauch 2.371 kW über der normalen Betriebsbasislinie lag - nicht isoliert auf Nacht- oder Wochenendfenster, sondern während der normalen Arbeitszeiten. Dies ergibt einen jährlichen Überschuss von 1.252.911 kWh (€220.512/Jahr) und ist damit die größte einzelne Einsparmöglichkeit über alle drei Wälzholz-Standorte hinweg. Der Befund ist hochgradig nicht offensichtlich, weil dies keine Stillstands- oder anomalen Nächte sind: Es sind volle Primärbetriebstage, an denen angenommen wird, dass der Standort optimal läuft. Die anomalsten Daten clustern sich eng im Februar-März 2025 (22.-23. Feb, 15.-16. März, 29. März), was auf eine starke Assoziation mit spezifischen Produktionskampagnen, großen Qualifizierungsläufen oder Prozessversuchen hindeutet.",
-    whyNonObvious: "Dies sind keine Stillstands- oder anomalen Nächte: Es sind volle Primärbetriebstage, an denen angenommen wird, dass der Standort optimal läuft. Der Befund stellt die größte einzelne Einsparmöglichkeit über alle drei Wälzholz-Standorte dar.",
+    summary: "Während des 'Primärbetriebs' an der Hauptverwaltung und Werkstofftechnik (Feldmühlenstraße) wurden 22 einzelne Tage identifiziert, an denen der standortweite Verbrauch 2.371 kW über der normalen Betriebsbasislinie lag - nicht isoliert auf Nacht- oder Wochenendfenster, sondern während der normalen Arbeitszeiten. Dies ergibt einen jährlichen Überschuss von 1.252.911 kWh (€220.512/Jahr) und ist damit die größte einzelne Einsparmöglichkeit über alle drei Waelzholz-Standorte hinweg. Der Befund ist hochgradig nicht offensichtlich, weil dies keine Stillstands- oder anomalen Nächte sind: Es sind volle Primärbetriebstage, an denen angenommen wird, dass der Standort optimal läuft. Die anomalsten Daten clustern sich eng im Februar-März 2025 (22.-23. Feb, 15.-16. März, 29. März), was auf eine starke Assoziation mit spezifischen Produktionskampagnen, großen Qualifizierungsläufen oder Prozessversuchen hindeutet.",
+    whyNonObvious: "Dies sind keine Stillstands- oder anomalen Nächte: Es sind volle Primärbetriebstage, an denen angenommen wird, dass der Standort optimal läuft. Der Befund stellt die größte einzelne Einsparmöglichkeit über alle drei Waelzholz-Standorte dar.",
     supportingContext: "Unkoordinierte gleichzeitige Aktivierung mehrerer großer energieintensiver Prozesse (Laboröfen, Qualifizierungsprüfstände, Prototyp-Walzversuche) an bestimmten Tagen, die Lasten stapeln, die einzeln geplant, aber zusammen einen standortweiten Spike erzeugen.",
   },
   {

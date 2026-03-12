@@ -7,8 +7,8 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains" });
 
 export const metadata: Metadata = {
-  title: 'Wälzholz — Energieanalyse-Report | ecoplanet',
-  description: 'Statistische Insights und Maßnahmenempfehlungen für Wälzholz - 3 Standorte, 10 Insights, 23 Maßnahmen.',
+  title: 'Waelzholz — Energieanalyse-Report | ecoplanet',
+  description: 'Statistische Insights und Maßnahmenempfehlungen für Waelzholz - 3 Standorte, 10 Insights, 23 Maßnahmen.',
 }
 
 export const viewport: Viewport = {
