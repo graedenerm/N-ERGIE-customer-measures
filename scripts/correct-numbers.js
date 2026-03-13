@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 // Read the measures.json file
-const measuresPath = path.join(process.cwd(), 'data', 'measures.json');
+const measuresPath = '/vercel/share/v0-project/data/measures.json';
 const measures = JSON.parse(fs.readFileSync(measuresPath, 'utf8'));
 
 // Function to divide a number by 4 and round
