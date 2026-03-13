@@ -33,7 +33,7 @@ export const locations: Location[] = [
     city: "Hagen",
     annualConsumption: "~24 GWh/a",
     meanLoad: "2.750 kW",
-    peakLoad: "3.500 kW",
+    peakLoad: "6.435 kW",
     totalSavings: "€16.408/a",
     totalSavingsKwh: "93.229 kWh/a",
     seasonal: "Nein (ganzjährig)",
