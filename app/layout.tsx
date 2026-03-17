@@ -8,7 +8,7 @@ const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jet
 
 export const metadata: Metadata = {
   title: 'Waelzholz — Energieanalyse-Report | ecoplanet',
-  description: 'Statistische Insights und Maßnahmenempfehlungen für Waelzholz - 3 Standorte, 4 Insights, 11 Maßnahmen.',
+  description: 'Statistische Insights und Maßnahmenempfehlungen für Waelzholz - 3 Standorte, 11 Insights, 27 Maßnahmen.',
 }
 
 export const viewport: Viewport = {
