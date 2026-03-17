@@ -171,7 +171,7 @@ function InsightCard({
                   <div className="flex items-center gap-1.5 mb-2">
                     <Target className="size-3.5" style={{ color: "#1A2FEE" }} />
                     <span className="text-xs font-bold uppercase tracking-wider" style={{ color: "#1A2FEE" }}>
-                      Warum nicht-offensichtlich
+                      Hintergrund & Analyse
                     </span>
                   </div>
                   <p className="text-[13px] leading-relaxed" style={{ color: "#444444" }}>
